@@ -1,6 +1,6 @@
-** Spotify Clone **
+**Spotify Clone**
 
-Description:
+**Description:**
 This project aims to replicate the core functionalities of the popular music streaming service, Spotify. Users can sign up, log in, search for songs, create playlists, and listen to music. It utilizes technologies such as React.js for the frontend, Node.js and Express.js for the backend, and MongoDB for database management.
 
 Features:
