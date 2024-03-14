@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-// import './App.css'
+import './App.css'
+import Home from './routes/Home'
+import Signup from './routes/Signup'
+import Login from './routes/Login'
 
 function App() {
 
   return (
     <>
-      <div className=''>
-        Hello Buddy
-      </div>
+      {/* <Home> </Home> */}
+      <Signup></Signup>
+      {/* <Login></Login> */}
     </>
   )
 }
