@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TextInput from '../component/TextInput'
+import { makeAuthenticatedPOSTRequest } from '../utils/server';
 
 const Login = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("")
+
+  const login = async()=>{
+    const data = {email, password}
+    const response = await makeAuthenticatedPOSTRequest("/auth/login",data)
+    console.log(response);
+  }
 
   return (
     <div className='w-screen h-screen font-sans mt-16 block '>
@@ -17,12 +27,16 @@ const Login = () => {
             InputType="Email"
             type="email"
             placeholder="Email"
+            value={email}
+            setValue={setEmail}
             >
             </TextInput>
             <TextInput
             InputType="Password"
             type="password"
             placeholder="Password"
+            value={password}
+            setValue={setPassword}
             >
             </TextInput>
             <div className='ml-10 my-4'>
@@ -30,7 +44,10 @@ const Login = () => {
               <label htmlFor="" className=''> Remember me </label>
             </div>
             <div className='mx-8'>
-              <button className='p-3 font-semibold text-white rounded-lg bg-blue-600 w-full border border-blue-600'>Sign in</button>
+              <button 
+              className='p-3 font-semibold text-white rounded-lg bg-blue-600 w-full border border-blue-600'
+              onClick={(e)=>login()}
+              >Sign in</button>
             </div>
             <div className='mt-2 ml-10 text-sm mb-3'>
               Don't have an account ?  <span className='font-semibold cursor-pointer'>Sign Up</span>

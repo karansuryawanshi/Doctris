@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TextInput from '../component/TextInput'
+import { makeAuthenticatedPOSTRequest } from '../utils/server'
 const Signup = () => {
 
+  const [firstname,setFirstname] = useState("")
+  const [lastname,setLastname] = useState("")
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
 
+  const signup = async ()=>{
+    
+    const data = {firstname, lastname, email, password}
+    const response = await makeAuthenticatedPOSTRequest("/auth/register",data) 
+    console.log(response)
+  }
 
   return (
     <div className='w-screen h-screen font-sans mt-16 block'>
@@ -19,6 +30,8 @@ const Signup = () => {
             InputType="First Name"
             type="text"
             placeholder="First Name"
+            value={firstname}
+            setValue={setFirstname}
             >
             </TextInput>
 
@@ -26,6 +39,8 @@ const Signup = () => {
             InputType="Last Name"
             type="text"
             placeholder="Last Name"
+            value={lastname}
+            setValue={setLastname}
             >
             </TextInput>
           
@@ -34,12 +49,16 @@ const Signup = () => {
             InputType="Email"
             type="email"
             placeholder="Email"
+            value={email}
+            setValue={setEmail}
             >
             </TextInput>
             <TextInput
             InputType="Password"
             type="password"
             placeholder="Password"
+            value={password}
+            setValue={setPassword}
             >
             </TextInput>
             <div className='ml-10 my-4'>
@@ -47,7 +66,9 @@ const Signup = () => {
               <label htmlFor="" className=''> I accept the <span className='text-blue-600'>term and condition</span></label>
             </div>
             <div className='mx-8'>
-              <button className='p-3 font-semibold text-white rounded-lg bg-blue-600 w-full border border-blue-600'>Signup</button>
+              <button 
+              className='p-3 font-semibold text-white rounded-lg bg-blue-600 w-full border border-blue-600' onClick={(e)=>{signup()}}>
+                Signup</button>
             </div>
             <div className='mt-2 ml-10 text-sm mb-3'>
               Already have an account ?  <span className='font-semibold cursor-pointer'>Sign in</span>
