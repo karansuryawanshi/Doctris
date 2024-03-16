@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react'
-
+import PosterFooter from './PosterFooter';
+import Body from './Body';
+import Departments from './Departments';
 
 const Header = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -20,6 +22,7 @@ const Header = () => {
     }, []);
     
   return (
+    <>
     <div className='absolute z-10 w-full h-full'>
         <div className={`transition duration-200 flex${scrolled ? " bg-slate-100 sticky top-0" : ""}`}>
             <div className='w-7/12 h-20 flex items-center justify-center space-x-10'>
@@ -49,7 +52,7 @@ const Header = () => {
                     color='white'
                     />
             </div>
-            <div className='w-10 h-10 rounded-full cursor-pointer border-2 border-blue-700'>
+            <div className='w-10 h-10 rounded-full cursor-pointer border-2 border-blue-100'>
                 <img className='rounded-full' src="https://doctris-react-landing.vercel.app/static/media/01.d8b9651b2a3ba6336221.jpg" alt="" />
             </div>
             </div>
@@ -73,7 +76,37 @@ const Header = () => {
                 </div>
             </div>
         </div>
+        {/* <div className='w-full h-full'> */}
+            <div className='flex items-center justify-center mt-20'>
+                <div className='flex rounded-lg w-8/12 min-h-max'>
+                    <PosterFooter
+                    icon={"ph:heartbeat-fill"}
+                    head={"Emergency Cases"}
+                    text={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur veritatis numquam recusandae ut consequuntur vel ea tempore mollitia soluta sapiente!"}
+                    background={"bg-gray-100 rounded-l-lg"}>
+                    </PosterFooter>
+
+                    <PosterFooter
+                    icon={"map:doctor"}
+                    head={"Doctor Timetable"}
+                    text={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur veritatis numquam recusandae ut consequuntur vel ea tempore mollitia soluta sapiente!"}
+                    background={"bg-white"}>
+                    </PosterFooter>
+
+                    <PosterFooter
+                    icon={"bxs:ambulance"}
+                    head={"Ambulance Service"}
+                    text={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur veritatis numquam recusandae ut consequuntur vel ea tempore mollitia soluta sapiente!"}
+                    background={"bg-gray-100 rounded-r-lg"}>
+                    </PosterFooter>
+                </div>
+            </div>
+        <div>
+            <Body></Body>
+            <Departments></Departments>
+        </div>
     </div>
+    </>
   )
 }
 

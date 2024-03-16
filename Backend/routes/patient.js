@@ -81,7 +81,7 @@ router.post("/login", async (req, res) => {
 
   // console.log("******* user._id ********** ", user._id);
 
-  const token = await getToken(user._id);
+  const token = await getToken(user.id);
   console.log(token);
   const userToReturn = { ...user.toJSON(), token };
   return res.status(200).json(userToReturn);
