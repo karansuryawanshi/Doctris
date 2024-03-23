@@ -113,7 +113,7 @@ const Departments = () => {
                 })}
               </div>
                 <div className='flex items-center justify-center py-10'>
-                  <button className='border bg-blue-600 text-white text-lg rounded-lg px-6 py-2'>See More</button>
+                  <button className='border bg-blue-600 text-white text-lg rounded-lg px-6 hover:bg-blue-700 duration-300 py-2'>See More</button>
                 </div>
             </div>
           </div>
