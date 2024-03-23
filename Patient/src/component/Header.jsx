@@ -71,7 +71,7 @@ const Header = () => {
                     Great doctor if you need your family member to get effective immediate assistance, emergency treatment or a simple consultation.
                 </div>
                 <div>
-                    <button className='border-2 border-blue-600 bg-blue-600 p-2 rounded-lg text-white mt-10'>Make Appointment</button>
+                    <button className='border-2 border-blue-600 bg-blue-600 hover:bg-blue-700 duration-300 p-2 rounded-lg text-white mt-10'>Make Appointment</button>
                 </div>
                 <div className='text-gray-200 pt-5'>
                 T&C apply. Please read Terms and Conditions
