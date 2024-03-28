@@ -11,10 +11,7 @@ const JWT_SECRET = "Karanisgooboy";
 
 router.use(express.json());
 
-<<<<<<< HEAD
 // register Patient
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 router.post("/register", async (req, res) => {
   const {
     firstname,
@@ -28,10 +25,6 @@ router.post("/register", async (req, res) => {
     bloodGroup,
     email,
     password,
-<<<<<<< HEAD
-    patientPhoto,
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
   } = req.body;
 
   const user = await Patient.findOne({ email: email });
@@ -58,10 +51,6 @@ router.post("/register", async (req, res) => {
     bloodGroup,
     email,
     password,
-<<<<<<< HEAD
-    patientPhoto,
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
   };
 
   const patientData = await Patient.create(newData);
@@ -77,10 +66,7 @@ router.post("/register", async (req, res) => {
   return res.status(200).json(userToReturn);
 });
 
-<<<<<<< HEAD
 // login Patient
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -103,10 +89,7 @@ router.post("/login", async (req, res) => {
   return res.status(200).json(userToReturn);
 });
 
-<<<<<<< HEAD
 // Edit details
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 router.put(
   "/updateprofile/:id",
   passport.authenticate("jwt", { session: false }),
@@ -124,10 +107,7 @@ router.put(
       phoneNumber,
       bloodGroup,
       email,
-<<<<<<< HEAD
       patientPhoto,
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
     } = req.body;
 
     const newPatient = {};
@@ -161,12 +141,9 @@ router.put(
     if (bloodGroup) {
       newPatient.bloodGroup = bloodGroup;
     }
-<<<<<<< HEAD
     if (patientPhoto) {
       newPatient.patientPhoto = patientPhoto;
     }
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 
     //   //find the note to be updated
     let patientData = await Patient.findById(currentUser);

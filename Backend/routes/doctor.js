@@ -13,15 +13,10 @@ const JWT_SECRET = "Karanisgooboy";
 
 router.use(express.json());
 
-<<<<<<< HEAD
 // Register Doctor
 router.post("/register", async (req, res) => {
   const { firstname, lastname, email, specialist, password, doctorPhoto } =
     req.body;
-=======
-router.post("/register", async (req, res) => {
-  const { firstname, lastname, email, specialist, password } = req.body;
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
   const user = await Doctor.findOne({ email: email });
   if (user) {
     return res
@@ -39,15 +34,11 @@ router.post("/register", async (req, res) => {
     email,
     specialist,
     password,
-<<<<<<< HEAD
     doctorPhoto,
   };
 
   console.log("************ doctor Photo ***************", doctorPhoto);
 
-=======
-  };
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
   const doctorData = await Doctor.create(newData);
   const token = await getToken(doctorData._id);
 
@@ -59,10 +50,7 @@ router.post("/register", async (req, res) => {
   return res.status(200).json(userToReturn);
 });
 
-<<<<<<< HEAD
 // Login Doctor
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -83,10 +71,6 @@ router.post("/login", async (req, res) => {
 });
 
 // get all doctor
-<<<<<<< HEAD
-=======
-
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 router.get(
   "/get/doctor",
   passport.authenticate("jwt", { session: false }),
@@ -96,21 +80,14 @@ router.get(
   }
 );
 
-<<<<<<< HEAD
 // Edit Details
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 router.put(
   "/updateprofile/:id",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     const currentUser = req.user._id;
 
-<<<<<<< HEAD
     const { firstname, lastname, specialist, email, doctorPhoto } = req.body;
-=======
-    const { firstname, lastname, specialist, email } = req.body;
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 
     const newDoctor = {};
     if (firstname) {
@@ -125,12 +102,9 @@ router.put(
     if (email) {
       newDoctor.email = email;
     }
-<<<<<<< HEAD
     if (doctorPhoto) {
       newDoctor.doctorPhoto = doctorPhoto;
     }
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 
     //   //find the note to be updated
     let patientData = await Doctor.findById(currentUser);
