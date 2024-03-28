@@ -20,10 +20,16 @@ export default {
           black: 900,
         },
       },
+<<<<<<< HEAD
       backgroundImage: {
         profileBackground:
           "url('https://doctris-react-landing.vercel.app/static/media/bg-profile.2859920b4c41966e4d91.jpg')",
       },
+=======
+      // fontFamily: {
+      //   inter: ["Inter", "sans-serif"],
+      // },
+>>>>>>> 9b09324780698521db15268299768ea600dc29f5
     },
   },
   plugins: [],
