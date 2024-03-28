@@ -10,10 +10,13 @@ const Patient = new mongoose.Schema({
     type: String,
     require: false,
   },
+<<<<<<< HEAD
   patientPhoto: {
     type: String,
     require: false,
   },
+=======
+>>>>>>> 9b09324780698521db15268299768ea600dc29f5
   age: {
     type: Number,
     require: false,
