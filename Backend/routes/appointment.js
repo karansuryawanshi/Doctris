@@ -8,11 +8,7 @@ const { createToken } = require("../utils/jwtHelper");
 const fetchuser = require("../utils/fetchUser");
 
 router.use(express.json());
-<<<<<<< HEAD
 // create appointment
-=======
-
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 router.post(
   "/create",
   passport.authenticate("jwt", { session: false }),
@@ -58,10 +54,7 @@ router.post(
   }
 );
 
-<<<<<<< HEAD
 // get appointment Details
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 router.get(
   "/get/appointment",
   passport.authenticate("jwt", { session: false }),
@@ -71,10 +64,7 @@ router.get(
   }
 );
 
-<<<<<<< HEAD
 // Reject Appointment
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 router.delete(
   "/deleteappointment/:id",
   passport.authenticate("jwt", { session: false }),
@@ -91,10 +81,7 @@ router.delete(
   }
 );
 
-<<<<<<< HEAD
 // Accept Appointment
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
 router.post(
   "/accept/appointment",
   passport.authenticate("jwt", { session: false }),
@@ -108,19 +95,6 @@ router.post(
     if (!appointment) {
       return res.status(301).json({ err: "Playlist Does not exist" });
     }
-<<<<<<< HEAD
-
-=======
-    // console.log("******* Appointment ***********", appointment);
-    // if (
-    //   !playlist.owner.equals(currentUser._id) &&
-    //   !playlist.collaborators.includes(currentUser._id)
-    // ) {
-    //   return res.status(400).json({ err: "Not allowed" });
-    // }
-
-    // // Step 3 :- check of the song is valid
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
     const patient = await Patient.findOne({ _id: patientId });
     if (!patient) {
       return res.status(304).json({ err: "Not Allowed" });

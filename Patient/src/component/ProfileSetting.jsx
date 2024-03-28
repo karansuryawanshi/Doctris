@@ -18,7 +18,7 @@ const ProfileSetting = () => {
             <p className='font-semibold'>Upload your picture</p>
             <p className='text-gray-500'>For best results, use an image at least 256px by 256px in either .jpg or .png format</p>
         </div>
-        <ProfileImage></ProfileImage>
+        {/* <ProfileImage></ProfileImage> */}
       </div>
       <div className='grid grid-cols-2'>
         <div className=''>

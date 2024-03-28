@@ -23,13 +23,10 @@ const Doctor = new mongoose.Schema({
     require: true,
     private: true,
   },
-<<<<<<< HEAD
   doctorPhoto: {
     type: String,
     require: false,
   },
-=======
->>>>>>> 9b09324780698521db15268299768ea600dc29f5
   acceptedAppointment: [
     {
       type: mongoose.Schema.ObjectId,
