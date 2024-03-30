@@ -1,18 +1,31 @@
 import React, { useState } from 'react'
 import TextInput from '../component/TextInput'
-import { makeAuthenticatedPOSTRequest } from '../utils/server'
+import { makeUnAuthenticatedPOSTRequest } from '../utils/server'
+import {useCookies} from "react-cookie"
+
 const Signup = () => {
 
   const [firstname,setFirstname] = useState("")
   const [lastname,setLastname] = useState("")
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
+  const [cookie, setCookie] = useCookies(["token"])
 
   const signup = async ()=>{
     
     const data = {firstname, lastname, email, password}
-    const response = await makeAuthenticatedPOSTRequest("/auth/register",data) 
-    console.log(response)
+    const response = await makeUnAuthenticatedPOSTRequest("/auth/register",data) 
+    // console.log(response)
+    if(response){
+      const token = response.token;
+      // console.log(token)
+      const date = new Date();
+      date.setDate(date.getDate() + 30)
+      setCookie("token",token,{path:"/",expires:date})
+    }
+    else{
+      alert("failure")
+    }
   }
 
   return (

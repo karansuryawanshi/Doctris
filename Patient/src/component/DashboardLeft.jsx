@@ -1,6 +1,28 @@
 import React from 'react'
+import { makeAuthenticatedGETRequest } from '../utils/server'
+import { useState, useEffect } from 'react'
+import { Icon } from '@iconify/react'
 
 const DashboardLeft = () => {
+
+    const [firstname, setFirstname] = useState([])
+    const [lastname, setLastname] = useState([])
+    const [age, setAge] = useState([])
+    const [blood, setBlood] = useState([])
+  
+    useEffect(() => {
+      const fetchData = async () => {
+          const response = await makeAuthenticatedGETRequest("/auth/get/patient/me");
+          console.log(response);
+          setFirstname(response.data[0].firstname)
+          setLastname(response.data[0].lastname)
+          setBlood(response.data[0].bloodGroup)
+          setAge(response.data[0].age)
+          // setUserId(response.data[0]._id)
+      };
+      fetchData();
+    }, []);
+
   return (
             <div className='w-1/4 h-max m-2 border border-1 rounded-xl'>
                 <div className='flex p-4'>
@@ -8,8 +30,12 @@ const DashboardLeft = () => {
                         <img className='rounded-full' src="https://doctris-react-landing.vercel.app/static/media/09.a78fa894da10cce37f2f.jpg" alt="" />
                     </div>
                     <div className='my-4 mx-4'>
-                        <p className='font-semibold text-lg'>Christopher Burrell</p>
-                        <p>25 Years old</p>
+                        <p className='font-semibold text-lg'>{firstname} {lastname}</p>
+                        {age ? (
+                            <p>{age} Years old</p>
+                        ) : (
+                            <span className='flex'>age<Icon className='text-2xl' icon={"openmoji:warning"}/></span>
+                        )}
                     </div>
                 </div>
                 <div className='m-4 flex items-center justify-center border border-1 rounded-full border-green-500 bg-green-50'>
@@ -20,7 +46,11 @@ const DashboardLeft = () => {
                 <div className='flex items-center justify-center space-x-16'>
                     <div>
                         <p className='font-semibold text-gray-500'>Blood</p>
-                        <p>B +</p>
+                        {blood ? (
+                            <p>{blood}</p>
+                        ):(
+                            <Icon className='text-2xl' icon={"openmoji:warning"}/>
+                        )}
                     </div>
                     <div>
                         <p className='font-semibold text-gray-500'>Height</p>

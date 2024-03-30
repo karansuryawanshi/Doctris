@@ -3,11 +3,13 @@ import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';  
 import ProfileLeft from "../component/ProfileLeft"
 import ProfileRight from '../component/ProfileRight';
-// import ProfileRight from "../component/ProfileRight"
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const PatientProfile = () => {
 
     const [scrolled, setScrolled] = useState(false);
+
 
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -21,7 +23,7 @@ const PatientProfile = () => {
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
     }, []);
-
+      
   return (
     <div className='profile'>
       <div className={`transition duration-200 flex${scrolled ? " bg-white sticky top-0" : ""}`}>

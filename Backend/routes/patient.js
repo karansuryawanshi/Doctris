@@ -83,7 +83,7 @@ router.post("/login", async (req, res) => {
 
   // console.log("******* user._id ********** ", user._id);
 
-  const token = await getToken(user.id);
+  const token = await getToken(user._id);
   console.log(token);
   const userToReturn = { ...user.toJSON(), token };
   return res.status(200).json(userToReturn);
@@ -157,6 +157,16 @@ router.put(
       { new: true }
     );
     res.json({ userPatient });
+  }
+);
+
+router.get(
+  "/get/patient/me",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const currentUser = req.user._id;
+    const userDetails = await Patient.find({ _id: currentUser });
+    return res.status(200).json({ data: userDetails });
   }
 );
 
