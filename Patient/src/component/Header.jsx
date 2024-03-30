@@ -6,8 +6,11 @@ import Body from './Body';
 import Departments from './Departments';
 import PatientReview from './PatientReview';
 import Footer from './Footer';
+import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({userId}) => {
+
+    const navigate = useNavigate()
     const [scrolled, setScrolled] = useState(false);
 
     const handleScroll = () => {
@@ -22,6 +25,10 @@ const Header = () => {
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
     }, []);
+
+    const DashboardNavigate = ()=>{
+        navigate('/dashboard')
+    }
     
   return (
     <>
@@ -55,7 +62,7 @@ const Header = () => {
                     />
             </div>
             <div className='w-10 h-10 rounded-full cursor-pointer border-2 border-blue-100'>
-                <img className='rounded-full' src="https://doctris-react-landing.vercel.app/static/media/01.d8b9651b2a3ba6336221.jpg" alt="" />
+                <img className='rounded-full' onClick={DashboardNavigate} src="https://doctris-react-landing.vercel.app/static/media/01.d8b9651b2a3ba6336221.jpg" alt="" />
             </div>
             </div>
         </div>

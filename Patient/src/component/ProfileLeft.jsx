@@ -36,7 +36,7 @@ const ProfileLeft = () => {
                 <div className='w-full h-full rounded-t-xl'>
                     <div className='grid items-center bg-gray-100 justify-center'>
                         <div className='w-32 h-32 pl-2'>
-                            <img className='rounded-full py-2' src="https://doctris-react-landing.vercel.app/static/media/09.a78fa894da10cce37f2f.jpg" alt="" />
+                            <img className='w-100 h-100 rounded-full py-2' src="https://doctris-react-landing.vercel.app/static/media/09.a78fa894da10cce37f2f.jpg" alt="" />
                         </div>
                         <div className='grid items-center justify-center py-2'>
                             <p className='text-lg font-semibold'>Christopher Burrell</p>
