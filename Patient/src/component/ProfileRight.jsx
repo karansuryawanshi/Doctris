@@ -73,109 +73,71 @@ const ProfileRight = () => {
                 <div className='grid grid-cols-2'>
 
                 <UpdataDataInput
+                    label={"First Name"}
                     type={"text"}
                     value={firstname}
                     setValue={setFirstname}/>
-                    
-                  <div>
-                      <p className='p-2'>Last Name</p>
-                      <input 
-                      type="text" 
-                      className='border-2 w-60 rounded-lg px-2 py-1'
-                      value={lastname}
-                      onChange={(e)=>{
-                        setLastName(e.target.value)
-                        }}
-                      />
-                  </div>
-                  <div>
-                      <p className='p-2'>Email</p>
-                      <input 
-                      type="text" 
-                      className='border-2 w-60 rounded-lg px-2 py-1'
-                      value={email}
-                      onChange={(e)=>{
-                        setEmail(e.target.value)
-                        }}
-                      />
-                  </div>
-                  <div>
-                      <p className='p-2'>Phone no.</p>
-                      <input 
-                      type="text" 
-                      className='border-2 w-60 rounded-lg px-2 py-1'
-                      value={phoneNumber}
-                      onChange={(e)=>{
-                        setPhoneNumber(e.target.value)
-                        }}
-                      />
-                  </div>
-                  <div>
-                      <p className='p-2'>Age</p>
-                      <input 
-                      type="text" 
-                      className='border-2 w-60 rounded-lg px-2 py-1'
-                      value={age}
-                      onChange={(e)=>{
-                        setAge(e.target.value)
-                        }}
-                      />
-                  </div>
-                  <div>
-                      <p className='p-2'>Height</p>
-                      <input 
-                      type="text" 
-                      className='border-2 w-60 rounded-lg px-2 py-1'
-                      value={height}
-                      onChange={(e)=>{
-                        setHeight(e.target.value)
-                        }}
-                      />
-                  </div>
-                  <div>
-                      <p className='p-2'>Weight</p>
-                      <input 
-                      type="text" 
-                      className='border-2 w-60 rounded-lg px-2 py-1'
-                      value={weight}
-                      onChange={(e)=>{
-                        setWeight(e.target.value)
-                        }}
-                      />
-                  </div>
-                  <div>
-                      <p className='p-2'>Gender</p>
-                      <input 
-                      type="text" 
-                      className='border-2 w-60 rounded-lg px-2 py-1'
-                      value={gender}
-                      onChange={(e)=>{
-                        setGender(e.target.value)
-                        }}
-                      />
-                  </div>
-                  <div>
-                      <p className='p-2'>Birth Date</p>
-                      <input 
-                      type="date" 
-                      className='border-2 w-60 rounded-lg px-2 py-1'            
-                      value={birthDate}
-                      onChange={(e)=>{
-                        setBirthdate(e.target.value)
-                        }}
-                      />
-                  </div>
-                  <div>
-                      <p className='p-2'>bloodGroup</p>
-                      <input 
-                      type="text" 
-                      className='border-2 w-60 rounded-lg px-2 py-1'
-                      value={bloodGroup}
-                      onChange={(e)=>{
-                        setBloodGroup(e.target.value)
-                        }}
-                      />
-                  </div>
+
+                  <UpdataDataInput
+                    label={"Last Name"}
+                    type={"text"}
+                    value={lastname}
+                    setValue={setLastName}/>
+
+                  <UpdataDataInput
+                    label={"Email"}
+                    type={"email"}
+                    value={email}
+                    setValue={setEmail}/>
+
+                  <UpdataDataInput
+                    label={"Phone No."}
+                    type={"text"}
+                    value={phoneNumber}
+                    setValue={setPhoneNumber}/>
+
+                  <UpdataDataInput
+                    label={"Age"}
+                    type={"text"}
+                    value={age}
+                    setValue={setAge}/>
+
+                  <UpdataDataInput
+                    label={"Height(in cm)"}
+                    type={"text"}
+                    value={height}
+                    setValue={setHeight}/>
+
+                  <UpdataDataInput
+                    label={"Weight"}
+                    type={"text"}
+                    value={weight}
+                    setValue={setWeight}/>
+
+                <div className='pt-3'>
+                  <p>Gender</p>
+                  <select name="gender" 
+                    class="block" 
+                    className='border-2 w-60 rounded-lg h-10' 
+                    value={gender} 
+                    onChange={(e)=>{setGender(e.target.value)}}>
+                      <option>Select</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                  </select>
+                </div>
+
+                  <UpdataDataInput
+                    label={"Birth Date"}
+                    type={"date"}
+                    value={birthDate}
+                    setValue={setBirthdate}/>
+
+                  <UpdataDataInput
+                    label={"Blood Group"}
+                    type={"text"}
+                    value={bloodGroup}
+                    setValue={setBloodGroup}/>
                 </div>
                 <div className='flex items-center justify-center py-8'>
                   <button className='border-2 border-blue-600 hover:bg-blue-700 duration-300 px-4 py-2 rounded-xl bg-blue-600 text-white' onClick={updateData}>Save Changes</button>

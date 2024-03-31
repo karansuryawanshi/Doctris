@@ -10,7 +10,6 @@ const PatientProfile = () => {
 
     const [scrolled, setScrolled] = useState(false);
 
-
     const handleScroll = () => {
         const offset = window.scrollY;
         if (offset > false) {

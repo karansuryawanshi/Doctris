@@ -1,6 +1,8 @@
 import React from 'react'
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Icon } from '@iconify/react';
+import { useState, useEffect } from 'react';
+import { makeAuthenticatedGETRequest } from '../utils/server';
 
 const profileData = [
     {
@@ -31,6 +33,23 @@ const profileData = [
 ]
 
 const ProfileLeft = () => {
+    const [firstname, setFirstname] = useState([]);
+    const [lastname, setLastname] = useState([]);
+    const [phoneNumber, setPhoneNumber] = useState([]);
+    const [bloodGroup, setBloodGroup] = useState([]);
+    const [birthDate, setBirthDate] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+          const response = await makeAuthenticatedGETRequest("/auth/get/patient/me");
+          setFirstname(response.data[0].firstname)
+          setLastname(response.data[0].lastname)
+          setPhoneNumber(response.data[0].phoneNumber)
+          setBloodGroup(response.data[0].bloodGroup)
+          setBirthDate(response.data[0].birthDate)
+      };
+      fetchData();
+    }, []);
   return (
             <div className='w-4/12 border border-1 mt-10 rounded-xl'>
                 <div className='w-full h-full rounded-t-xl'>
@@ -39,7 +58,7 @@ const ProfileLeft = () => {
                             <img className='w-100 h-100 rounded-full py-2' src="https://doctris-react-landing.vercel.app/static/media/09.a78fa894da10cce37f2f.jpg" alt="" />
                         </div>
                         <div className='grid items-center justify-center py-2'>
-                            <p className='text-lg font-semibold'>Christopher Burrell</p>
+                            <p className='text-lg font-semibold'>{firstname} {lastname}</p>
                             <p className='text-gray-500 pl-6'>25 Years old</p>
                         </div>
                     </div>
@@ -56,21 +75,53 @@ const ProfileLeft = () => {
                                 labelColor="#3b82f6"
                                 />
                             </div>
-                        </div>
+                        </div>                        
                         <div className='space-y-4 pb-5'>
-                        {profileData.map((item)=>{
-                                return(
-                                <div className='flex space-x-2'>
-                                    <div className='text-blue-500'>
-                                        <Icon className='text-2xl' icon={item.icon}></Icon>
-                                    </div>
-                                    <div className='flex space-x-4'>
-                                        <p className='text-base font-semibold'>{item.category}</p>
-                                        <p className='text-gray-500'>{item.categoryOption}</p>
-                                    </div>
-                                </div>   
-                                )
-                            })}
+                        <div className='flex space-x-2'>
+                            <div className='text-blue-500'>
+                                <Icon className='text-2xl' icon={"iconamoon:profile-light"}></Icon>
+                            </div>
+                            <div className='flex space-x-4'>
+                                <p className='text-base font-semibold'>Gender</p>
+                                <p className='text-gray-500'>Male</p>
+                            </div>
+                        </div>
+                        <div className='flex space-x-2'>
+                            <div className='text-blue-500'>
+                                <Icon className='text-2xl' icon={"iconamoon:profile-light"}></Icon>
+                            </div>
+                            <div className='flex space-x-4'>
+                                <p className='text-base font-semibold'>Birthday</p>
+                                <p className='text-gray-500'>{birthDate}</p>
+                            </div>
+                        </div>
+                        <div className='flex space-x-2'>
+                            <div className='text-blue-500'>
+                                <Icon className='text-2xl' icon={"iconamoon:profile-light"}></Icon>
+                            </div>
+                            <div className='flex space-x-4'>
+                                <p className='text-base font-semibold'>Phone No</p>
+                                <p className='text-gray-500'>{phoneNumber}</p>
+                            </div>
+                        </div>
+                        <div className='flex space-x-2'>
+                            <div className='text-blue-500'>
+                                <Icon className='text-2xl' icon={"iconamoon:profile-light"}></Icon>
+                            </div>
+                            <div className='flex space-x-4'>
+                                <p className='text-base font-semibold'>Address</p>
+                                <p className='text-gray-500'>Sydney, Australia</p>
+                            </div>
+                        </div>
+                        <div className='flex space-x-2'>
+                            <div className='text-blue-500'>
+                                <Icon className='text-2xl' icon={"iconamoon:profile-light"}></Icon>
+                            </div>
+                            <div className='flex space-x-4'>
+                                <p className='text-base font-semibold'>Blood Group</p>
+                                <p className='text-gray-500'>{bloodGroup}</p>
+                            </div>
+                        </div>   
                         </div>
                     </div>
                 </div>
