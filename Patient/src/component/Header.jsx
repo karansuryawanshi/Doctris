@@ -12,6 +12,15 @@ const Header = ({userId}) => {
 
     const navigate = useNavigate()
     const [scrolled, setScrolled] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsDropdownOpen(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsDropdownOpen(false);
+    };
 
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -28,6 +37,10 @@ const Header = ({userId}) => {
 
     const DashboardNavigate = ()=>{
         navigate('/dashboard')
+    }
+
+    const ProfileNavigate = ()=>{
+        navigate('/profile/'+userId)
     }
     
   return (
@@ -48,22 +61,52 @@ const Header = ({userId}) => {
                     </ul>
                 </div>
             </div>
-            <div className='w-5/12 flex items-center justify-center space-x-4'>
-            <div className='cursor-pointer bg-blue-600 rounded-full p-1 hover:bg-blue-700 transition duration-200'>
-                <Icon className='text-3xl '
-                    icon={"system-uicons:settings"}  
-                    color='white'
-                    />
-            </div>
-            <div className='bg-blue-600 p-2 rounded-full cursor-pointer hover:bg-blue-700 transition duration-200'>
-                <Icon className='text-2xl'
-                    icon={"system-uicons:search"}  
-                    color='white'
-                    />
-            </div>
-            <div className='w-10 h-10 rounded-full cursor-pointer border-2 border-blue-100'>
+                <div className='w-5/12 flex items-center justify-center space-x-4'>
+                <div className='cursor-pointer bg-blue-600 rounded-full p-1 hover:bg-blue-700 transition duration-200'>
+                    <Icon className='text-3xl '
+                        icon={"system-uicons:settings"}  
+                        color='white'
+                        />
+                </div>
+                <div className='bg-blue-600 p-2 rounded-full cursor-pointer hover:bg-blue-700 transition duration-200'>
+                    <Icon className='text-2xl'
+                        icon={"system-uicons:search"}  
+                        color='white'
+                        />
+                </div>
+
+        <div className=''>
+            <div id="dropdownToggle" className='w-10 h-10 rounded-full cursor-pointer border-2 border-blue-100'>
                 <img className='rounded-full' onClick={DashboardNavigate} src="https://doctris-react-landing.vercel.app/static/media/01.d8b9651b2a3ba6336221.jpg" alt="" />
+                <ul className='w-16 h-16 space-y-2 bg-white rounded-lg shadow-md left-15 list-none  opacity-0 hover:opacity-100 px-0 top-full transition-all  duration-200 ease-in-out'>
+                    <li className='pl-2 hover:text-black text-gray-600 font-semibold' onClick={ProfileNavigate}>Profile</li>
+                    <li className='pl-2 hover:text-black text-gray-600 font-semibold'>Logout</li>
+                </ul>
             </div>
+        </div>
+
+        {/* <div className='relative'>
+            <div 
+                className='w-10 h-10 rounded-full cursor-pointer border-2 border-blue-100'
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+            >
+                <img className='rounded-full' src="https://doctris-react-landing.vercel.app/static/media/01.d8b9651b2a3ba6336221.jpg" alt="" onClick={DashboardNavigate} />
+            </div>
+            {isDropdownOpen && (
+                <div className="absolute top-12 left-0 bg-white border border-gray-200 rounded shadow-lg p-2">
+                    <ul>
+                        <li>Dropdown Item 1</li>
+                        <li>Dropdown Item 2</li>
+                        <li>Dropdown Item 3</li>
+                    </ul>
+                </div>
+            )}
+        </div> */}
+
+
+
+
             </div>
         </div>
         <div className='flex md:mt-40 md:ml-64 w-96  '>

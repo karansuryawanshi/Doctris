@@ -2,6 +2,7 @@ import React from 'react'
 import { makeAuthenticatedGETRequest } from '../utils/server'
 import { useState, useEffect } from 'react'
 import { Icon } from '@iconify/react'
+import { useNavigate } from 'react-router-dom'
 
 const DashboardLeft = () => {
 
@@ -9,6 +10,11 @@ const DashboardLeft = () => {
     const [lastname, setLastname] = useState([])
     const [age, setAge] = useState([])
     const [blood, setBlood] = useState([])
+    const [height, setHeight] = useState([])
+    const [weight, setWeight] = useState([])
+    const [userId, setUserId] = useState([])
+
+    const navigate = useNavigate()
   
     useEffect(() => {
       const fetchData = async () => {
@@ -18,10 +24,16 @@ const DashboardLeft = () => {
           setLastname(response.data[0].lastname)
           setBlood(response.data[0].bloodGroup)
           setAge(response.data[0].age)
-          // setUserId(response.data[0]._id)
+          setHeight(response.data[0].height)
+          setWeight(response.data[0].weight)
+          setUserId(response.data[0]._id)
       };
       fetchData();
     }, []);
+
+    const NavigateProfile =()=>{
+        navigate("/profile/"+userId)
+    }
 
   return (
             <div className='w-1/4 h-max m-2 border border-1 rounded-xl'>
@@ -54,11 +66,21 @@ const DashboardLeft = () => {
                     </div>
                     <div>
                         <p className='font-semibold text-gray-500'>Height</p>
-                        <p>175cm</p>
+                        {height ? (
+                            <p>{height}cm</p>
+
+                        ):(
+                            <Icon className='text-2xl ml-2' icon={"openmoji:warning"}/>
+                        )}
                     </div>
                     <div>
                         <p className='font-semibold text-gray-500'>Weight</p>
-                        <p>64kg</p>
+                        {weight ?(
+                            <p>{weight}kg</p>
+
+                        ):(
+                            <Icon className='text-2xl ml-2' icon={"openmoji:warning"}/>
+                        )}
                     </div>
                 </div>
                 <div className='px-6 py-2'>
@@ -121,7 +143,7 @@ const DashboardLeft = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='m-4  border-2 border-blue-400 px-2 py-2 flex items-center justify-center rounded-lg text-blue-700 bg-blue-50 cursor-pointer hover:bg-blue-500 hover:text-white duration-300'>
+                    <div className='m-4  border-2 border-blue-400 px-2 py-2 flex items-center justify-center rounded-lg text-blue-700 bg-blue-50 cursor-pointer hover:bg-blue-500 hover:text-white duration-300' onClick={NavigateProfile}>
                         <p className=' font-semibold text-normal'>View Profile</p>
                     </div>
                 </div>

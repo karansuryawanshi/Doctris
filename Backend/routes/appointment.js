@@ -24,6 +24,7 @@ router.post(
       email,
       phoneNo,
       comment,
+      address,
     } = req.body;
 
     const doctor = await Doctor.findOne({
@@ -45,6 +46,7 @@ router.post(
       email,
       phoneNo,
       comment,
+      address,
       patient: currentUser,
       doctor: doctorId,
     };
@@ -113,6 +115,23 @@ router.post(
     await doctor.save();
 
     return res.status(200).json({ doctor, patient });
+  }
+);
+
+// get blog made by me
+router.get(
+  "/my/appointment",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const createrId = req.user._id;
+    console.log(createrId);
+
+    const appointment = await Appointment.find({
+      patient: createrId,
+    }).populate("patient", "doctor");
+    console.log(appointment);
+    return res.status(200).json({ appointment });
+    res.send("Hello Buddy");
   }
 );
 

@@ -10,7 +10,6 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
         const response = await makeAuthenticatedGETRequest("/auth/get/patient/me");
-        // console.log(response);
         setUserId(response.data[0]._id)
     };
     fetchData();
