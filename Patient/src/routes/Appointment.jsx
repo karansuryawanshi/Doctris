@@ -11,8 +11,7 @@ const Appointment = () => {
 
     const [patientName,setPatientName] = useState([])
     const [department,setDepartment] = useState([])
-    const [doctorFirstname,setDoctorFirstname] = useState("")
-    const [doctorLastname,setDoctorLastname] = useState("")
+    const [doctorName,setDoctorName] = useState([])
     const [email,setEmail] = useState([])
     const [phoneNo,setPhnoNo] = useState([])
     const [comment,setComment] = useState([])
@@ -41,7 +40,7 @@ const Appointment = () => {
     },[])
 
     const bookAppointment = async()=>{
-        const data = {patientName, department, doctorFirstname, doctorLastname, email,phoneNo,comment,address }
+        const data = {patientName, department, doctorName, email,phoneNo,comment,address }
         const response = await makeAuthenticatedPOSTRequest("/appointment/create", data)
         console.log("appointment data",response)
     }
@@ -136,16 +135,15 @@ const Appointment = () => {
                                 className='border-2 p-1 rounded-lg w-full' 
                                 placeholder='Patient Name:' 
                                 type="text"
-                                value={`${doctorFirstname} ${doctorLastname}`}
+                                value={doctorName}
                                 onChange={(e)=>{
-                                const [firstname, lastname] = e.target.value.split(' ');
-                                setDoctorFirstname(firstname);
-                                setDoctorLastname(lastname);
-                                }} >
+                                setDoctorName(e.target.value)
+                                }}
+                                >
                             <option value="">Select</option>
                                 {fetchData.map((item)=>{
                                     return(
-                                        <option value="">Dr. {item.firstname} {item.lastname}</option>
+                                        <option value={item.name}>Dr. {item.name}</option>
                                     )
                                 })}
                             </select>

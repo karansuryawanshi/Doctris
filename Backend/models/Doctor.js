@@ -2,13 +2,9 @@
 const mongoose = require("mongoose");
 
 const Doctor = new mongoose.Schema({
-  firstname: {
+  name: {
     type: String,
     require: true,
-  },
-  lastname: {
-    type: String,
-    require: false,
   },
   specialist: {
     type: String,

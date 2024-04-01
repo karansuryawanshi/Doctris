@@ -24,7 +24,6 @@ const ProfileRight = () => {
     const [birthDate, setBirthdate] = useState([]);
     const [image, setImage] = useState([]);
 
-
     const isProfileSetting = () => {
         setIsProfileVisible(false);
         setIsProfileSetingVisible(true)
