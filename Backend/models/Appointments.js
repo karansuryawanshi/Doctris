@@ -10,15 +10,11 @@ const Appointment = new mongoose.Schema({
     type: String,
     require: false,
   },
-  doctorFirstname: {
+  doctorName: {
     type: String,
     require: false,
   },
   address: {
-    type: String,
-    require: false,
-  },
-  doctorLastname: {
     type: String,
     require: false,
   },

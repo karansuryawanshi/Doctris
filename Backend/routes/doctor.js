@@ -15,22 +15,20 @@ router.use(express.json());
 
 // Register Doctor
 router.post("/register", async (req, res) => {
-  const { firstname, lastname, email, specialist, password, doctorPhoto } =
-    req.body;
+  const { name, email, specialist, password, doctorPhoto } = req.body;
   const user = await Doctor.findOne({ email: email });
   if (user) {
     return res
       .status(403)
       .json({ error: "A User with this mailId already exist" });
   }
-  if (!firstname || !lastname || !password) {
+  if (!name || !password) {
     return res
       .status(403)
       .json({ error: "None of the above field should be Empty!" });
   }
   const newData = {
-    firstname,
-    lastname,
+    name,
     email,
     specialist,
     password,
@@ -87,14 +85,11 @@ router.put(
   async (req, res) => {
     const currentUser = req.user._id;
 
-    const { firstname, lastname, specialist, email, doctorPhoto } = req.body;
+    const { name, specialist, email, doctorPhoto } = req.body;
 
     const newDoctor = {};
-    if (firstname) {
+    if (name) {
       newDoctor.firstname = firstname;
-    }
-    if (lastname) {
-      newDoctor.lastname = lastname;
     }
     if (specialist) {
       newDoctor.specialist = specialist;

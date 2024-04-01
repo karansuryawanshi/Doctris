@@ -19,8 +19,7 @@ router.post(
     const {
       patientName,
       department,
-      doctorFirstname,
-      doctorLastname,
+      doctorName,
       email,
       phoneNo,
       comment,
@@ -28,8 +27,7 @@ router.post(
     } = req.body;
 
     const doctor = await Doctor.findOne({
-      firstname: doctorFirstname,
-      lastname: doctorLastname,
+      name: doctorName,
     });
 
     if (!doctor) {
@@ -41,8 +39,7 @@ router.post(
     const newData = {
       patientName,
       department,
-      doctorFirstname,
-      doctorLastname,
+      doctorName,
       email,
       phoneNo,
       comment,

@@ -38,6 +38,7 @@ const ProfileLeft = () => {
     const [phoneNumber, setPhoneNumber] = useState([]);
     const [bloodGroup, setBloodGroup] = useState([]);
     const [birthDate, setBirthDate] = useState([]);
+    const [patientPhoto,setPatientPhoto] = useState ([])
   
     useEffect(() => {
       const fetchData = async () => {
@@ -47,15 +48,16 @@ const ProfileLeft = () => {
           setPhoneNumber(response.data[0].phoneNumber)
           setBloodGroup(response.data[0].bloodGroup)
           setBirthDate(response.data[0].birthDate)
+          setPatientPhoto(response.data[0].patientPhoto)
       };
       fetchData();
     }, []);
   return (
-            <div className='w-4/12 border border-1 mt-10 rounded-xl'>
-                <div className='w-full h-full rounded-t-xl'>
-                    <div className='grid items-center bg-gray-100 justify-center'>
+            <div className='w-4/12 mt-10'>
+                <div className='min-h-min rounded-xl border border-1'>
+                    <div className='grid items-center bg-gray-100 justify-center rounded-t-xl'>
                         <div className='w-32 h-32 pl-2'>
-                            <img className='w-100 h-100 rounded-full py-2' src="https://doctris-react-landing.vercel.app/static/media/09.a78fa894da10cce37f2f.jpg" alt="" />
+                            <img className='w-32 h-32 rounded-3xl py-2' src={patientPhoto} alt="" />
                         </div>
                         <div className='grid items-center justify-center py-2'>
                             <p className='text-lg font-semibold'>{firstname} {lastname}</p>

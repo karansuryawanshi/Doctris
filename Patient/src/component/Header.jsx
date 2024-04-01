@@ -8,19 +8,12 @@ import PatientReview from './PatientReview';
 import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
 
+
 const Header = ({userId}) => {
 
     const navigate = useNavigate()
     const [scrolled, setScrolled] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-    const handleMouseEnter = () => {
-        setIsDropdownOpen(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsDropdownOpen(false);
-    };
 
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -53,9 +46,9 @@ const Header = ({userId}) => {
                 </div>
                 <div className=''>
                     <ul className='flex text-sm text-zinc-700 space-x-8 font-semibold'>
-                        <li className='cursor-pointer'>HOME</li>
-                        <li className='cursor-pointer'>DOCTOR</li>
-                        <li className='cursor-pointer'>PATIENT</li>
+                        <li className='cursor-pointer'onClick={()=>{navigate("/")}}>HOME</li>
+                        <li className='cursor-pointer'onClick={()=>{navigate("/appointment")}}>APPOINTMENT</li>
+                        <li className='cursor-pointer'onClick={()=>{navigate("/dashboard")}}>PATIENT</li>
                         <li className='cursor-pointer'>PHARMACY</li>
                         <li className='cursor-pointer'>PAGES</li>
                     </ul>
