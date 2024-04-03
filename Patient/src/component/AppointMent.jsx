@@ -10,8 +10,8 @@ const AppointMent = () => {
     useEffect(() => {
         const FetchData = async () => {
             const response = await makeAuthenticatedGETRequest("/appointment/my/appointment");
-            setAppointmentData(response.appointment)
-            console.log(response.appointment)
+            setAppointmentData("****** set appointment Data *********** ",response.appointment)
+            // console.log("************get appointment**********",response.appointment)
         };
         FetchData();
       }, []);
@@ -32,6 +32,7 @@ const AppointMent = () => {
                         name={item.doctorName}
                         address={item.address}
                         phno={item.phoneNo}
+                        department={item.department}
                     />
                 ))
             ) : (

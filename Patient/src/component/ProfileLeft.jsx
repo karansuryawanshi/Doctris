@@ -39,6 +39,7 @@ const ProfileLeft = () => {
     const [bloodGroup, setBloodGroup] = useState([]);
     const [birthDate, setBirthDate] = useState([]);
     const [patientPhoto,setPatientPhoto] = useState ([])
+    const [age,setAge] = useState([])
   
     useEffect(() => {
       const fetchData = async () => {
@@ -49,19 +50,20 @@ const ProfileLeft = () => {
           setBloodGroup(response.data[0].bloodGroup)
           setBirthDate(response.data[0].birthDate)
           setPatientPhoto(response.data[0].patientPhoto)
+          setAge(response.data[0].age)
       };
       fetchData();
     }, []);
   return (
             <div className='w-4/12 mt-10'>
-                <div className='min-h-min rounded-xl border border-1'>
+                <div className='min-h-min rounded-xl border border-1 mb-20'>
                     <div className='grid items-center bg-gray-100 justify-center rounded-t-xl'>
                         <div className='w-32 h-32 pl-2'>
                             <img className='w-32 h-32 rounded-3xl py-2' src={patientPhoto} alt="" />
                         </div>
                         <div className='grid items-center justify-center py-2'>
                             <p className='text-lg font-semibold'>{firstname} {lastname}</p>
-                            <p className='text-gray-500 pl-6'>25 Years old</p>
+                            <p className='text-gray-500 pl-6'>{age} Years old</p>
                         </div>
                     </div>
                     <div className='px-6'>

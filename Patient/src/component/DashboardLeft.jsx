@@ -13,6 +13,7 @@ const DashboardLeft = () => {
     const [height, setHeight] = useState([])
     const [weight, setWeight] = useState([])
     const [userId, setUserId] = useState([])
+    const [patientPhoto, setPatientPhoto] = useState([])
 
     const navigate = useNavigate()
   
@@ -27,6 +28,8 @@ const DashboardLeft = () => {
           setHeight(response.data[0].height)
           setWeight(response.data[0].weight)
           setUserId(response.data[0]._id)
+          setPatientPhoto(response.data[0].patientPhoto)
+          console.log("Dashboard response",response)
       };
       fetchData();
     }, []);
@@ -39,7 +42,7 @@ const DashboardLeft = () => {
             <div className='w-1/4 h-max m-2 border border-1 rounded-xl'>
                 <div className='flex p-4'>
                     <div className='w-24 h-24'>
-                        <img className='rounded-full' src="https://doctris-react-landing.vercel.app/static/media/09.a78fa894da10cce37f2f.jpg" alt="" />
+                        <img className='w-24 h-24 rounded-full' src={patientPhoto} alt="" />
                     </div>
                     <div className='my-4 mx-4'>
                         <p className='font-semibold text-lg'>{firstname} {lastname}</p>

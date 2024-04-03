@@ -1,11 +1,11 @@
 import React from 'react'
-import Profile from './Profile';
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import ProfileImage from './ProfileImage';
 import UpdataDataInput from "../component/UpdataDataInput"
 import { makeAuthenticatedPUTRequest } from '../utils/server';
 import { useParams } from 'react-router-dom';
+import AppointMent from '../component/AppointMent';
 
 const ProfileRight = () => {
 
@@ -35,12 +35,12 @@ const ProfileRight = () => {
     }
 
     const {_id} = useParams();
-    console.log("**************** Profile Id ************************",_id)
+    // console.log("**************** Profile Id ************************",_id)
 
     const updateData = async ()=>{
         const body = {firstname, lastname, email,phoneNumber, age, bloodGroup,height,weight,gender,birthDate}
         const response = await makeAuthenticatedPUTRequest(`/auth/updateprofile/`+_id, body)
-        console.log(response)
+        // console.log("****** Update Data ******",response)
       }
 
   return (
@@ -53,7 +53,20 @@ const ProfileRight = () => {
                     <p className='text-lg '>Profile Settings</p>
                 </div>
             </div>
-            {isProfileVisible && <Profile />}
+            {isProfileVisible && <div className='p-6'>
+            <div>
+                <p className='text-lg font-semibold text-gray-800'>Introduction:</p>
+                    </div>
+                    <div className='py-6 '>
+                        <p className='font-normal text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium atque officiis fuga incidunt eaque provident aliquid ut officia tempore! Officiis molestias alias earum voluptates ipsa nobis accusantium. Maiores, sed et.</p>
+                    </div>
+                    <div>
+                        <div>
+                            <p className='text-xl font-semibold text-gray-800'>Appointment List</p>
+                        </div>
+                    </div>
+                    <AppointMent></AppointMent>
+              </div>}
             {isProfileSetingVisible && 
                 <div className='p-6'>
                 <div className='text-lg font-semibold'>

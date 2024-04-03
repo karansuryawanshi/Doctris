@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SingleAppointment = ({name, address, phno}) => {
+const SingleAppointment = ({name, address, phno, department}) => {
   return (
     <div className='border  rounded-xl flex hover:bg-gray-300 duration-300 cursor-pointer'>
                     <div className='w-20 h-20 p-2'>
@@ -8,7 +8,7 @@ const SingleAppointment = ({name, address, phno}) => {
                     </div>
                     <div className='mt-4 px-8 w-9/12'>
                         <p className='text-normal font-semibold'>{name} </p>
-                        <p className='text-base text-gray-600'>{address}</p>
+                        <p className='text-base text-gray-600'>{department}</p>
                     </div>
                     <div className='flex items-center'>
                         <p className='text-lg'>13 mar</p>
