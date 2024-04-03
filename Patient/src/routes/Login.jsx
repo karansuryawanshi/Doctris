@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import TextInput from '../component/TextInput'
 import { makeUnAuthenticatedPOSTRequest } from '../utils/server';
 import {useCookies} from 'react-cookie' 
+import LoggedInHome from './LoggedInHome';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
@@ -9,18 +11,17 @@ const Login = () => {
   const [password, setPassword] = useState("")
   const [cookie, setCookie] = useCookies(["token"])
 
+  const navigate = useNavigate();
 
   const login = async()=>{
     const data = {email, password}
     const response = await makeUnAuthenticatedPOSTRequest("/auth/login",data)
-    console.log(response);
-
+    // console.log("*********** Login response ************",response);
     const token = response.token
-
     const date = new Date();
-      date.setDate(date.getDate() + 30)
-
+    date.setDate(date.getDate() + 30)
     setCookie("token",token,{path:"/",expires:date})
+    navigate("/")
   }
 
   return (

@@ -16,7 +16,7 @@ const ProfileImage = ({setUrl, url}) => {
       },
       function (error, result) {
         if (!error && result.event === "success") {
-          console.log(result.info.original_filename)
+          // console.log(result.info.original_filename)
           setUrl(result.info.secure_url)
         }else{
           if(error){
