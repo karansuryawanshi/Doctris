@@ -40,16 +40,17 @@ const ProfileRight = () => {
     const updateData = async ()=>{
         const body = {firstname, lastname, email,phoneNumber, age, bloodGroup,height,weight,gender,birthDate}
         const response = await makeAuthenticatedPUTRequest(`/auth/updateprofile/`+_id, body)
+        alert("Updated Successfully")
         // console.log("****** Update Data ******",response)
       }
 
   return (
     <div className='w-8/12 pt-10 rounded-lg'>
             <div className='flex rounded-xl border-2 duration-300'>
-                <div className='w-1/2 bg-blue-600 p-3 rounded-l-xl flex items-center justify-center cursor-pointer'onClick={isProfile}>
-                    <p className='text-lg text-white'>Profile</p>
+                <div className={`w-1/2 p-3 rounded-l-xl  flex items-center justify-center cursor-pointer duration-300 ${isProfileVisible ? "bg-blue-600 text-white":" "}`}onClick={isProfile}>
+                    <p className='text-lg '>Profile</p>
                 </div>
-                <div className='w-1/2 rounded-r-xl p-3 flex items-center justify-center cursor-pointer'onClick={isProfileSetting}>
+                <div className={`w-1/2 rounded-r-xl p-3 flex items-center justify-center cursor-pointer duration-300 ${isProfileSetingVisible? "bg-blue-600 text-white" : ""}`}onClick={isProfileSetting}>
                     <p className='text-lg '>Profile Settings</p>
                 </div>
             </div>

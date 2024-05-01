@@ -7,7 +7,7 @@ const SingleAppointment = ({name, address, phno, department}) => {
                         <img className='w-full h-full rounded-lg' src="https://plus.unsplash.com/premium_photo-1666433656515-77386ea16d5a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8" alt="" />
                     </div>
                     <div className='mt-4 px-8 w-9/12'>
-                        <p className='text-normal font-semibold'>{name} </p>
+                        <p className='text-normal font-semibold'>{name}</p>
                         <p className='text-base text-gray-600'>{department}</p>
                     </div>
                     <div className='flex items-center'>

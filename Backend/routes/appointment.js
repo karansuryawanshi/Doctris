@@ -55,10 +55,15 @@ router.post(
 
 // get appointment Details
 router.get(
-  "/get/appointment",
+  "/get/appointment/:id",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    const allDoctor = await Appointment.find({}).populate("doctor", "patient");
+    const currentUser = req.user._id;
+    // console.log("*******currentuser******", currentUser);
+    // _id: currentUser
+    const allDoctor = await Appointment.find({
+      doctor: currentUser,
+    }).populate("patient");
     return res.status(200).json({ data: allDoctor });
   }
 );
@@ -69,7 +74,7 @@ router.delete(
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     const currentUser = req.params.id;
-
+    console.log(currentUser);
     let deleteappointment = await Appointment.findById(currentUser);
 
     let deletedAppointment = await Appointment.findByIdAndDelete(currentUser);
@@ -129,6 +134,17 @@ router.get(
     console.log(appointment);
     return res.status(200).json({ appointment });
     res.send("Hello Buddy");
+  }
+);
+
+router.get(
+  "/get/patient/byid/:id",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const id = req.params.id;
+    // const currentUser = req.user._id;
+    const userDetails = await Appointment.find({ _id: id }).populate("patient");
+    return res.status(200).json({ data: userDetails });
   }
 );
 

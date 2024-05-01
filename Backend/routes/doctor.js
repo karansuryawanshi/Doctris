@@ -62,7 +62,7 @@ router.post("/login", async (req, res) => {
     res.status(403).json({ err: "invalid Password" });
   }
 
-  const token = await getToken(user._id);
+  const token = await getToken(user.id);
   console.log(token);
   const userToReturn = { ...user.toJSON(), token };
   return res.status(200).json(userToReturn);
@@ -113,6 +113,17 @@ router.put(
       { new: true }
     );
     res.json({ userDoctor });
+  }
+);
+
+// get my own details
+router.get(
+  "/get/doctor/me",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const currentUser = req.user._id;
+    const userDetails = await Doctor.find({ _id: currentUser });
+    return res.status(200).json({ data: userDetails });
   }
 );
 

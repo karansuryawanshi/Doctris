@@ -16,6 +16,9 @@ const LoggedInHome = ({children}) => {
             setScrolled(false);
         }
     };
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+    }, []);
 
     const [userId, setUserId] = useState([""])
     const [profileImage, setProfileImage] = useState([""])
@@ -30,9 +33,6 @@ const LoggedInHome = ({children}) => {
       fetchData();
     }, []);
 
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-    }, []);
 
     const navigate = useNavigate()
 
