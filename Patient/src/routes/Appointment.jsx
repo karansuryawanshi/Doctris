@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react';
 import { makeAuthenticatedGETRequest } from '../utils/server';
 import { makeAuthenticatedPOSTRequest } from '../utils/server';
 import LoggedInHome from './LoggedInHome';
+import { useNavigate } from 'react-router-dom';
 
 const Appointment = () => {
 
@@ -17,6 +18,8 @@ const Appointment = () => {
     const [phoneNo,setPhnoNo] = useState([])
     const [comment,setComment] = useState([])
     const [address,setAddress] = useState([])
+
+    const navigate = useNavigate()
 
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -43,7 +46,9 @@ const Appointment = () => {
     const bookAppointment = async()=>{
         const data = {patientName, department, doctorName, email,phoneNo,comment,address }
         const response = await makeAuthenticatedPOSTRequest("/appointment/create", data)
-        // console.log("********* booked appointment data ************",response)
+        console.log("********* booked appointment data ************",response)
+        alert("Updated Successfully")
+        navigate("/dashboard")
     }
 
   return (

@@ -15,6 +15,9 @@ import "slick-carousel/slick/slick-theme.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
+
 const Header = ({userId, profileImage}) => {
 
     const navigate = useNavigate()
@@ -146,7 +149,7 @@ const Header = ({userId, profileImage}) => {
                     head={"Ambulance Service"}
                     text={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur veritatis numquam recusandae ut consequuntur vel ea tempore mollitia soluta sapiente!"}
                     background={"bg-gray-100 rounded-r-lg"}>
-                    </PosterFooter>
+                    </PosterFooter >
                 </div>
             </div>
         <div>
@@ -205,7 +208,7 @@ const Header = ({userId, profileImage}) => {
       </Slider>
       </div>
     </div>
-            <div>
+        <div>
         <div className='bg-gray-100 mt-10 flex fles items-center justify-center'>
         <div className='w-9/12 flex items-center justify-center space-x-24'>
             <img className='w-32 h-24' src={serumLogo} alt="" />

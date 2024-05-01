@@ -81,9 +81,14 @@ router.post("/login", async (req, res) => {
     res.status(403).json({ err: "invalid Password" });
   }
 
-  // console.log("******* user._id ********** ", user._id);
+  console.log("******* user._id ********** ", user._id);
+
+  // if (!user.id) {
+  //    "Invalid credential";
+  // }
 
   const token = await getToken(user._id);
+
   console.log(token);
   const userToReturn = { ...user.toJSON(), token };
   return res.status(200).json(userToReturn);

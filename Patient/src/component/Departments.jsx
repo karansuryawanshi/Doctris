@@ -140,7 +140,7 @@ const Departments = () => {
                   <p className='font-base font-base text-gray-200'>Your Questions</p>
               </div>
             </div>
-          </div>
+          </div>  
         </div>
     </div>
   )
