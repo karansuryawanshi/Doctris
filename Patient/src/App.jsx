@@ -17,7 +17,7 @@ function App() {
   return (
     <div className='font-K2D'>
       <BrowserRouter>
-      {cookies.token_patient ? (
+      {cookies.token ? (
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/profile/:_id' element={<PatientProfile></PatientProfile>}></Route>
