@@ -20,7 +20,7 @@ const Login = () => {
     const token = response.token
     const date = new Date();
     date.setDate(date.getDate() + 30)
-    setCookie("token_patient",token,{path:"/",expires:date})
+    setCookie("token",token,{path:"/",expires:date})
     navigate("/")
   }
 
