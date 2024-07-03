@@ -3,6 +3,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { Icon } from '@iconify/react';
 import { useState, useEffect } from 'react';
 import { makeAuthenticatedGETRequest } from '../utils/server';
+import DoctorImage from "../assets/Doctor-Image.jpg"
 
 const profileData = [
     {
@@ -40,6 +41,7 @@ const ProfileLeft = () => {
     const [birthDate, setBirthDate] = useState([]);
     const [patientPhoto,setPatientPhoto] = useState ([])
     const [age,setAge] = useState([])
+    const [gender,setGender] = useState([])
   
     useEffect(() => {
       const fetchData = async () => {
@@ -51,6 +53,8 @@ const ProfileLeft = () => {
           setBirthDate(response.data[0].birthDate)
           setPatientPhoto(response.data[0].patientPhoto)
           setAge(response.data[0].age)
+          setGender(response.data[0].gender)
+          console.log("data",response)
       };
       fetchData();
     }, []);
@@ -59,11 +63,19 @@ const ProfileLeft = () => {
                 <div className='min-h-min rounded-xl border border-1 mb-20'>
                     <div className='grid items-center bg-gray-100 justify-center rounded-t-xl'>
                         <div className='w-32 h-32 pl-2'>
+                        {patientPhoto?(
                             <img className='w-32 h-32 rounded-3xl py-2' src={patientPhoto} alt="" />
+                        ):(
+                            <img className='w-32 h-32 rounded-3xl py-2' src={DoctorImage} alt="" />
+                        )}
                         </div>
                         <div className='grid items-center justify-center py-2'>
                             <p className='text-lg font-semibold'>{firstname} {lastname}</p>
+                        {age?(
                             <p className='text-gray-500 pl-6'>{age} Years old</p>
+                        ):(
+                            <p></p>
+                        )}
                         </div>
                     </div>
                     <div className='px-6'>
@@ -87,7 +99,12 @@ const ProfileLeft = () => {
                             </div>
                             <div className='flex space-x-4'>
                                 <p className='text-base font-semibold'>Gender</p>
-                                <p className='text-gray-500'>Male</p>
+                                {gender?(
+                                    <p className='text-gray-500'>{gender}</p>
+                                ):(
+                                    <Icon className='text-2xl ml-2' icon={"openmoji:warning"}/>
+                                )}
+                                
                             </div>
                         </div>
                         <div className='flex space-x-2'>
@@ -96,7 +113,12 @@ const ProfileLeft = () => {
                             </div>
                             <div className='flex space-x-4'>
                                 <p className='text-base font-semibold'>Birthday</p>
-                                <p className='text-gray-500'>{birthDate}</p>
+                                {birthDate?(
+                                    <p className='text-gray-500'>{birthDate}</p>
+                                ):(
+                                    <Icon className='text-2xl ml-2' icon={"openmoji:warning"}/>
+                                )}
+                                
                             </div>
                         </div>
                         <div className='flex space-x-2'>
@@ -105,7 +127,11 @@ const ProfileLeft = () => {
                             </div>
                             <div className='flex space-x-4'>
                                 <p className='text-base font-semibold'>Phone No</p>
-                                <p className='text-gray-500'>{phoneNumber}</p>
+                                {phoneNumber?(
+                                    <p className='text-gray-500'>{phoneNumber}</p>
+                                ):(
+                                    <Icon className='text-2xl ml-2' icon={"openmoji:warning"}/>
+                                )}
                             </div>
                         </div>
                         <div className='flex space-x-2'>
@@ -123,7 +149,12 @@ const ProfileLeft = () => {
                             </div>
                             <div className='flex space-x-4'>
                                 <p className='text-base font-semibold'>Blood Group</p>
-                                <p className='text-gray-500'>{bloodGroup}</p>
+
+                                {bloodGroup?(
+                                    <p className='text-gray-500'>{bloodGroup}</p>
+                                ):(
+                                    <Icon className='text-2xl ml-2' icon={"openmoji:warning"}/>
+                                )}
                             </div>
                         </div>   
                         </div>

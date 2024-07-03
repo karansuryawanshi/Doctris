@@ -61,7 +61,7 @@ router.post("/register", async (req, res) => {
     ...patientData.toJSON(),
     token,
   };
-  console.log(userToReturn);
+  // console.log(userToReturn);
 
   return res.status(200).json(userToReturn);
 });
@@ -81,7 +81,7 @@ router.post("/login", async (req, res) => {
     res.status(403).json({ err: "invalid Password" });
   }
 
-  console.log("******* user._id ********** ", user._id);
+  // console.log("******* user._id ********** ", user._id);
 
   // if (!user.id) {
   //    "Invalid credential";
@@ -89,7 +89,7 @@ router.post("/login", async (req, res) => {
 
   const token = await getToken(user._id);
 
-  console.log(token);
+  // console.log(token);
   const userToReturn = { ...user.toJSON(), token };
   return res.status(200).json(userToReturn);
 });
@@ -165,6 +165,7 @@ router.put(
   }
 );
 
+// Get Patient details
 router.get(
   "/get/patient/me",
   passport.authenticate("jwt", { session: false }),

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AllComponent from '../component/AllComponent'
 import {Icon} from "@iconify-icon/react" 
 import ReactStars from "react-rating-stars-component";
@@ -6,6 +6,8 @@ import ProfileOverview from '../component/ProfileOverview';
 import ProfileReview from '../component/ProfileReview';
 import ProfileLocation from '../component/ProfileLocation';
 import ProfileTimetable from '../component/ProfileTimetable';
+import DoctorImage from "../assets/Doctor-Image.jpg"
+import { makeAuthenticatedGETRequest } from '../utils/server';
 
 const Profile = () => {
 
@@ -13,6 +15,8 @@ const Profile = () => {
     const [isReview, setIsReview] = useState (false)
     const [isLocation, setIsLocation] = useState (false)
     const [isTimetable, setIsTimetable] = useState (false)
+    const [name, setName] = useState ("");
+    const [specialist, setSpecialist] = useState ("");
 
     const overview = () => {
         setIsReview(false);
@@ -42,16 +46,26 @@ const Profile = () => {
         setIsTimetable(true)
     };
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/me");
+            // console.log("******** Doctor header *************",response.data[0].name)
+            setName(response.data[0].name)
+            setSpecialist(response.data[0].specialist)
+        };
+        fetchData();
+      }, []);
+
 
   return (
     <AllComponent>
         <div className='h-full w-full '>
             <div className='flex items-center justify-center'>
                 <div className='border w-9/12 mt-14 flex rounded-xl shadow-lg '>
-                        <img className='w-4/12' src="https://doctris-react-landing.vercel.app/static/media/dr-profile.5707e547a6e03795b326.png" alt="" />
+                        <img className='w-4/12' src={DoctorImage} alt="" />
                     <div className='grid w-8/12 items-center justify-center py-28 ml-8'>
                         <p className='font-semibold text-2xl text-gray-800' >Good Morning !</p>
-                        <p className='text-4xl font-bold text-blue-500'>Dr. Christopher Burrell</p>
+                        <p className='text-4xl font-bold text-blue-500'>Dr. {name}</p>
                         <p className='w-9/12 font-seibold text-gray-500'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam sed at est, eligendi ab similique vero assumenda obcaecati necessitatibus id.</p>
                         <p className='font-semibold'>You have <span className='text-blue-600'> 18 patients</span> remaining today!</p>
                     </div>
@@ -77,7 +91,7 @@ const Profile = () => {
                         <div className='flex items-center justify-center'>
                             <div className='w-11/12'>
                                 {isOverview && 
-                                <ProfileOverview></ProfileOverview>}
+                                <ProfileOverview name={name} specialist={specialist}></ProfileOverview>}
 
                                 {isReview &&
                                 <ProfileReview></ProfileReview>}

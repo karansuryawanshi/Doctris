@@ -5,12 +5,13 @@ import ReactStars from "react-rating-stars-component";
 import ProfileReview from '../component/ProfileReview';
 import ProfileLocation from '../component/ProfileLocation';
 import ProfileTimetable from '../component/ProfileTimetable';
+import DoctorImage from "../assets/Doctor-Image.jpg"
 
-const ProfileOverview = () => {
+const ProfileOverview = ({name, specialist}) => {
   return (
     <div>
-      <p className='font-semibold text-xl'>Dr. Christopher Burrell</p>
-                            <p className='text-blue-600 cursor-pointer'>Gynecologist,  Ph.D</p>
+      <p className='font-semibold text-xl'>Dr. {name}</p>
+        <p className='text-blue-600 cursor-pointer'>{specialist}</p>
                             <div className='pt-6 text-gray-600'>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam cupiditate veniam, minus nihil eaque ipsum nam accusamus accusantium facilis fuga iusto sequi inventore cum dignissimos necessitatibus! Qui praesentium harum eveniet itaque! Veniam repellat culpa quia esse iusto ex officiis dolores voluptatem? Ex odio id officia fugiat hic quasi amet ab?</p>
                             </div>
@@ -29,7 +30,7 @@ const ProfileOverview = () => {
                                 <div className='grid grid-cols-4 gap-4 mb-10'>
                                     <div className='border rounded-xl'>
                                         <div>
-                                            <img className='rounded-xl' src="https://doctris-react-landing.vercel.app/static/media/01.d8b9651b2a3ba6336221.jpg" alt="" />
+                                            <img className='rounded-xl' src={DoctorImage} alt="" />
                                         </div>
                                         <div className='p-4'>
                                             <div className=''>
@@ -59,7 +60,7 @@ const ProfileOverview = () => {
                                     </div>
                                     <div className='border rounded-xl'>
                                         <div>
-                                            <img className='rounded-xl' src="https://doctris-react-landing.vercel.app/static/media/01.d8b9651b2a3ba6336221.jpg" alt="" />
+                                            <img className='rounded-xl' src={DoctorImage} alt="" />
                                         </div>
                                         <div className='p-4'>
                                             <div className=''>
@@ -89,7 +90,7 @@ const ProfileOverview = () => {
                                     </div>
                                     <div className='border rounded-xl'>
                                         <div>
-                                            <img className='rounded-xl' src="https://doctris-react-landing.vercel.app/static/media/01.d8b9651b2a3ba6336221.jpg" alt="" />
+                                            <img className='rounded-xl' src={DoctorImage} alt="" />
                                         </div>
                                         <div className='p-4'>
                                             <div className=''>
@@ -119,7 +120,7 @@ const ProfileOverview = () => {
                                     </div>
                                     <div className='border rounded-xl'>
                                         <div>
-                                            <img className='rounded-xl' src="https://doctris-react-landing.vercel.app/static/media/01.d8b9651b2a3ba6336221.jpg" alt="" />
+                                            <img className='rounded-xl' src={DoctorImage} alt="" />
                                         </div>
                                         <div className='p-4'>
                                             <div className=''>

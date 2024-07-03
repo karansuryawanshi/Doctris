@@ -27,10 +27,10 @@ const PatientProfile = () => {
   <div className='profile'>
     <LoggedInHome>
         <div className='flex items-center justify-center'>
-        <div className='w-9/12 flex space-x-4'>
-            <ProfileLeft></ProfileLeft>
-            <ProfileRight></ProfileRight>
-        </div>
+          <div className='w-9/12 flex space-x-4'>
+              <ProfileLeft></ProfileLeft>
+              <ProfileRight></ProfileRight>
+          </div>
         </div>
       </LoggedInHome>
     </div>

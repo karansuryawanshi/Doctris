@@ -13,6 +13,8 @@ const AcceptAppointment = ({closeModel,patientId,appointmentId,doctorId}) => {
         const data = {patientId, appointmentId, doctorId}
         const response = await makeAuthenticatedPOSTRequest("/appointment/accept/appointment",data)
         console.log("*********** Login response ************",response);
+        alert("Appointment Accepted")
+        window.location.reload();
       }
   return (
     <div>

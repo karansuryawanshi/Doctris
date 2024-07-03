@@ -12,17 +12,18 @@ const ProfileRight = () => {
     const [isProfileVisible, setIsProfileVisible] = useState(true);
     const [isProfileSetingVisible, setIsProfileSetingVisible] = useState(false);
 
-    const [firstname, setFirstname] = useState([]);
-    const [lastname, setLastName] = useState([]);
-    const [email, setEmail] = useState([]);
-    const [phoneNumber, setPhoneNumber] = useState([]);
-    const [age, setAge] = useState([]);
-    const [bloodGroup, setBloodGroup] = useState([]);
-    const [height, setHeight] = useState([]);
-    const [weight, setWeight] = useState([]);
-    const [gender, setGender] = useState([]);
-    const [birthDate, setBirthdate] = useState([]);
-    const [image, setImage] = useState([]);
+    const [firstname, setFirstname] = useState();
+    const [lastname, setLastName] = useState();
+    const [email, setEmail] = useState();
+    const [phoneNumber, setPhoneNumber] = useState();
+    const [age, setAge] = useState();
+    const [bloodGroup, setBloodGroup] = useState();
+    const [height, setHeight] = useState();
+    const [weight, setWeight] = useState();
+    const [gender, setGender] = useState();
+    const [birthDate, setBirthdate] = useState();
+    const [patientPhoto, setPatientPhoto] = useState();
+    // console.log(patientPhoto)
 
     const isProfileSetting = () => {
         setIsProfileVisible(false);
@@ -38,7 +39,7 @@ const ProfileRight = () => {
     // console.log("**************** Profile Id ************************",_id)
 
     const updateData = async ()=>{
-        const body = {firstname, lastname, email,phoneNumber, age, bloodGroup,height,weight,gender,birthDate}
+        const body = {firstname, lastname, email,phoneNumber, age, bloodGroup,height,weight,gender,birthDate, patientPhoto}
         const response = await makeAuthenticatedPUTRequest(`/auth/updateprofile/`+_id, body)
         alert("Updated Successfully")
         // console.log("****** Update Data ******",response)
@@ -81,7 +82,10 @@ const ProfileRight = () => {
                       <p className='font-semibold'>Upload your picture</p>
                       <p className='text-gray-500'>For best results, use an image at least 256px by 256px in either .jpg or .png format</p>
                   </div>
-                  <ProfileImage setUrl={setImage}></ProfileImage>
+                  <ProfileImage 
+                    setUrl={setPatientPhoto}
+                    value={patientPhoto}
+                    setValue={setPatientPhoto} ></ProfileImage>
                 </div>
                 <div className='grid grid-cols-2'>
 

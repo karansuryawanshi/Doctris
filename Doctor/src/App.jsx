@@ -9,6 +9,7 @@ import Appointment from './routes/Appointment'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import LoggedOutHome from './routes/LoggedOutHome'
+import ComingAppointment from './component/ComingAppointment'
 
 const App = () => {
   const [cookies, setCookies] = useCookies(["token"]);
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/profile/:_id' element={<Profile></Profile>}></Route>
           <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
           <Route path='/appointment' element={<Appointment></Appointment>}></Route>
+          <Route path='/coming appointment' element={<ComingAppointment></ComingAppointment>}></Route>
           <Route path='*' element={<LoggedinHome></LoggedinHome>}></Route>
         </Routes>
 

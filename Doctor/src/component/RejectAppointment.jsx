@@ -10,6 +10,8 @@ const RejectAppointment = ({closeModel, appointmentId}) => {
             // if(response){
             //     alert("Appointment Cancel successfully")
             // }
+            alert("Appointment Accepted")
+            window.location.reload();
         };
 
   return (

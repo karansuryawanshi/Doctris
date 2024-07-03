@@ -5,6 +5,8 @@ import { makeAuthenticatedGETRequest } from '../utils/server'
 import UserView from '../component/UserView'
 import AcceptAppointment from '../component/AcceptAppointment'
 import RejectAppointment from '../component/RejectAppointment'
+import Doctor_image from "../assets/Doctor-Image.jpg"
+import Profile_bg from "../assets/profile-bg.jpg"
 
 const Appointment = () => {
 
@@ -24,12 +26,12 @@ const Appointment = () => {
             // console.log("******response****",response.data)
             setData(response.data[0])
             setTableDetail(response.data)
-            if(!response){
-                console.log("not response")
-            }
-            else(
-                console.log("response gained")
-            )
+            // if(!response){
+            //     console.log("not response")
+            // }
+            // else(
+            //     console.log("response gained")
+            // )
         };
         fetchData();
       }, []);
@@ -59,11 +61,11 @@ const Appointment = () => {
         <div className='w-full h-full flex'>
             <div className='w-3/12 m-3 border-2 rounded-xl'>
                 <div className='border-b pb-6'>
-                    <div className='w-full h-32 flex items-center justify-center rounded-t-lg pt-28' style={{ backgroundImage: 'url("https://doctris-react-landing.vercel.app/static/media/profile-bg.50c00f2ec3cc421e2ca4.jpg")'}}>
-                        <img className='w-20 h-20 rounded-full shadow-xl' src="https://doctris-react-landing.vercel.app/static/media/01.d8b9651b2a3ba6336221.jpg" alt="" />
+                    <div className='w-full h-32 flex items-center justify-center rounded-t-lg pt-28' style={{ backgroundImage: `url(${Profile_bg})`}}>
+                        <img className='w-20 h-20 rounded-full shadow-xl' src={Doctor_image} alt="" />
                     </div>
                     <div className='flex items-center justify-center pt-12'>
-                        <p className='font-semibold text-xl text-gray-800'> Dr. Calvin Carlo </p>
+                        <p className='font-semibold text-xl text-gray-800'> Dr. yuzi chahal </p>
                     </div>
                     <div className='flex items-center justify-center'>
                         <p className='text-gray-600'>Orthopedic</p>

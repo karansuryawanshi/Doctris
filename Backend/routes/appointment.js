@@ -133,6 +133,22 @@ router.get(
     }).populate("patient", "doctor");
     console.log(appointment);
     return res.status(200).json({ appointment });
+    // res.send("Hello Buddy");
+  }
+);
+
+router.get(
+  "/get/all/patient",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const createrId = req.user._id;
+    console.log(createrId);
+
+    const appointment = await Appointment.find({
+      doctor: createrId,
+    }).populate("patient");
+    console.log(appointment);
+    return res.status(200).json({ appointment });
     res.send("Hello Buddy");
   }
 );

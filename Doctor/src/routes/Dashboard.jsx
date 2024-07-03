@@ -2,16 +2,43 @@ import React from 'react'
 import AllComponent from '../component/AllComponent'
 import {Icon} from "@iconify-icon/react" 
 import {LineChart} from "@mui/x-charts"
+import Doctor_image from "../assets/Doctor-Image.jpg"
+import Profile_bg from "../assets/profile-bg.jpg"
+import { makeAuthenticatedGETRequest } from '../utils/server'
+import { useEffect } from 'react'
 
 const Dashboard = () => {
-    
+
+    useEffect(()=>{
+        const fetchDoctor = async ()=>{
+            const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/me")
+            // console.log(response.data)
+            // console.log("******* doctor Data ***********",response.data)
+            // console.log(response)
+        }
+        fetchDoctor()
+    },[])
+
+
+
+    // ******** Categort **********
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/specialist/Dentist");
+    //         console.log("******** Doctor header *************",response)
+    //     };
+    //     fetchData();
+    //   }, []);
+
+
+
   return (
     <AllComponent>
         <div className='w-full h-full flex'>
             <div className='w-3/12 m-3 border-2 rounded-xl'>
                 <div className='border-b pb-6'>
-                    <div className='w-full h-32 flex items-center justify-center rounded-t-lg pt-28' style={{ backgroundImage: 'url("https://doctris-react-landing.vercel.app/static/media/profile-bg.50c00f2ec3cc421e2ca4.jpg")'}}>
-                        <img className='w-20 h-20 rounded-full shadow-xl' src="https://doctris-react-landing.vercel.app/static/media/01.d8b9651b2a3ba6336221.jpg" alt="" />
+                    <div className='w-full h-32 flex items-center justify-center rounded-t-lg pt-28' style={{ backgroundImage: `url(${Profile_bg})`}}>
+                        <img className='w-20 h-20 rounded-full shadow-xl' src={Doctor_image} alt="" />
                     </div>
                     <div className='flex items-center justify-center pt-12'>
                         <p className='font-semibold text-xl text-gray-800'> Dr. Calvin Carlo </p>
@@ -21,51 +48,51 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className='p-2 space-y-3'>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className=' text-xl' Icon={"ic:baseline-dashboard"}></Icon>
                         <p className='text-blue-700 font-semibold'>Dashboard</p>
                     </div>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className=' text-xl' Icon={"carbon:task-complete"}></Icon>
                         <p className='font-semibold text-gray-700'>Appointment</p>
                     </div>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className=' text-xl' Icon={"ic:outline-schedule"}></Icon>
                         <p className='font-semibold text-gray-700'>Schedule Timing</p>
                     </div>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className=' text-xl' Icon={"fluent:payment-32-regular"}></Icon>
                         <p className='font-semibold text-gray-700'>Invoices</p>
                     </div>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className=' text-xl' Icon={"typcn:messages"}></Icon>
                         <p className='font-semibold text-gray-700'>Messages</p>
                     </div>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className=' text-xl' Icon={"iconamoon:profile-light"}></Icon>
                         <p className='font-semibold text-gray-700'>Profile</p>
                     </div>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className='text-xl' Icon={"mingcute:user-setting-line"}></Icon>
                         <p className='font-semibold text-gray-700'>Profile Settings</p>
                     </div>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className='text-xl' Icon={"mdi:patient-outline"}></Icon>
                         <p className='font-semibold text-gray-700'>Patients</p>
                     </div>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className='text-xl' Icon={"material-symbols:rate-review-outline"}></Icon>
                         <p className='font-semibold text-gray-700'>Patients Review</p>
                     </div>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className='text-xl' Icon={"ci:chat"}></Icon>
                         <p className='font-semibold text-gray-700'>Chat</p>
                     </div>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className='text-xl' Icon={"ic:outline-login"}></Icon>
                         <p className='font-semibold text-gray-700'>Login</p>
                     </div>
-                    <div className='flex items-center space-x-2'>
+                    <div className='flex items-center space-x-2 cursor-pointer'>
                         <Icon className='text-xl' Icon={"mdi:forgot-password"}></Icon>
                         <p className='font-semibold text-gray-700'>Forgot Password</p>
                     </div>
@@ -147,6 +174,7 @@ const Dashboard = () => {
                             <div className='pb-2'>
                                 <p className='font-semibold text-xl text-gray-700'>Latest Appointment</p>    
                             </div>
+    {/* ************* Final ************************************ */}
                             <div className='space-y-2'>
                                 <div className='border rounded-xl flex justify-between hover:bg-gray-300 duration-300 cursor-pointer'>
                                     <div className='flex'>
@@ -177,11 +205,9 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
-                        
                     </div>
-                    <div className='w-6/12'>
+                    {/* <div className='w-6/12'>
                         <div>
                             <div className='pb-2'>
                                 <p className='font-semibold text-xl text-gray-700'>Latest Appointment</p>    
@@ -216,7 +242,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='py-4'>
                     <div className='text-lg font-semibold text-gray-600 pb-4'>

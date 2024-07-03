@@ -122,8 +122,29 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     const currentUser = req.user._id;
-    const userDetails = await Doctor.find({ _id: currentUser });
+    const userDetails = await Doctor.find({ _id: currentUser })
+      .populate()
+      .exec();
     return res.status(200).json({ data: userDetails });
+  }
+);
+
+// Get Doctors by category
+router.get(
+  "/get/doctor/specialist/:specialist",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const specialist = req.params.specialist;
+    const doctor = await Doctor.find({ specialist });
+    console.log(specialist);
+
+    if (!doctor) {
+      return res
+        .status(404)
+        .json({ error: "No blogs found for the given specialist" });
+    }
+
+    res.status(200).json({ data: doctor });
   }
 );
 
