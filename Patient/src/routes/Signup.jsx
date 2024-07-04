@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import TextInput from '../component/TextInput'
 import { makeUnAuthenticatedPOSTRequest } from '../utils/server'
 import {useCookies} from "react-cookie"
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
 
@@ -11,8 +12,12 @@ const Signup = () => {
   const [password,setPassword] = useState("")
   const [cookie, setCookie] = useCookies(["token"])
 
+  
+  const navigate = useNavigate();
+
   const signup = async ()=>{
     
+
     const data = {firstname, lastname, email, password}
     const response = await makeUnAuthenticatedPOSTRequest("/auth/register",data) 
     // console.log("*********Signup response ***********",response)
@@ -84,7 +89,7 @@ const Signup = () => {
                 Signup</button>
             </div>
             <div className='mt-2 ml-10 text-sm mb-3'>
-              Already have an account ?  <span className='font-semibold cursor-pointer'>Sign in</span>
+              Already have an account ?  <span className='font-semibold cursor-pointer' onClick={()=>{navigate("/login")}}>Sign in</span>
             </div>
         </div>
       </div>

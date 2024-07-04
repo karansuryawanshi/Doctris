@@ -66,7 +66,7 @@ const LoggedInHome = ({children}) => {
                         <li className='cursor-pointer'onClick={()=>{navigate("/appointment")}}>APPOINTMENT</li>
                         <li className='cursor-pointer'onClick={()=>{navigate("/dashboard")}}>PATIENT</li>
                         <li className='cursor-pointer'>PHARMACY</li>
-                        <li className='cursor-pointer'>PAGES</li>
+                        <li className='cursor-pointer'onClick={()=>{navigate("/specialist")}}>SPECIALIST</li>
                     </ul>
                 </div>
             </div>

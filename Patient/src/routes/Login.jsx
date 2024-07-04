@@ -61,7 +61,9 @@ const Login = () => {
               >Sign in</button>
             </div>
             <div className='mt-2 ml-10 text-sm mb-3'>
-              Don't have an account ?  <span className='font-semibold cursor-pointer'>Sign Up</span>
+              <p>
+              Don't have an account ?  <span className='font-semibold cursor-pointer' onClick={()=>{navigate("/signup")}}>Sign Up</span>
+              </p>
             </div>
         </div>
       </div>

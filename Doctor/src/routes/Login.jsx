@@ -11,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("")
   const [cookie, setCookie] = useCookies(["token"])
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const login = async()=>{
     const data = {email, password}
@@ -61,7 +61,7 @@ const Login = () => {
               >Sign in</button>
             </div>
             <div className='mt-2 ml-10 text-sm mb-3'>
-              Don't have an account ?  <span className='font-semibold cursor-pointer'>Sign Up</span>
+              Don't have an account ?  <span className='font-semibold cursor-pointer' onClick={()=>{navigate("/signup")}}>Sign Up</span>
             </div>
         </div>
       </div>

@@ -10,9 +10,11 @@ import { useEffect, useState } from 'react'
 import Appointment from './routes/Appointment'
 import LoggedInHome from './routes/LoggedInHome'
 import { useCookies } from 'react-cookie'
-import VideoChat from './routes/VideoChat'
-import Lobby from './screens/Lobby'
-import { SocketProvider } from './context.jsx/SocketProvider'
+import Specialist from './routes/Specialist'
+import SingleSpecialist from "./routes/SingleSpecialist"
+// import VideoChat from './routes/VideoChat'
+// import Lobby from './screens/Lobby'
+// import { SocketProvider } from './context.jsx/SocketProvider'
 
 function App() {
   
@@ -21,16 +23,18 @@ function App() {
     <div className='font-K2D'>
       <BrowserRouter>
       {cookies.token ? (
-        <SocketProvider>
+        // <SocketProvider>
           <Routes>
             <Route path='/' element={<Home></Home>}></Route>
             <Route path='/profile/:_id' element={<PatientProfile></PatientProfile>}></Route>
             <Route path='/dashboard' element={<PatientDashboard></PatientDashboard>}></Route>
             <Route path='/appointment' element={<Appointment></Appointment>}></Route>
-            <Route path='/Chat Lobby' element={<Lobby></Lobby>}></Route>
+            <Route path='/specialist' element={<Specialist></Specialist>}></Route>
+            <Route path='/specialist/:specialist' element={<SingleSpecialist></SingleSpecialist>}></Route>
+            {/* <Route path='/Chat Lobby' element={<Lobby></Lobby>}></Route> */}
             <Route path='*' element={<Home></Home>}></Route>
           </Routes>
-        </SocketProvider>
+        // </SocketProvider>
 
       ):(
         <Routes>

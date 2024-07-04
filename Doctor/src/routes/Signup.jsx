@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import TextInput from '../component/TextInput'
 import { makeUnAuthenticatedPOSTRequest } from '../utils/server'
 import {useCookies} from "react-cookie"
+import {useNavigate} from "react-router-dom"
 
 const Signup = () => {
 
@@ -10,6 +11,8 @@ const Signup = () => {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [cookie, setCookie] = useCookies(["token"])
+
+  const navigate = useNavigate();
 
   const signup = async ()=>{
     
@@ -45,15 +48,6 @@ const Signup = () => {
             setValue={setName}
             >
             </TextInput>
-
-            {/* <TextInput
-            InputType="Specialist"
-            type="text"
-            placeholder="Specialist"
-            value={specialist}
-            setValue={setSpecialist}
-            >
-            </TextInput> */}
 
             <select 
               className='mx-8 border w-10/12 mt-8 border-gray-400  p-2 rounded-lg ' 
@@ -102,7 +96,7 @@ const Signup = () => {
                 Signup</button>
             </div>
             <div className='mt-2 ml-10 text-sm mb-3'>
-              Already have an account ?  <span className='font-semibold cursor-pointer'>Sign in</span>
+              Already have an account ?  <span className='font-semibold cursor-pointer' onClick={()=>{navigate('/login')}}>Sign in</span>
             </div>
         </div>
       </div>

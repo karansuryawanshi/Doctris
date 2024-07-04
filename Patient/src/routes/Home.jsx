@@ -123,7 +123,7 @@ const Home = () => {
                         <li className='cursor-pointer'onClick={()=>{navigate("/appointment")}}>APPOINTMENT</li>
                         <li className='cursor-pointer'onClick={()=>{navigate("/dashboard")}}>PATIENT</li>
                         <li className='cursor-pointer'>PHARMACY</li>
-                        <li className='cursor-pointer'>PAGES</li>
+                        <li className='cursor-pointer'onClick={()=>{navigate("/specialist")}}>SPECIALIST</li>
                     </ul>
                     <ul className='w-4/12 flex justify-end space-x-8 mr-32 p-6 '>
                         <li className=''><Icon className='text-3xl p-1 rounded-full text-white bg-blue-600 duration-300 cursor-pointer w-10 h-10 hover:bg-blue-700' icon="system-uicons:settings"></Icon></li>

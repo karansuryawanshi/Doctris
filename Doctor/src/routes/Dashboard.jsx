@@ -19,19 +19,6 @@ const Dashboard = () => {
         fetchDoctor()
     },[])
 
-
-
-    // ******** Categort **********
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/specialist/Dentist");
-    //         console.log("******** Doctor header *************",response)
-    //     };
-    //     fetchData();
-    //   }, []);
-
-
-
   return (
     <AllComponent>
         <div className='w-full h-full flex'>
