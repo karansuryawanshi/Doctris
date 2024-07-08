@@ -69,10 +69,10 @@ const Appointment = () => {
                         <p className='text-white font-semibold text-2xl p-3'>Clinic Appointment</p>
                     </div>
                     <div className='p-4'>
-                        <div className=''>
+                        <div>
                             <p className='text-normal py-2 font-semibold text-gray-800'>Patient Name <span className='text-red-700 font-semibold text-xl'>*</span></p>
                             <input 
-                                className='border-2 p-1 rounded-lg w-full' 
+                                className='border-2 p-1 rounded-lg w-full hover:border-blue-600 duration-300' 
                                 placeholder='Patient Name:' 
                                 type="text" 
                                 value={patientName}
@@ -85,7 +85,7 @@ const Appointment = () => {
                             <div className='mr-5'>
                                 <p className='text-normal py-2 font-semibold text-gray-800'>Department </p>
                                 <select 
-                                    className='border-2 p-1 rounded-lg w-full' 
+                                    className='border-2 p-1 rounded-lg w-full hover:border-blue-600 duration-300' 
                                     placeholder='Patient Name:' 
                                     type="text"
                                     value={department}
@@ -106,7 +106,7 @@ const Appointment = () => {
                         <div className=''>
                             <p className='text-normal py-2 font-semibold text-gray-800'>Doctor</p>
                             <select 
-                                className='border-2 p-1 rounded-lg w-full' 
+                                className='border-2 p-1 rounded-lg w-full hover:border-blue-600 duration-300' 
                                 placeholder='Patient Name:' 
                                 type="text"
                                 value={doctorName}
@@ -127,7 +127,7 @@ const Appointment = () => {
                     <div className='mr-5'>
                         <p className='text-normal py-2 font-semibold text-gray-800'>Your Email  <span className='text-red-700 font-semibold text-xl'>*</span></p>
                         <input 
-                            className='border-2 p-1 rounded-lg w-full' 
+                            className='border-2 p-1 rounded-lg w-full hover:border-blue-600 duration-300' 
                             placeholder='Your Email:' 
                             type="text"
                             value={email}
@@ -139,7 +139,7 @@ const Appointment = () => {
                     <div className=''>
                         <p className='text-normal py-2 font-semibold text-gray-800'>Your Phone <span className='text-red-700 font-semibold text-xl'>*</span></p>
                         <input 
-                            className='border-2 p-1 rounded-lg w-full' 
+                            className='border-2 p-1 rounded-lg w-full hover:border-blue-600 duration-300' 
                             placeholder='Your Phone:' 
                             type="text"
                             value={phoneNo}
@@ -151,7 +151,7 @@ const Appointment = () => {
                     <div className=''>
                         <p className='text-normal py-2 font-semibold text-gray-800'>Address <span className='text-red-700 font-semibold text-xl'>*</span></p>
                         <input 
-                            className='border-2 p-1 rounded-lg w-full' 
+                            className='border-2 p-1 rounded-lg w-full hover:border-blue-600 duration-300' 
                             placeholder='Your Address:' 
                             type="text" 
                             value={address}
@@ -162,7 +162,7 @@ const Appointment = () => {
                     <div className=''>
                         <p className='text-normal py-2 font-semibold text-gray-800'>Comments <span className='text-red-700 font-semibold text-xl'>*</span></p>
                         <textarea 
-                            className='border-2 p-1 h-32 rounded-lg w-full' 
+                            className='border-2 p-1 h-32 rounded-lg w-full hover:border-blue-600 duration-300' 
                             placeholder='Your Message:' 
                             type="text"
                             value={comment}

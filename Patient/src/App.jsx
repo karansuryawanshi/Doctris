@@ -12,9 +12,10 @@ import LoggedInHome from './routes/LoggedInHome'
 import { useCookies } from 'react-cookie'
 import Specialist from './routes/Specialist'
 import SingleSpecialist from "./routes/SingleSpecialist"
-// import VideoChat from './routes/VideoChat'
-// import Lobby from './screens/Lobby'
-// import { SocketProvider } from './context.jsx/SocketProvider'
+import VideoChat from './routes/VideoChat'
+import { SocketProvider } from './context/SocketProvider'
+import Lobby from './screens/Lobby'
+import Room from './screens/Room'
 
 function App() {
   
@@ -23,7 +24,7 @@ function App() {
     <div className='font-K2D'>
       <BrowserRouter>
       {cookies.token ? (
-        // <SocketProvider>
+        <SocketProvider>
           <Routes>
             <Route path='/' element={<Home></Home>}></Route>
             <Route path='/profile/:_id' element={<PatientProfile></PatientProfile>}></Route>
@@ -31,22 +32,26 @@ function App() {
             <Route path='/appointment' element={<Appointment></Appointment>}></Route>
             <Route path='/specialist' element={<Specialist></Specialist>}></Route>
             <Route path='/specialist/:specialist' element={<SingleSpecialist></SingleSpecialist>}></Route>
-            {/* <Route path='/Chat Lobby' element={<Lobby></Lobby>}></Route> */}
+            <Route path='/Chat Lobby' element={<Lobby></Lobby>}></Route>
+            <Route path='/Room/:roomid' element={<Room></Room>}></Route>
             <Route path='*' element={<Home></Home>}></Route>
           </Routes>
-        // </SocketProvider>
+        </SocketProvider>
 
       ):(
-        <Routes>
+        <SocketProvider>
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='*' element={<Login></Login>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/signup' element={<Signup></Signup>}></Route>
-        </Routes>
+        </SocketProvider>
       )}
       </BrowserRouter>
+
     </div>
   )
 }
 
 export default App
+
+
