@@ -1,54 +1,33 @@
 import './App.css'
-import Home from './routes/Home'
-import Signup from './routes/Signup'
-import Login from './routes/Login'
-import PatientDashboard from "./routes/PatientDashboard"
-import PatientProfile from './routes/PatientProfile'
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { makeAuthenticatedGETRequest } from './utils/server'
-import { useEffect, useState } from 'react'
-import Appointment from './routes/Appointment'
-import LoggedInHome from './routes/LoggedInHome'
-import { useCookies } from 'react-cookie'
-import Specialist from './routes/Specialist'
-import SingleSpecialist from "./routes/SingleSpecialist"
-import VideoChat from './routes/VideoChat'
-import { SocketProvider } from './context/SocketProvider'
-import Lobby from './screens/Lobby'
-import Room from './screens/Room'
+import PatientMain from './Patient/PatientMain'
+import { useLocation } from 'react-router-dom';
+import DoctorMain from './Doctor/DoctorMain';
+import Start from './Patient/Start';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   
-  const [cookies, setCookies] = useCookies(["token"]);
+  const isPatientRoute = location.pathname.startsWith('/patient');
+  const isDoctorRoute = location.pathname.startsWith('/doctor');
+  const HomePage = location.pathname.startsWith('/');
+
   return (
-    <div className='font-K2D'>
-      <BrowserRouter>
-      {cookies.token ? (
-        <SocketProvider>
-          <Routes>
-            <Route path='/' element={<Home></Home>}></Route>
-            <Route path='/profile/:_id' element={<PatientProfile></PatientProfile>}></Route>
-            <Route path='/dashboard' element={<PatientDashboard></PatientDashboard>}></Route>
-            <Route path='/appointment' element={<Appointment></Appointment>}></Route>
-            <Route path='/specialist' element={<Specialist></Specialist>}></Route>
-            <Route path='/specialist/:specialist' element={<SingleSpecialist></SingleSpecialist>}></Route>
-            <Route path='/Chat Lobby' element={<Lobby></Lobby>}></Route>
-            <Route path='/Room/:roomid' element={<Room></Room>}></Route>
-            <Route path='*' element={<Home></Home>}></Route>
-          </Routes>
-        </SocketProvider>
-
-      ):(
-        <SocketProvider>
-          <Route path='/' element={<Home></Home>}></Route>
-          <Route path='*' element={<Login></Login>}></Route>
-          <Route path='/login' element={<Login></Login>}></Route>
-          <Route path='/signup' element={<Signup></Signup>}></Route>
-        </SocketProvider>
-      )}
-      </BrowserRouter>
-
-    </div>
+    <>
+    <BrowserRouter>
+    {isPatientRoute && 
+      <PatientMain></PatientMain>
+     }
+     {isDoctorRoute &&
+      <DoctorMain></DoctorMain>
+     }
+     {HomePage &&
+     <Routes> 
+       <Route path="/" element={<Start/>} />
+     </Routes> 
+     }
+    
+    </BrowserRouter>
+    </>
   )
 }
 
