@@ -1,4 +1,5 @@
 import { backend } from "./backend";
+import { useCookies } from "react-cookie";
 
 export const makeUnAuthenticatedPOSTRequest = async (route, body) => {
   const response = await fetch(backend + route, {
@@ -69,7 +70,7 @@ export const makeAuthenticatedPOSTRequest = async (route, body) => {
 
 const getToken = () => {
   const accessToken = document.cookie.replace(
-    /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
+    /(?:(?:^|.*;\s*)doctortoken\s*=\s*([^;]*).*$)|^.*$/,
     "$1"
   );
   return accessToken;

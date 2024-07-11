@@ -9,15 +9,13 @@ import { useEffect } from 'react'
 
 const Dashboard = () => {
 
-    useEffect(()=>{
-        const fetchDoctor = async ()=>{
-            const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/me")
-            // console.log(response.data)
-            // console.log("******* doctor Data ***********",response.data)
-            // console.log(response)
-        }
-        fetchDoctor()
-    },[])
+    // useEffect(()=>{
+    //     const fetchDoctor = async ()=>{
+    //         const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/me")
+    //         // console.log(response.data)
+    //     }
+    //     fetchDoctor()
+    // },[])
 
   return (
     <AllComponent>

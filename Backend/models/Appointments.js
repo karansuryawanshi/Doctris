@@ -22,6 +22,15 @@ const Appointment = new mongoose.Schema({
     type: String,
     // require: true,
   },
+  date: {
+    type: String,
+  },
+  time: {
+    type: String,
+  },
+  mode: {
+    type: String,
+  },
   phoneNo: {
     type: String,
     require: true,

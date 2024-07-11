@@ -14,8 +14,10 @@ const Start = () => {
     const handleNextClick = () => {
       if (selectedRole === 'Patient') {
         navigate('/patient');
+        window.location.reload();
       } else if (selectedRole === 'Doctor') {
         navigate('/doctor');
+        window.location.reload();
       } else {
         alert('Please select an option');
       }

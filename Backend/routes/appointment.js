@@ -21,6 +21,9 @@ router.post(
       department,
       doctorName,
       email,
+      date,
+      time,
+      mode,
       phoneNo,
       comment,
       address,
@@ -41,6 +44,9 @@ router.post(
       department,
       doctorName,
       email,
+      date,
+      time,
+      mode,
       phoneNo,
       comment,
       address,
@@ -48,7 +54,7 @@ router.post(
       doctor: doctorId,
     };
     const doctorData = await Appointment.create(newData);
-    console.log(doctorData);
+    console.log("Doctor Data", doctorData);
     return res.status(200).json(doctorData);
   }
 );

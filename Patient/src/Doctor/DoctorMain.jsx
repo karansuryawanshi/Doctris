@@ -1,49 +1,50 @@
-import React from 'react'
-import Login from "./routes/Login"
-import Signup from './routes/Signup'
-import LoggedinHome from "./routes/LoggedinHome"
-import Dashboard from './routes/Dashboard'
-import Profile from './routes/Profile'
-import Appointment from './routes/Appointment'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useCookies } from 'react-cookie'
-import LoggedOutHome from './routes/LoggedOutHome'
-import ComingAppointment from './component/ComingAppointment'
-import Lobby from './screens/Lobby'
-import { SocketProvider } from './context/SocketProvider'
-import Room from './screens/Room'
+import React from 'react';
+import Login from "./routes/Login";
+import Signup from './routes/Signup';
+import LoggedinHome from "./routes/LoggedinHome";
+import Dashboard from './routes/Dashboard';
+import Profile from './routes/Profile';
+import Appointment from './routes/Appointment';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+import LoggedOutHome from './routes/LoggedOutHome';
+import ComingAppointment from './component/ComingAppointment';
+import Lobby from './screens/Lobby';
+import { SocketProvider } from './context/SocketProvider';
+import Room from './screens/Room';
+import OnlineAppointment from './routes/OnlineAppointment';
 
 const DoctorMain = () => {
-  const [cookies, setCookies] = useCookies(["doctorToken"]);
+  const [cookies, setCookies] = useCookies(["doctortoken"]);
 
   return (
     <div className='font-K2D'>
       {/* <BrowserRouter> */}
-      {cookies.doctorToken ? (
+      {cookies.doctortoken ? (
         <SocketProvider>
           <Routes>
-            <Route path='/doctor' element={<LoggedinHome></LoggedinHome>}></Route>
-            <Route path='/doctor/profile/:_id' element={<Profile></Profile>}></Route>
-            <Route path='/doctor/dashboard' element={<Dashboard></Dashboard>}></Route>
-            <Route path='/doctor/appointment' element={<Appointment></Appointment>}></Route>
-            <Route path='/doctor/coming appointment' element={<ComingAppointment></ComingAppointment>}></Route>
-            <Route path='/doctor/chat Lobby' element={<Lobby></Lobby>}></Route>
-            <Route path='/doctor/Room/:roomid' element={<Room></Room>}></Route>
-            <Route path='*' element={<LoggedinHome  ></LoggedinHome>}></Route>
+            <Route path='/doctor' element={<LoggedinHome />} />
+            <Route path='/doctor/profile/:_id' element={<Profile />} />
+            <Route path='/doctor/dashboard' element={<Dashboard />} />
+            <Route path='/doctor/appointment' element={<Appointment />} />
+            <Route path='/doctor/offline appointment' element={<ComingAppointment />} />
+            <Route path='/doctor/online appointment' element={<OnlineAppointment />} />
+            <Route path='/doctor/chat lobby' element={<Lobby />} />
+            <Route path='/doctor/room/:roomid' element={<Room />} />
+            <Route path='*' element={<LoggedinHome />} />
           </Routes>
         </SocketProvider>
-
-      ):(
+      ) : (
         <Routes>
-          <Route path='/doctor' element={<LoggedOutHome></LoggedOutHome>}></Route>
-          <Route path='*' element={<Login></Login>}></Route>
-          <Route path='/doctor/login' element={<Login></Login>}></Route>
-          <Route path='/doctor/signup' element={<Signup></Signup>}></Route>
+          <Route path='/doctor' element={<LoggedOutHome />} />
+          <Route path='*' element={<Login />} />
+          <Route path='/doctor/login' element={<Login />} />
+          <Route path='/doctor/signup' element={<Signup />} />
         </Routes>
       )}
       {/* </BrowserRouter> */}
     </div>
-  )
+  );
 }
 
-export default DoctorMain
+export default DoctorMain;

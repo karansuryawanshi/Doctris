@@ -96,7 +96,7 @@ const Signup = () => {
                 Signup</button>
             </div>
             <div className='mt-2 ml-10 text-sm mb-3'>
-              Already have an account ?  <span className='font-semibold cursor-pointer' onClick={()=>{navigate('/login')}}>Sign in</span>
+              Already have an account ?  <span className='font-semibold cursor-pointer' onClick={()=>{navigate('/Doctor/login')}}>Sign in</span>
             </div>
         </div>
       </div>
