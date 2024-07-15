@@ -10,7 +10,7 @@ const Signup = () => {
   const [specialist,setSpecialist] = useState("")
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
-  const [cookie, setCookie] = useCookies(["token"])
+  const [cookie, setCookie] = useCookies(["doctortoken"])
 
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const Signup = () => {
       const token = response.token;
       const date = new Date();
       date.setDate(date.getDate() + 30)
-      setCookie("token",token,{path:"/",expires:date})
+      setCookie("doctortoken",token,{path:"/",expires:date})
     }
     else{
       alert("failure")

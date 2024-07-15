@@ -33,7 +33,7 @@ const ComingAppointment = () => {
         </div>
             <div className='w-11/12 grid grid-cols-3'>
             {appointmentDetail ? (
-                appointmentDetail.filter(item => !item.mode).map((item)=>{
+                appointmentDetail.filter(item => item.mode == 'offline').map((item)=>{
                     return(
                         <div className='w-80 border-2 rounded-lg m-8'>
                             <div className='flex items-center justify-center'>
@@ -47,6 +47,7 @@ const ComingAppointment = () => {
                                 <p className='font-semibold'>Address :- <span className='font-normal text-indigo-900'>{item.address}</span></p>
                                 <p className='font-semibold'>Mail Id :- <span className='font-normal text-indigo-900'>{item.email}</span></p>
                                 <p className='font-semibold'>Comment :- <span className='font-normal text-indigo-900'>{item.comment}</span></p>
+                                {/* <p className='font-semibold'>Date :- <span className='font-normal text-indigo-900'>{item.date}</span></p> */}
                             </div>
                         </div>      
                     )
@@ -55,7 +56,6 @@ const ComingAppointment = () => {
                 // <div className='w-100 h-100'>
                     <div className='py-72'>
                         <p className='text-4xl font-semibold'>!!No Appointment Details!!</p>
-                    {/* </div> */}
                 </div>
             )}
             </div>

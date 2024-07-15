@@ -13,6 +13,8 @@ import { SocketProvider } from "./context/SocketProvider";
 import Lobby from "./screens/Lobby";
 import Room from "./screens/Room";
 import Start from "./Start";
+import Success from "./routes/Success";
+import Cancel from "./routes/Cancel";
 
 function PatientMain() {
   const [cookies, setCookies] = useCookies(["token"]);
@@ -31,6 +33,8 @@ function PatientMain() {
               <Route path="/patient/specialist/:specialist" element={<SingleSpecialist />} />
               <Route path="/patient/Chat Lobby" element={<Lobby />} />
               <Route path="/patient/Room/:roomid" element={<Room />} />
+              <Route path="/patient/success" element={<Success/>} />
+              <Route path="/patient/cancel" element={<Cancel />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </SocketProvider>

@@ -43,7 +43,7 @@ useEffect(() => {
       window.addEventListener("scroll", handleScroll);
   }, []);
   return (
-    <div>
+    <div className='flex flex-col justify-between'>
       <div className='nav h-20 w-full sticky top-0'>
                 <div className= {`text-sm font-semibold text-gray-700 duration-300  flex${scrolled ? " bg-gray-200 text-gray-900 sticky top-0" : ""}`}>
                     <ul className='flex space-x-8 p-8  w-8/12'>

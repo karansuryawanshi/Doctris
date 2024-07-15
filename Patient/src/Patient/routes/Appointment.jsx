@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
-import { makeAuthenticatedGETRequest } from '../utils/server';
+import { makeAuthenticatedGETRequest} from '../utils/server';
 import { makeAuthenticatedPOSTRequest } from '../utils/server';
 import LoggedInHome from './LoggedInHome';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
+import {loadStripe} from "@stripe/stripe-js"
 
 const Appointment = () => {
 
@@ -51,6 +52,44 @@ const Appointment = () => {
     },[])
 
     const bookAppointment = async()=>{
+
+        const makePayment=async()=>{
+
+            const body = { 
+                products:doctorName,
+                email:email,
+                address:address,
+                time:time,
+                date:date,
+                amount:"200",
+                logo:"https://plus.unsplash.com/premium_photo-1712160362268-68616bf1c0d0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8"
+            }
+            // console.log("body products",JSON.stringify(body))
+    
+            const stripe = await loadStripe("pk_test_51PcCIGSBGJbgrrlQ5CMEE2PRtgNa9nSHfNDBKynPxIW4s1vQKyg2m1z8eZsUY8GlyM6tDtSep4weGrs2v3FArpeH0069tSMgZi")
+    
+            const header ={
+                "Content-Type":"application/json"
+            }
+            const response = await fetch("http://localhost:8000/stripe-checkout-session",{
+                method:"POST",
+                headers:header,
+                body:JSON.stringify(body)
+            })
+    
+            const session = await response.json();
+    
+            const result = stripe.redirectToCheckout({
+                sessionId: session.id
+            })
+    
+            if(result.error){
+                console.log(result.error)
+            }
+        }
+
+        await makePayment();
+
         const mode = date ? onlineMode : offlineMode;
 
         const data = 
@@ -67,8 +106,8 @@ const Appointment = () => {
                 date}
         const response = await makeAuthenticatedPOSTRequest("/appointment/create", data)
         console.log("********* booked appointment data ************",response)
-        alert("Updated Successfully")
-        navigate("/patient/dashboard")
+        // alert("Updated Successfully")
+        // navigate("/patient/dashboard")
     }
 
     const VirtualAppointment = () => {
@@ -352,13 +391,13 @@ const Appointment = () => {
                                 setComment(e.target.value)
                             }} />
                     </div>
-
-                    <div>
-                        <button 
-                            className='bg-blue-600 w-full p-2 rounded-lg mt-2 text-white text-lg'
-                            onClick={bookAppointment}>Pay $20</button>
-                    </div>
-                        
+                        <div>
+                            <button 
+                                className='bg-blue-600 w-full p-2 rounded-lg mt-2 text-white text-lg'
+                                onClick={bookAppointment}
+                                // onClick={()=>makePayment()}
+                                >Pay $20</button>
+                        </div>
                     </div>
                     }
                 </div>

@@ -60,6 +60,9 @@ const Specialist = () => {
 
   return (
     <LoggedInHome>
+      <div className='flex items-center justify-center'>
+        <p className='text-4xl font-semibold text-blue-600 px-4 py-3 rounded-xl'>Specialist</p>
+      </div>
         <div className='px-16 py-6 grid gap-10 grid-cols-4'>
             {data.map((item)=>{
                 return(

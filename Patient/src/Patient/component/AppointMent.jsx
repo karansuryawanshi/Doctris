@@ -39,14 +39,6 @@ const AppointMent = () => {
                     <button className='ml-20 mt-6 px-4 py-2 rounded-xl border-blue-600 duration-300 hover:bg-blue-700 bg-blue-600 text-white border-2' onClick={navigateToAppointment}>Book appointment</button>
                 </div>
             )}
-            
-            {/* {post.map((item)=>{
-                return(
-                <SingleAppointment 
-                    name={item.doctorName}
-                    department={item.department}/>
-                )
-                })} */}
         </div>
   )
 }

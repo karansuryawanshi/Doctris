@@ -45,7 +45,7 @@ const ProfileTimetable = () => {
         </div>
         <div className='m-6 grid grid-rows-2 items-center'>
           <p className='text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, Fugiat, officiis!</p>
-          <p className='text-blue-600 ml-20'>+91 9356497470</p>
+          <a href="tel:+91 9356497470" className='text-blue-600 ml-20'>+91 9356497470</a>
         </div>
       </div>
       <div className='w-1/3'>
@@ -57,7 +57,7 @@ const ProfileTimetable = () => {
         </div>
         <div className='m-6 grid grid-rows-2 items-center'>
           <p className='text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, Fugiat, officiis!</p>
-          <p className='text-blue-600 ml-8'>karansuryawanshi717@gmail.com</p>
+          <a className='text-blue-600 ml-8' href="mailto:karansuryawanshi717@gmail.com">karansuryawanshi717@gmail.com</a>
         </div>
       </div>
     </div>

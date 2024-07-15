@@ -15,6 +15,9 @@ const passport = require("passport");
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 
+require("dotenv").config();
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 const cors = require("cors");
 
 app.use(cors());
@@ -60,4 +63,40 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => {
   console.log("app is running on: " + port);
+});
+
+app.use(express.json());
+
+app.post("/stripe-checkout-session", async (req, res) => {
+  const { products, email, address, time, amount, date, logo } = req.body;
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items: [
+      {
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: products,
+            description: `
+              Product: ${products}
+              Email: ${email} 
+              Address: ${address} 
+              Appointment Time: ${time} 
+              Amount: $${amount} 
+              Date: ${date}
+              `,
+            images: [`${logo}`],
+          },
+          unit_amount: 1000 * 20, // Amount in cents
+        },
+        quantity: 1,
+      },
+    ],
+    mode: "payment",
+    success_url: "http://localhost:5173/patient/success",
+    cancel_url: "http://localhost:5173/patient/cancel",
+  });
+
+  res.json({ id: session.id });
 });

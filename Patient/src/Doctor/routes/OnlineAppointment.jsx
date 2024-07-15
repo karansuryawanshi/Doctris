@@ -36,7 +36,7 @@ const OnlineAppointment = () => {
         </div>
             <div className='w-11/12 grid grid-cols-3'>
             {appointmentDetail ? (
-                appointmentDetail.filter(item => item.mode).map((item, index)=>{
+                appointmentDetail.filter(item => item.mode == 'online').map((item, index)=>{
                     return(
                         <div className='w-80 border-2 rounded-lg m-8'>
                             <div className='flex items-center justify-center'>
