@@ -76,8 +76,12 @@ const Appointment = () => {
                 headers:header,
                 body:JSON.stringify(body)
             })
+
+            console.log("Response :- ",response)
     
             const session = await response.json();
+
+            console.log("Session is :- session",session.id)
     
             const result = stripe.redirectToCheckout({
                 sessionId: session.id
@@ -87,6 +91,8 @@ const Appointment = () => {
                 console.log(result.error)
             }
         }
+
+
 
         await makePayment();
 

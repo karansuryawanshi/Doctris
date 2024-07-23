@@ -79,7 +79,7 @@ app.post("/stripe-checkout-session", async (req, res) => {
           product_data: {
             name: products,
             description: `
-              Product: ${products}
+              Doctor Name: ${products}
               Email: ${email} 
               Address: ${address} 
               Appointment Time: ${time} 
@@ -97,6 +97,7 @@ app.post("/stripe-checkout-session", async (req, res) => {
     success_url: "http://localhost:5173/patient/success",
     cancel_url: "http://localhost:5173/patient/cancel",
   });
+  console.log("This is session", session.id);
 
   res.json({ id: session.id });
 });

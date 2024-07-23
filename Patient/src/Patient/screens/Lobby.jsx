@@ -1,7 +1,7 @@
 import React, {useCallback, useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useSocket } from '../context/SocketProvider';
-// import LoggedInHome from '../routes/LoggedInHome';
+import LoggedInHome from '../routes/LoggedInHome';
 
 const Lobby = () => {
 
@@ -30,8 +30,9 @@ const Lobby = () => {
     }
   },[socket])
 
+
   return (
-    // <LoggedInHome>
+    <LoggedInHome>
       <div className='flex items-center justify-center mb-6 pb-1'>
       <div className='my-28 border-2 rounded-xl border-blue-500 '>
         <p className='mb-4 text-3xl px-6 rounded-t-lg py-2 font-semibold text-white bg-blue-600'>Start Conversation</p>
@@ -66,7 +67,7 @@ const Lobby = () => {
         </form>
       </div>
       </div>
-    // </LoggedInHome>
+    </LoggedInHome>
   )
 }
 

@@ -59,7 +59,7 @@ const ProfileLeft = () => {
       fetchData();
     }, []);
   return (
-            <div className='w-4/12 mt-10'>
+            <div className='w-3/12 mt-10 fixed'>
                 <div className='min-h-min rounded-xl border border-1 mb-20'>
                     <div className='grid items-center bg-gray-100 justify-center rounded-t-xl'>
                         <div className='w-32 h-32 pl-2'>

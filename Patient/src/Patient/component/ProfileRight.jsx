@@ -46,7 +46,7 @@ const ProfileRight = () => {
       }
 
   return (
-    <div className='w-8/12 pt-10 rounded-lg'>
+    <div className='w-8/12 pt-10 rounded-lg' style={{marginLeft:"25em"}}>
             <div className='flex rounded-xl border-2 duration-300'>
                 <div className={`w-1/2 p-3 rounded-l-xl  flex items-center justify-center cursor-pointer duration-300 ${isProfileVisible ? "bg-blue-600 text-white":" "}`}onClick={isProfile}>
                     <p className='text-lg '>Profile</p>

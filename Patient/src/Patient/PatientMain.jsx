@@ -1,4 +1,3 @@
-// import "./App.css";
 import Home from "./routes/Home";
 import Signup from "./routes/Signup";
 import Login from "./routes/Login";
@@ -10,6 +9,8 @@ import { useCookies } from "react-cookie";
 import Specialist from "./routes/Specialist";
 import SingleSpecialist from "./routes/SingleSpecialist";
 import { SocketProvider } from "./context/SocketProvider";
+import OnlineAppointment from "./routes/OnlineAppointment";
+import OfflineAppointment from "./routes/OfflineAppointment";
 import Lobby from "./screens/Lobby";
 import Room from "./screens/Room";
 import Start from "./Start";
@@ -28,6 +29,8 @@ function PatientMain() {
               <Route path="/patient" element={<Home />} />
               <Route path="/patient/profile/:_id" element={<PatientProfile />} />
               <Route path="/patient/dashboard" element={<PatientDashboard />} />
+              <Route path="/patient/online appointment" element={<OnlineAppointment />} />
+              <Route path="/patient/offline appointment" element={<OfflineAppointment />} />
               <Route path="/patient/appointment" element={<Appointment />} />
               <Route path="/patient/specialist" element={<Specialist />} />
               <Route path="/patient/specialist/:specialist" element={<SingleSpecialist />} />
