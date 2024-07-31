@@ -17,6 +17,7 @@ const Profile = () => {
     const [isTimetable, setIsTimetable] = useState (false)
     const [name, setName] = useState ("");
     const [specialist, setSpecialist] = useState ("");
+    const [doctorPhoto, setDoctorPhoto] = useState ("");
 
     const overview = () => {
         setIsReview(false);
@@ -49,7 +50,8 @@ const Profile = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/me");
-            // console.log("******** Doctor header *************",response.data[0].name)
+            setDoctorPhoto(response.data[0].doctorPhoto)
+
             setName(response.data[0].name)
             setSpecialist(response.data[0].specialist)
         };
@@ -61,8 +63,8 @@ const Profile = () => {
     <AllComponent>
         <div className='h-full w-full '>
             <div className='flex items-center justify-center'>
-                <div className='border w-9/12 mt-14 flex rounded-xl shadow-lg '>
-                        <img className='w-4/12' src={DoctorImage} alt="" />
+                <div className='border w-9/12 mt-14 flex rounded-xl shadow-lg overflow-hidden'>
+                        <img className='w-80 h-96 rounded-xl m-2' src={doctorPhoto} alt="" />
                     <div className='grid w-8/12 items-center justify-center py-28 ml-8'>
                         <p className='font-semibold text-2xl text-gray-800' >Good Morning !</p>
                         <p className='text-4xl font-bold text-blue-500'>Dr. {name}</p>

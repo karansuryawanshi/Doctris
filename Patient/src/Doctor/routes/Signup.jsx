@@ -3,6 +3,8 @@ import TextInput from '../component/TextInput'
 import { makeUnAuthenticatedPOSTRequest } from '../utils/server'
 import {useCookies} from "react-cookie"
 import {useNavigate} from "react-router-dom"
+import { openUploadWidget } from "../utils/CloudinaryService";
+import { cloudinary_upload_preset } from "../../config";
 
 const Signup = () => {
 
@@ -10,13 +12,18 @@ const Signup = () => {
   const [specialist,setSpecialist] = useState("")
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
+  const [doctorPhoto, setDoctorPhoto] = useState('');
+  const [fileName, setFileName] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [pincode, setPincode] = useState('');
   const [cookie, setCookie] = useCookies(["doctortoken"])
 
   const navigate = useNavigate();
 
   const signup = async ()=>{
     
-    const data = {name, specialist, email, password}
+    const data = {name, specialist, email, password, doctorPhoto, address, city, pincode}
     const response = await makeUnAuthenticatedPOSTRequest("/doctorauth/register",data) 
     console.log("*****Signup******",response)
     if(response){
@@ -29,6 +36,31 @@ const Signup = () => {
       alert("failure")
     }
   }
+
+  const uploadImageWidget = () => {
+    // console.log(props);
+    let myUploadWidget = openUploadWidget(
+      {
+        cloudName: "dcjuzfafi",
+        uploadPreset: cloudinary_upload_preset,
+        // tags: ["myname"],
+        // maxImageWidth: 600,
+        sources: ["local"]
+      },
+      function (error, result) {
+        if (!error && result.event === "success") {
+          console.log(result)
+          setDoctorPhoto(result.info.secure_url)
+          setFileName(result.info.original_filename)
+        }else{
+          if(error){
+            console.log(error)
+          }
+        }
+      }
+    );
+    myUploadWidget.open();
+  };
 
   return (
     <div className='font-sans mt-16 block'>
@@ -84,7 +116,53 @@ const Signup = () => {
             setValue={setPassword}
             >
             </TextInput>
-            <div className='ml-10 my-4'>
+            <TextInput
+            InputType="Address"
+            type="text"
+            placeholder="Address"
+            value={address}
+            setValue={setAddress}
+            >
+            </TextInput>
+            <div className='flex'>
+              <TextInput
+                InputType="City"
+                type="text"
+                placeholder="City"
+                value={city}
+                setValue={setCity}
+              >
+              </TextInput>
+
+              <TextInput
+                InputType="Pincode"
+                type="text"
+                placeholder="Pincode"
+                value={pincode}
+                setValue={setPincode}
+              >
+              </TextInput>
+
+            </div>
+            <div className='py-4'>
+              <div className='flex items-center justify-center'>
+                  <button className='px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 duration-300' 
+                          onClick={uploadImageWidget}>
+                          {doctorPhoto ?(
+                            <p>
+                              {fileName.substring(0,6)}...
+                            </p>
+                          
+                          ):(
+                            <p>
+                              Upload
+                            </p>
+                          )
+                        }
+                  </button>
+              </div>
+            </div>
+            <div className='ml-10 mb-4'>
               <input type="checkbox" className=''/>
               <label htmlFor="" className=''> I accept the <span className='text-blue-600'>term and condition</span></label>
             </div>

@@ -3,7 +3,7 @@ import Signup from "./routes/Signup";
 import Login from "./routes/Login";
 import PatientDashboard from "./routes/PatientDashboard";
 import PatientProfile from "./routes/PatientProfile";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Appointment from "./routes/Appointment";
 import { useCookies } from "react-cookie";
 import Specialist from "./routes/Specialist";
@@ -16,6 +16,9 @@ import Room from "./screens/Room";
 import Start from "./Start";
 import Success from "./routes/Success";
 import Cancel from "./routes/Cancel";
+import Layout from "./component/Layout";
+import DoctrisAi from "./routes/DoctrisAi";
+import SearchPage from "./routes/Search";
 
 function PatientMain() {
   const [cookies, setCookies] = useCookies(["token"]);
@@ -24,22 +27,28 @@ function PatientMain() {
       {/* <BrowserRouter> */}
         {cookies.token ? (
           <SocketProvider>
-            <Routes>
-              <Route path="/" element={<Start/>} />
-              <Route path="/patient" element={<Home />} />
-              <Route path="/patient/profile/:_id" element={<PatientProfile />} />
-              <Route path="/patient/dashboard" element={<PatientDashboard />} />
-              <Route path="/patient/online appointment" element={<OnlineAppointment />} />
-              <Route path="/patient/offline appointment" element={<OfflineAppointment />} />
-              <Route path="/patient/appointment" element={<Appointment />} />
-              <Route path="/patient/specialist" element={<Specialist />} />
-              <Route path="/patient/specialist/:specialist" element={<SingleSpecialist />} />
-              <Route path="/patient/Chat Lobby" element={<Lobby />} />
-              <Route path="/patient/Room/:roomid" element={<Room />} />
-              <Route path="/patient/success" element={<Success/>} />
-              <Route path="/patient/cancel" element={<Cancel />} />
-              <Route path="*" element={<Home />} />
-            </Routes>
+            <Layout>
+              {/* <Switch> */}
+                <Routes>
+                  <Route path="/" element={<Start/>} />
+                  <Route path="/patient" element={<Home />} />
+                  <Route path="/patient/profile/:_id" element={<PatientProfile />} />
+                  <Route path="/patient/dashboard" element={<PatientDashboard />} />
+                  <Route path="/patient/online appointment" element={<OnlineAppointment />} />
+                  <Route path="/patient/offline appointment" element={<OfflineAppointment />} />
+                  <Route path="/patient/appointment" element={<Appointment />} />
+                  <Route path="/patient/specialist" element={<Specialist />} />
+                  <Route path="/patient/specialist/:specialist" element={<SingleSpecialist />} />
+                  <Route path="/patient/Chat Lobby" element={<Lobby />} />
+                  <Route path="/patient/Room/:roomid" element={<Room />} />
+                  <Route path="/patient/success" element={<Success/>} />
+                  <Route path="/patient/cancel" element={<Cancel />} />
+                  <Route path="/patient/DoctrisAi" element={<DoctrisAi />} />
+                  <Route path="/patient/search" element={<SearchPage />} />
+                  <Route path="*" element={<Home />} />
+                </Routes>
+              {/* </Switch> */}
+            </Layout>
           </SocketProvider>
         ) : (
           <SocketProvider>

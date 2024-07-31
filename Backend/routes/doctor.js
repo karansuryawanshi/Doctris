@@ -15,7 +15,16 @@ router.use(express.json());
 
 // Register Doctor
 router.post("/register", async (req, res) => {
-  const { name, email, specialist, password, doctorPhoto } = req.body;
+  const {
+    name,
+    email,
+    specialist,
+    password,
+    doctorPhoto,
+    address,
+    city,
+    pincode,
+  } = req.body;
   const user = await Doctor.findOne({ email: email });
   if (user) {
     return res
@@ -33,6 +42,9 @@ router.post("/register", async (req, res) => {
     specialist,
     password,
     doctorPhoto,
+    address,
+    city,
+    pincode,
   };
 
   console.log("************ doctor Photo ***************", doctorPhoto);

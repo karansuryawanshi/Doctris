@@ -8,6 +8,7 @@ const Doctor = require("./models/Doctor");
 const PatientAuth = require("./routes/patient");
 const DoctorAuth = require("./routes/doctor");
 const Appointment = require("./routes/appointment");
+const socket = require("./routes/socket");
 
 const mongoose = require("mongoose");
 

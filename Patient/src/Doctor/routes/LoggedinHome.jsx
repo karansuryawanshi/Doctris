@@ -56,9 +56,11 @@ const CategoryData = [
 
 
 const LoggedinHome = () => {
-    const [scrolled, setScrolled] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+    const [scrolled, setScrolled] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isDoctorImage, setIsDoctorImage] = useState(false);
+    const [isImageDropdownOpen, setIsImageDropdownOpen] = useState(false);
 
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -68,6 +70,10 @@ const LoggedinHome = () => {
             setScrolled(false);
         }
     };
+
+    const deleteToken = () => {
+        document.cookie = "doctortoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      };
 
     const navigate = useNavigate(); 
 
@@ -91,6 +97,7 @@ const LoggedinHome = () => {
         const fetchData = async () => {
             const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/me");
             console.log("******response****",response.data)
+            setIsDoctorImage(response.data[0].doctorPhoto)
             if(!response){
                 console.log("not response")
             }
@@ -129,7 +136,22 @@ const LoggedinHome = () => {
                     <ul className='w-4/12 flex justify-end space-x-8 mr-32 p-6 \'>
                         <li className=''><Icon className='text-3xl p-1 rounded-full text-white bg-blue-600 duration-300 cursor-pointer hover:bg-blue-700' icon="system-uicons:settings"></Icon></li>
                         <li><Icon className='text-3xl p-1 rounded-full text-white bg-blue-600 duration-300 cursor-pointer hover:bg-blue-700' icon="system-uicons:search"></Icon></li>
-                        <li onClick={()=>{navigate("/doctor/dashboard")}}><img className='w-10 h-10 rounded-full text-white bg-blue-600 duration-300 cursor-pointer hover:bg-blue-700' src="https://plus.unsplash.com/premium_photo-1712160362268-68616bf1c0d0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8" alt="" /></li>
+                        <li onClick={()=>{navigate("/doctor/dashboard")}}
+                            onMouseEnter={() => setIsImageDropdownOpen(true)}
+                            onMouseLeave={() => setIsImageDropdownOpen(false)}>
+                            <img 
+                                className='w-10 h-10 rounded-full text-white bg-blue-600 duration-300 cursor-pointer hover:bg-blue-700' 
+                                src={isDoctorImage} 
+                                alt="" />
+
+                            {isImageDropdownOpen && (
+                                <div className="dropdown-content absolute text-gray-600" onClick={(e)=>e.stopPropagation()}>
+                                    <p className="bg-gray-300 p-1 rounded-t-xl cursor-pointer hover:text-black" onClick={()=>navigate(`/doctor/profile/${userID}`)}>Profile</p>
+                                    <p className="bg-gray-300 p-1 rounded-b-xl cursor-pointer hover:text-black" onClick={deleteToken}>logout</p>
+                                </div>
+                            )}
+                                
+                        </li>
                     </ul>
                 </div>
             </div>

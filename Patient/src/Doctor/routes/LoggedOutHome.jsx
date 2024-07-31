@@ -9,6 +9,7 @@ import LogoIcon from "../assets/logo-icon.png"
 import About from "../assets/about-2.png"
 import DoctorImage from "../assets/Doctor-Image.jpg"
 
+
 const CategoryData = [
     {
       icon:"ion:eye-sharp",
@@ -97,7 +98,7 @@ const LoggedOutHome = () => {
                     <ul className='w-4/12 flex justify-end space-x-8 mr-32 p-6 \'>
                         <li className=''><Icon className='text-3xl p-1 rounded-full text-white bg-blue-600 duration-300 cursor-pointer hover:bg-blue-700' icon="system-uicons:settings"></Icon></li>
                         <li><Icon className='text-3xl p-1 rounded-full text-white bg-blue-600 duration-300 cursor-pointer hover:bg-blue-700' icon="system-uicons:search"></Icon></li>
-                        <li><img className='w-10 h-10 rounded-full text-white bg-blue-600 duration-300 cursor-pointer hover:bg-blue-700' src="https://plus.unsplash.com/premium_photo-1712160362268-68616bf1c0d0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8" alt="" /></li>
+                        <li><img className='w-10 h-10 rounded-full text-white bg-blue-600 duration-300 cursor-pointer hover:bg-blue-700' src={DoctorImage} alt="" /></li>
                     </ul>
                 </div>
             </div>

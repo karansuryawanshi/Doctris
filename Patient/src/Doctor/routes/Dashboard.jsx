@@ -5,17 +5,19 @@ import {LineChart} from "@mui/x-charts"
 import Doctor_image from "../assets/Doctor-Image.jpg"
 import Profile_bg from "../assets/profile-bg.jpg"
 import { makeAuthenticatedGETRequest } from '../utils/server'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const Dashboard = () => {
 
-    // useEffect(()=>{
-    //     const fetchDoctor = async ()=>{
-    //         const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/me")
-    //         // console.log(response.data)
-    //     }
-    //     fetchDoctor()
-    // },[])
+    const [doctorPhoto, setDoctorPhoto] = useState('')
+
+    useEffect(()=>{
+        const fetchDoctor = async ()=>{
+            const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/me")
+            setDoctorPhoto(response.data[0].doctorPhoto)
+        }
+        fetchDoctor()
+    },[])
 
   return (
     <AllComponent>
@@ -23,7 +25,7 @@ const Dashboard = () => {
             <div className='w-3/12 m-3 border-2 rounded-xl'>
                 <div className='border-b pb-6'>
                     <div className='w-full h-32 flex items-center justify-center rounded-t-lg pt-28' style={{ backgroundImage: `url(${Profile_bg})`}}>
-                        <img className='w-20 h-20 rounded-full shadow-xl' src={Doctor_image} alt="" />
+                        <img className='w-20 h-20 rounded-full shadow-xl' src={doctorPhoto} alt="" />
                     </div>
                     <div className='flex items-center justify-center pt-12'>
                         <p className='font-semibold text-xl text-gray-800'> Dr. Calvin Carlo </p>

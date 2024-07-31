@@ -176,4 +176,14 @@ router.get(
   }
 );
 
+// Search doctor name by city
+router.get(
+  "/get/doctorcity/:cityname",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const { cityname } = req.params;
+    const details = await Doctor.find({ city: cityname });
+    return res.status(200).json({ data: details });
+  }
+);
 module.exports = router;

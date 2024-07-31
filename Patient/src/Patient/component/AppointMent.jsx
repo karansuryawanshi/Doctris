@@ -31,6 +31,7 @@ const AppointMent = () => {
                             address={item.address}
                             phno={item.phoneNo}
                             department={item.department}
+                            doctorImage={item.doctorPhoto}
                         />
                 )) 
             ) : (

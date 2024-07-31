@@ -19,23 +19,36 @@ const Appointment = () => {
       const [doctorId,setDoctorId] = useState(null);
       const [appointmentId,setAppointmentId] = useState(null);
       const [data, setData] = useState([])
+      const [doctorName, setDoctorName] = useState([])
+      const [doctorSpecialisation, setDoctorSpecialisation] = useState([])
+      const [doctorImage, setDoctorImage] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             const response = await makeAuthenticatedGETRequest("/appointment/get/appointment/660c091d88755fef0e364e2d");
-            // console.log("******response****",response.data)
+            console.log("******response****",response.data)
             setData(response.data[0])
             setTableDetail(response.data)
-            // if(!response){
-            //     console.log("not response")
-            // }
-            // else(
-            //     console.log("response gained")
-            // )
+            if(!response){
+                console.log("not response")
+            }
+            else(
+                console.log("response gained")
+            )
         };
         fetchData();
       }, []);
-    //   console.log("tble",tableDetail)
+
+      useEffect(() => {
+        const fetchData = async () => {
+            const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/me");
+            console.log("******** Doctor header *************",response)
+            setDoctorSpecialisation(response.data[0].specialist)
+            setDoctorName(response.data[0].name)
+            setDoctorImage(response.data[0].doctorPhoto)
+        };
+        fetchData();
+      }, []);
 
   return (
     <AllComponent>
@@ -61,14 +74,20 @@ const Appointment = () => {
         <div className='w-full h-full flex'>
             <div className='w-3/12 m-3 border-2 rounded-xl'>
                 <div className='border-b pb-6'>
-                    <div className='w-full h-32 flex items-center justify-center rounded-t-lg pt-28' style={{ backgroundImage: `url(${Profile_bg})`}}>
-                        <img className='w-20 h-20 rounded-full shadow-xl' src={Doctor_image} alt="" />
-                    </div>
+                    {doctorImage ? (
+                        <div className='w-full h-32 flex items-center justify-center rounded-t-lg pt-28' style={{ backgroundImage: `url(${Profile_bg})`}}>
+                            <img className='w-20 h-20 rounded-full shadow-xl' src={doctorImage} alt="" />
+                        </div>
+                    ):(
+                        <div className='w-full h-32 flex items-center justify-center rounded-t-lg pt-28' style={{ backgroundImage: `url(${Profile_bg})`}}>
+                            <img className='w-20 h-20 rounded-full shadow-xl' src={Doctor_image} alt="" />
+                        </div>
+                    )}
                     <div className='flex items-center justify-center pt-12'>
-                        <p className='font-semibold text-xl text-gray-800'> Dr. yuzi chahal </p>
+                        <p className='font-semibold text-xl text-gray-800'> Dr. {doctorName} </p>
                     </div>
                     <div className='flex items-center justify-center'>
-                        <p className='text-gray-600'>Orthopedic</p>
+                        <p className='text-gray-600'>{doctorSpecialisation}</p>
                     </div>
                 </div>
                 <div className='p-2 space-y-3'>
@@ -156,8 +175,21 @@ const Appointment = () => {
                                     <td className='pl-3'>$20/patient</td>
                                     <td className='flex items-center justify-center space-x-6 mx-6 pt-4'>
                                         <p onClick={()=>{setUserView(true);setPatientId(item?._id)}}><Icon className='text-2xl cursor-pointer shadow-xl hover:bg-blue-600 hover:text-white duration-300 text-blue-600 bg-blue-100 p-2 rounded-full' icon={"ph:eye"}></Icon></p>
-                                        <p onClick={()=>{setAcceptAppointment(true);setPatientId(item?.patient?._id);setDoctorId(item?.doctor);setAppointmentId(item?._id)}}><Icon className='text-2xl cursor-pointer shadow-xl hover:bg-green-600 hover:text-white duration-300 text-green-600 bg-green-100 p-2 rounded-full' icon={"lets-icons:done-ring-round-duotone"}></Icon></p>
-                                        <p onClick={()=>{setRejectAppointment(true);;setAppointmentId(item?._id)}}><Icon className='text-2xl cursor-pointer shadow-xl hover:bg-red-600 hover:text-white duration-300 text-red-600 bg-red-100 p-2 rounded-full' icon={"material-symbols:cancel-outline"}></Icon></p>
+                                        <p onClick={()=>{setAcceptAppointment(true)
+                                            setPatientId(item?.patient?._id)
+                                            setDoctorId(item?.doctor)
+                                            setAppointmentId(item?._id)}}
+                                        >
+                                            <Icon className='text-2xl cursor-pointer shadow-xl hover:bg-green-600 hover:text-white duration-300 text-green-600 bg-green-100 p-2 rounded-full' 
+                                                  icon={"lets-icons:done-ring-round-duotone"}>
+                                            </Icon>
+                                            </p>
+                                        <p onClick={()=>{setRejectAppointment(true)
+                                            setAppointmentId(item?._id)}}>
+                                                <Icon className='text-2xl cursor-pointer shadow-xl hover:bg-red-600 hover:text-white duration-300 text-red-600 bg-red-100 p-2 rounded-full' 
+                                                icon={"material-symbols:cancel-outline"}>
+                                                    </Icon>
+                                        </p>
                                     </td>
                                 </tr>
                                 )

@@ -11,6 +11,8 @@ const AllComponent = ({children}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isImageDropdownOpen, setIsImageDropdownOpen] = useState(false);
   const [userID, setUserID] = useState("")
+  const [data, setData] = useState("")
+  const [isDoctorImage, setIsDoctorImage] = useState("")
   
     const navigate = useNavigate();
 
@@ -27,7 +29,10 @@ useEffect(() => {
     const fetchData = async () => {
         const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/me");
         // console.log("******** Doctor header *************",response)
+
         setUserID(response.data[0]._id)
+        setData(response.data)
+        setIsDoctorImage(response.data[0].doctorPhoto)
         console.log("All component",response)
     };
     fetchData();
@@ -76,7 +81,7 @@ useEffect(() => {
                             <img
                                 
                                 className='w-10 h-10 rounded-full text-white bg-blue-600 duration-300 cursor-pointer hover:bg-blue-700' 
-                                src="https://plus.unsplash.com/premium_photo-1712160362268-68616bf1c0d0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8" 
+                                src={isDoctorImage} 
                                 alt="" 
                                 />
                                 {isImageDropdownOpen && (
@@ -85,7 +90,7 @@ useEffect(() => {
                                     <p className="bg-gray-300 p-1 rounded-b-xl cursor-pointer hover:text-black" onClick={deleteToken}>logout</p>
                                 </div>
                             )}
-                            </li>
+                        </li>
                     </ul>
                 </div>
             </div>

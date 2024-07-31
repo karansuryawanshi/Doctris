@@ -17,6 +17,7 @@ const SingleSpecialist = () => {
                 const response = await makeAuthenticatedGETRequest(`/doctorauth/get/doctor/specialist/${specialist}`);
                 console.log("*** category ***",response)
                 setData(response.data)
+                console.log(response.data)
         };
         fetchData();
     }, []);
@@ -27,7 +28,15 @@ const SingleSpecialist = () => {
             {data.map((item)=>{
                 return(
                 <div className='border-2 w-80 flex flex-col items-center justify-center py-4 space-y-4 rounded-xl'>
-                    <img className='rounded-lg' src={DoctorCategory} alt="" />
+                    {item.doctorPhoto ?(
+                        <div> 
+                            <img className='rounded-lg w-72 h-60' src={item.doctorPhoto} alt="" />
+                        </div> 
+                    ):(
+                        <div> 
+                           <img className='rounded-lg' src={DoctorCategory} alt="" />
+                       </div> 
+                    )}
                     <div className='space-y-2'>
                         <p> <span className='font-semibold'>Name :</span> <span className='text-blue-700'> {item.name}</span></p>
                         <p> <span className='font-semibold'>Email :</span> <span className='text-blue-700'> {item.email}</span></p>

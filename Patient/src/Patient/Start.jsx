@@ -40,7 +40,7 @@ const Start = () => {
         <div className='p-4 w-full flex flex-col items-center justify-center mt-28'>
             <p className='text-5xl grid text-gray-300 font-bold'>
             <span> Book Your Next Appointment </span>
-            <span className='ml-36 mt-6 text-emerald-600'> with Doctris </span> 
+            <span className='ml-48 mt-6 text-emerald-600'> with Doctris </span> 
             </p>
             <p className='text-xl text-gray-400 mt-6'>Book Appointment instread of waiting in long Queue !!</p>
             <div className='text-gray-400 mt-4 space-y-4 space-x-4'>

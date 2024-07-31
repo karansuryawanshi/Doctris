@@ -2,7 +2,7 @@ import React from 'react'
 import { openUploadWidget } from "../utils/CloudinaryService";
 import { cloudinary_upload_preset } from "../../config";
 
-const ProfileImage = ({setUrl, url}) => {
+const ProfileImage = ({setDoctorPhoto, url}) => {
 
   const uploadImageWidget = () => {
     // console.log(props);
@@ -16,8 +16,8 @@ const ProfileImage = ({setUrl, url}) => {
       },
       function (error, result) {
         if (!error && result.event === "success") {
-          // console.log(result.info.original_filename)
-          setUrl(result.info.secure_url)
+          console.log(result.info.original_filename)
+          setDoctorPhoto(result.info.secure_url)
         }else{
           if(error){
             console.log(error)

@@ -23,6 +23,18 @@ const Doctor = new mongoose.Schema({
     type: String,
     require: false,
   },
+  address: {
+    type: String,
+    require: false,
+  },
+  city: {
+    type: String,
+    require: false,
+  },
+  pincode: {
+    type: Number,
+    require: false,
+  },
   acceptedAppointment: [
     {
       type: mongoose.Schema.ObjectId,
