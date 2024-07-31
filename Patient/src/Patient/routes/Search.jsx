@@ -9,7 +9,7 @@ const SearchPage = () => {
     const [searchText, setSearchText] = useState("")
     const [songData, setSongData] = useState([])
 
-    const searchSong = async() =>{
+    const seachtext = async() =>{
         const response = await makeAuthenticatedGETRequest(
             "/auth/get/doctorcity/" + searchText
         );
@@ -39,7 +39,7 @@ const SearchPage = () => {
                     }}
                     onKeyDown={(e)=>{
                         if(e.key === "Enter"){
-                            searchSong()
+                            seachtext()
                         }
                     }}
                 />
