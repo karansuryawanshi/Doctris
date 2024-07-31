@@ -17,7 +17,7 @@ import Start from "./Start";
 import Success from "./routes/Success";
 import Cancel from "./routes/Cancel";
 import Layout from "./component/Layout";
-import DoctrisAi from "./routes/DoctrisAi";
+// import DoctrisAi from "./routes/DoctrisAi";
 import SearchPage from "./routes/Search";
 
 function PatientMain() {
@@ -43,7 +43,7 @@ function PatientMain() {
                   <Route path="/patient/Room/:roomid" element={<Room />} />
                   <Route path="/patient/success" element={<Success/>} />
                   <Route path="/patient/cancel" element={<Cancel />} />
-                  <Route path="/patient/DoctrisAi" element={<DoctrisAi />} />
+                  {/* <Route path="/patient/DoctrisAi" element={<DoctrisAi />} /> */}
                   <Route path="/patient/search" element={<SearchPage />} />
                   <Route path="*" element={<Home />} />
                 </Routes>
