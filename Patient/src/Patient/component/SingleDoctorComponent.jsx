@@ -1,32 +1,30 @@
 import React, { useContext } from 'react'
 // import songContext from '../../context/songContext'
+import { useNavigate } from 'react-router-dom'
 
-const SingleSongSearch = ({info}) => {
+const SingleSongSearch = ({ info }) => {
+
+  const navigate = useNavigate();
 
   console.log(info)
 
   return (
-    <div className='p-2 flex hover:bg-gray-400 hover:bg-opacity-30 rounded-sm' 
-      onClick={()=>{setCurrentSong(info)}}>
-
-      <div className='w-12 h-12 bg-cover bg-center'
-        style={{
-            backgroundImage:`url("${info.doctorPhoto}")`
-        }}
-      >
-      </div>
-      <div className='flex w-full'>
-        <div className='pl-4 text-white flex justify-center flex-col w-5/6'>
-            <div className='justify-start cursor-pointer hover:underline'>{info.name}</div>
-            <div className='text-gray-400 text-xs cursor-pointer hover:underline'>
-              {info.firstname+ " " + info.lastname}
-            </div>
-        </div>
-        <div className='flex justify-center items-center w-1/6'>
-            <div className='text-gray-400 text-sm'>9:45</div>
-        </div>
+    // <div className='flex'>
+      <div className='w-80 border-2 rounded-lg m-8 hover:bg-gray-300 duration-300 bg-white'>
+        <div className='flex items-center justify-center'>
+          <img className='w-72 h-72 py-6' src={info.doctorPhoto} alt="" />
+        </div>  
+        <div className='px-4 space-y-2 pb-4'>
+          <p className='font-semibold'>Doctor name :- <span className='font-normal text-indigo-900'>{info.name}</span></p>
+          <p className='font-semibold'>Department :- <span className='font-normal text-indigo-900'>{info.specialist}</span></p>
+          <p className='font-semibold'>Mail Id :- <span className='font-normal text-indigo-900'>{info.email}</span></p>
+          <p className='font-semibold'>Address :- <span className='font-normal text-indigo-900'>{info.address}</span></p>
+          <p className='font-semibold'>City :- <span className='font-normal text-indigo-900'>{info.city}</span></p>
+          <p className='font-semibold'>Pincode :- <span className='font-normal text-indigo-900'>{info.pincode}</span></p>
+          <button className='bg-blue-600 duration-300 hover:bg-blue-700 w-72 py-2 text-white font-semibold text-lg rounded-lg' onClick={() => { navigate('/patient/appointment') }}>Book Appointment</button>
         </div>
       </div>
+    // </div>
   )
 }
 
