@@ -1,10 +1,12 @@
-// src/api/conversation.js
 import axios from "axios";
+// require("dotenv").config();
+
+const apiKey = process.env.DOCTRIS_OPENAI_API;
 
 const instructionMessage = {
   role: "system",
   content:
-    "You are an AI Model. You must answer questions. Use examples for explanations. If someone asks about you, then tell him that, 'I am MasterAI developed by MasterAI team'.",
+    "You are an AI Model. You must answer medical related questions and also suggest the medicine. If someone asks about you, then tell him that, 'I am DoctrisAI developed by DoctrisAI team'.",
 };
 
 export const getChatCompletion = async (messages) => {
@@ -12,4 +14,24 @@ export const getChatCompletion = async (messages) => {
     model: "gpt-3.5-turbo",
     messages: [instructionMessage, ...messages],
   };
+
+  try {
+    const response = await axios.post(
+      "https://api.openai.com/v1/chat/completions",
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+      }
+    );
+    return response.data.choices[0].message;
+  } catch (error) {
+    console.error(
+      "Error getting chat completion:",
+      error.response ? error.response.data : error.message
+    );
+    throw error;
+  }
 };

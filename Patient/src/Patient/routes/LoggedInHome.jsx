@@ -54,11 +54,9 @@ const LoggedInHome = ({ children }) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <div
-        className={`transition duration-200 flex${
-          scrolled ? " bg-white sticky top-0" : ""
-        }`}
+        className={`transition duration-200 flex${scrolled ? " bg-white sticky top-0" : ""}`}
       >
         <div className="w-7/12 h-20 flex items-center justify-center space-x-10">
           <div>
@@ -88,12 +86,12 @@ const LoggedInHome = ({ children }) => {
               >
                 APPOINTMENT
                 {isDropdownOpen && (
-                    <div className="dropdown-content absolute" onClick={(e)=>{e.stopPropagation()}}>
-                        <p className="bg-gray-100 p-1 rounded-t-xl hover:text-black" onClick={()=>{navigate("/patient/offline appointment")}}>Offline Appointment</p>
-                        <p className="bg-gray-100 p-1 rounded-b-xl hover:text-black" onClick={()=>{navigate("/patient/online appointment")}}>Online Appointment</p>
-                    </div>
+                  <div className="dropdown-content absolute" onClick={(e) => { e.stopPropagation() }}>
+                    <p className="bg-gray-100 p-1 rounded-t-xl hover:text-black" onClick={() => { navigate("/patient/offline appointment") }}>Offline Appointment</p>
+                    <p className="bg-gray-100 p-1 rounded-b-xl hover:text-black" onClick={() => { navigate("/patient/online appointment") }}>Online Appointment</p>
+                  </div>
                 )}
-                </li>
+              </li>
               <li
                 className="cursor-pointer"
                 onClick={() => {
@@ -143,7 +141,7 @@ const LoggedInHome = ({ children }) => {
               onClick={DashboardNavigate}
             >
               <li className="pl-2 hover:text-black text-gray-600 font-semibold">
-                <a href={profileNavigate}>Profile</a>{" "}
+                <a href={profileNavigate}>Profile</a>
               </li>
               <li
                 className="pl-2 hover:text-black text-gray-600 font-semibold"
@@ -155,12 +153,14 @@ const LoggedInHome = ({ children }) => {
           </div>
         </div>
       </div>
-      {children}
-      <div className="w-full text-white h-full p-4 bg-slate-800 flex b-0 l-0 r-0">
-        <div className=" w-10/12">
-          <p className="">2024 © Doctris. Design & Develop with 😂 by Karan.</p>
+      <div className="flex-grow">
+        {children}
+      </div>
+      <div className="down w-full text-white p-4 bg-slate-800 flex b-0 l-0 r-0">
+        <div className="w-10/12">
+          <p>2024 © Doctris. Design & Develop with 😂 by Karan.</p>
         </div>
-        <div className="w-2/12 ">
+        <div className="w-2/12">
           <div className="space-x-3 cursor-pointer">
             <span className="cursor-pointer hover:text-gray-300">Terms</span>
             <span className="cursor-pointer hover:text-gray-300">Privacy</span>
@@ -170,6 +170,7 @@ const LoggedInHome = ({ children }) => {
         </div>
       </div>
     </div>
+
   );
 };
 

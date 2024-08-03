@@ -28,6 +28,7 @@
     "@stripe/stripe-js": "^4.1.0",
     "apexcharts": "^3.48.0",
     "cloudinary-core": "^2.13.0",
+    "dotenv": "^16.4.5",
     "flowbite-react": "^0.7.5",
     "openai": "^4.53.2",
     "react": "^18.2.0",

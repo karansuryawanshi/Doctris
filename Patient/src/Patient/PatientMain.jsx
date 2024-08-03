@@ -18,6 +18,7 @@ import Success from "./routes/Success";
 import Cancel from "./routes/Cancel";
 import Layout from "./component/Layout";
 import SearchPage from "./routes/Search";
+import DoctrisAi from "./routes/DoctrisAi";
 
 function PatientMain() {
   const [cookies, setCookies] = useCookies(["token"]);
@@ -43,6 +44,7 @@ function PatientMain() {
                   <Route path="/patient/cancel" element={<Cancel />} />
                   <Route path="/patient/search" element={<SearchPage />} />
                   <Route path="*" element={<Home />} />
+                  <Route path="/patient/doctrisAI" element={<DoctrisAi />} />
                 </Routes>
             </Layout>
           </SocketProvider>
