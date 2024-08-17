@@ -1,8 +1,7 @@
 import axios from "axios";
 import "dotenv";
 
-console.log("Vite API KEy", import.meta.env.VITE_REACT_APP_DOCTRIS_OPENAI_API);
-const apiKey = "process.env.REACT_APP_DOCTRIS_OPENAI_API";
+const apiKey = import.meta.env.VITE_DOCTRIS_OPENAI_API;
 
 const instructionMessage = {
   role: "system",

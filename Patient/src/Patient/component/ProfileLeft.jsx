@@ -57,7 +57,7 @@ const ProfileLeft = () => {
           console.log("data",response)
       };
       fetchData();
-    }, []);
+    },  [firstname, lastname, phoneNumber, bloodGroup, birthDate, patientPhoto, age, gender]);
   return (
             <div className='w-3/12 mt-10 fixed'>
                 <div className='min-h-min rounded-xl border border-1 mb-20'>

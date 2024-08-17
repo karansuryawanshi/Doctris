@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SingleAppointment = ({name, address, phno, department, doctorImage}) => {
-    console.log("DoctorImage",doctorImage)
+    // console.log("DoctorImage",doctorImage)
   return (
     <div className='border  rounded-xl flex hover:bg-gray-300 duration-300 cursor-pointer'>
                     <div className='w-20 h-20 p-2'>
