@@ -89,7 +89,7 @@ app.post("/stripe-checkout-session", async (req, res) => {
               `,
             images: [`${logo}`],
           },
-          unit_amount: 1000 * 20, // Amount in cents
+          unit_amount: 1000 * 20,
         },
         quantity: 1,
       },

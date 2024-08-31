@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const Appointment = new mongoose.Schema({
   patientName: {
     type: String,
-    // require: true,
   },
   department: {
     type: String,
@@ -20,7 +19,6 @@ const Appointment = new mongoose.Schema({
   },
   email: {
     type: String,
-    // require: true,
   },
   date: {
     type: String,
@@ -34,11 +32,9 @@ const Appointment = new mongoose.Schema({
   phoneNo: {
     type: String,
     require: true,
-    // private: true,
   },
   comment: {
     type: String,
-    // require: true,
   },
   patient: {
     type: mongoose.Schema.ObjectId,

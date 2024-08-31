@@ -93,10 +93,10 @@ const Appointment = () => {
         }
 
 
-
-        await makePayment();
-
         const mode = date ? onlineMode : offlineMode;
+        if(mode == onlineMode){
+            await makePayment();
+        }
 
         const data = 
             {
@@ -112,8 +112,6 @@ const Appointment = () => {
                 date}
         const response = await makeAuthenticatedPOSTRequest("/appointment/create", data)
         console.log("********* booked appointment data ************",response)
-        // alert("Updated Successfully")
-        // navigate("/patient/dashboard")
     }
 
     const VirtualAppointment = () => {

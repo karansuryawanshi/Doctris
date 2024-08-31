@@ -1,17 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Icon } from '@iconify-icon/react'
 import { makeAuthenticatedDELETERequest } from '../utils/server'
+import { ToastContainer, Zoom, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RejectAppointment = ({closeModel, appointmentId}) => {
     console.log("****appointmentId",appointmentId)
     const AppointmentCancel = async () => {
             const response = await makeAuthenticatedDELETERequest(`/appointment/deleteappointment/${appointmentId}`);
-            console.log("******response****",response)
-            // if(response){
-            //     alert("Appointment Cancel successfully")
-            // }
-            alert("Appointment Accepted")
-            window.location.reload();
+            // console.log("******response****",response)
+            await toast.error('Appointment Rejected!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Zoom,
+              });
+
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+                // window.location.reload();
         };
 
   return (

@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 // import { getChatCompletion } from '../utils/conversation';
 import { getChatCompletion } from '../../util/medical';
 import LoggedInHome from './LoggedInHome';
+import { ToastContainer, Zoom, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ChatComponent = () => {
   const [messages, setMessages] = useState([]);
   const [prompt, setPrompt] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
-  // console.log("REACT_APP_DOCTRIS_OPENAI_API")
-  // console.log("REACT_APP_DOCTRIS_OPENAI_API",process.env.REACT_APP_DOCTRIS_OPENAI_API)
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -26,9 +25,29 @@ const ChatComponent = () => {
       console.log(response)
     } catch (error) {
       if (error.response?.status === 403) {
-        proModel.onOpen();
+        await toast.error('error 403 occur', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Zoom,
+        });  
       } else {
-        alert("Something went wrong.");
+        await toast.error('Oops! Something went wrong', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Zoom,
+        });
       }
     } finally {
       setIsLoading(false);

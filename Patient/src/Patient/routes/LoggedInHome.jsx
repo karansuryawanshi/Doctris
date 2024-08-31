@@ -41,8 +41,8 @@ const LoggedInHome = ({ children }) => {
     navigate("/patient/dashboard");
   };
 
-  const ProfileNavigate = () => {
-    navigate("/patient/profile");
+  const SearchNavigate = () => {
+    navigate("/patient/search");
   };
 
   const profileNavigate = "/patient/profile/" + userId;
@@ -94,9 +94,7 @@ const LoggedInHome = ({ children }) => {
               </li>
               <li
                 className="cursor-pointer"
-                onClick={() => {
-                  navigate("/patient/dashboard");
-                }}
+                onClick={SearchNavigate}
               >
                 PATIENT
               </li>
@@ -120,8 +118,15 @@ const LoggedInHome = ({ children }) => {
               color="white"
             />
           </div>
-          <div className="bg-blue-600 p-2 rounded-full cursor-pointer hover:bg-blue-700 transition duration-200">
+          <div 
+            onClick={() => {
+              navigate("/patient/search");
+            }}
+            className="bg-blue-600 p-2 rounded-full cursor-pointer hover:bg-blue-700 transition duration-200">
             <Icon
+              onClick={() => {
+                navigate("/patient/appointment");
+              }}
               className="text-2xl"
               icon={"system-uicons:search"}
               color="white"

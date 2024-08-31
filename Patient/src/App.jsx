@@ -5,6 +5,7 @@ import DoctorMain from './Doctor/DoctorMain';
 import Start from './Patient/Start';
 import Layout from './Patient/component/Layout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+     <ToastContainer/>
     <BrowserRouter>
       {isPatientRoute && 
         <PatientMain></PatientMain>

@@ -5,6 +5,8 @@ import {useCookies} from "react-cookie"
 import {useNavigate} from "react-router-dom"
 import { openUploadWidget } from "../utils/CloudinaryService";
 import { cloudinary_upload_preset } from "../../config";
+import { makeAuthenticatedPOSTRequest } from '../utils/server'
+import { ToastContainer, Zoom, toast } from 'react-toastify';
 
 const Signup = () => {
 
@@ -33,7 +35,17 @@ const Signup = () => {
       setCookie("doctortoken",token,{path:"/",expires:date})
     }
     else{
-      alert("failure")
+      await toast.warn('Appointment accepted!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+      });
     }
   }
 

@@ -3,6 +3,8 @@ import TextInput from '../component/TextInput'
 import { makeUnAuthenticatedPOSTRequest } from '../utils/server'
 import {useCookies} from "react-cookie"
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, Zoom, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
 
@@ -29,7 +31,17 @@ const Signup = () => {
       setCookie("token",token,{path:"/",expires:date})
     }
     else{
-      alert("failure")
+        await toast.error('Failed', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+      });
     }
   }
 

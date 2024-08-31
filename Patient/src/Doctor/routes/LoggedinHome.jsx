@@ -60,6 +60,7 @@ const LoggedinHome = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isDoctorImage, setIsDoctorImage] = useState(false);
+    const [userId, setUserId] = useState(false);
     const [isImageDropdownOpen, setIsImageDropdownOpen] = useState(false);
 
     const handleScroll = () => {
@@ -96,7 +97,8 @@ const LoggedinHome = () => {
       useEffect(() => {
         const fetchData = async () => {
             const response = await makeAuthenticatedGETRequest("/doctorauth/get/doctor/me");
-            console.log("******response****",response.data)
+            console.log("******response home data****",response.data)
+            setUserId(response.data[0]._id)
             setIsDoctorImage(response.data[0].doctorPhoto)
             if(!response){
                 console.log("not response")
@@ -146,7 +148,7 @@ const LoggedinHome = () => {
 
                             {isImageDropdownOpen && (
                                 <div className="dropdown-content absolute text-gray-600" onClick={(e)=>e.stopPropagation()}>
-                                    <p className="bg-gray-300 p-1 rounded-t-xl cursor-pointer hover:text-black" onClick={()=>navigate(`/doctor/profile/${userID}`)}>Profile</p>
+                                    <p className="bg-gray-300 p-1 rounded-t-xl cursor-pointer hover:text-black" onClick={()=>navigate(`/doctor/profile/${userId}`)}>Profile</p>
                                     <p className="bg-gray-300 p-1 rounded-b-xl cursor-pointer hover:text-black" onClick={deleteToken}>logout</p>
                                 </div>
                             )}

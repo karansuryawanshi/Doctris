@@ -2,6 +2,8 @@ import React from 'react'
 import { Icon } from '@iconify-icon/react'
 import { makeAuthenticatedDELETERequest } from '../utils/server'
 import { makeAuthenticatedPOSTRequest } from '../utils/server'
+import { ToastContainer, Zoom, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AcceptAppointment = ({closeModel,patientId,appointmentId,doctorId}) => {
     console.log("patientId",patientId)
@@ -12,9 +14,23 @@ const AcceptAppointment = ({closeModel,patientId,appointmentId,doctorId}) => {
     const AppointmentAccept = async()=>{
         const data = {patientId, appointmentId, doctorId}
         const response = await makeAuthenticatedPOSTRequest("/appointment/accept/appointment",data)
-        console.log("*********** Login response ************",response);
-        alert("Appointment Accepted")
+        // console.log("*********** Login response ************",response);
+        await toast.success('Appointment accepted!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+      });
+
+      setTimeout(() => {
         window.location.reload();
+      }, 3000);
+
       }
   return (
     <div>

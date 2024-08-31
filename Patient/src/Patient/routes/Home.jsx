@@ -138,7 +138,14 @@ const Home = () => {
                     </ul>
                     <ul className='w-4/12 flex justify-end space-x-8 mr-32 p-6 '>
                         <li className=''><Icon className='text-3xl p-1 rounded-full text-white bg-blue-600 duration-300 cursor-pointer w-10 h-10 hover:bg-blue-700' icon="system-uicons:settings"></Icon></li>
-                        <li><Icon className='text-3xl p-1 rounded-full text-white bg-blue-600 duration-300 cursor-pointer hover:bg-blue-700 w-10 h-10' icon="system-uicons:search"></Icon></li>
+                        <li>
+                            <Icon 
+                                className='text-3xl p-1 rounded-full text-white bg-blue-600 duration-300 cursor-pointer hover:bg-blue-700 w-10 h-10' 
+                                icon="system-uicons:search"
+                                onClick={() => {
+                                    navigate("/patient/search");
+                                  }}
+                                ></Icon></li>
                         <li>
                         {profileImage?(
                             <div>

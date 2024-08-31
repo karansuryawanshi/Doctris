@@ -6,6 +6,8 @@ import UpdataDataInput from "../component/UpdataDataInput"
 import { makeAuthenticatedPUTRequest, makeAuthenticatedGETRequest } from '../utils/server';
 import { useParams } from 'react-router-dom';
 import AppointMent from '../component/AppointMent';
+import { ToastContainer, Zoom, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProfileRight = () => {
 
@@ -63,8 +65,21 @@ const ProfileRight = () => {
       bloodGroup, height, weight, gender, birthDate, patientPhoto
     };
     const response = await makeAuthenticatedPUTRequest(`/auth/updateprofile/` + _id, body);
-    alert("Updated Successfully");
-    window.location.reload("/");
+    await toast.success('Changes Saved', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Zoom,
+    });
+
+    setTimeout(() => {
+      window.location.reload("/");
+    }, 3000);
   };
   return (
     <div className='w-8/12 pt-10 rounded-lg' style={{ marginLeft: "25em" }}>
