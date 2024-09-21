@@ -45,6 +45,10 @@ const LoggedInHome = ({ children }) => {
     navigate("/patient/search");
   };
 
+  const PharmacyNavigate = () => {
+    navigate("/patient/pharmacy_store");
+  };
+
   const profileNavigate = "/patient/profile/" + userId;
 
   const deleteToken = () => {
@@ -56,9 +60,11 @@ const LoggedInHome = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <div
-        className={`transition duration-200 flex${scrolled ? " bg-white sticky top-0" : ""}`}
+        className={`transition duration-200 flex${
+          scrolled ? " bg-white sticky top-0" : ""
+        }`}
       >
-        <div className="w-7/12 h-20 flex items-center justify-center space-x-10">
+        <div className="w-7/12 h-20 flex items-center justify-center space-x-10 ">
           <div>
             <img
               className="w-28"
@@ -86,19 +92,41 @@ const LoggedInHome = ({ children }) => {
               >
                 APPOINTMENT
                 {isDropdownOpen && (
-                  <div className="dropdown-content absolute" onClick={(e) => { e.stopPropagation() }}>
-                    <p className="bg-gray-100 p-1 rounded-t-xl hover:text-black" onClick={() => { navigate("/patient/offline appointment") }}>Offline Appointment</p>
-                    <p className="bg-gray-100 p-1 rounded-b-xl hover:text-black" onClick={() => { navigate("/patient/online appointment") }}>Online Appointment</p>
+                  <div
+                    className="dropdown-content absolute"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                  >
+                    <p
+                      className="bg-gray-100 p-1 rounded-t-xl hover:text-black"
+                      onClick={() => {
+                        navigate("/patient/offline appointment");
+                      }}
+                    >
+                      Offline Appointment
+                    </p>
+                    <p
+                      className="bg-gray-100 p-1 rounded-b-xl hover:text-black"
+                      onClick={() => {
+                        navigate("/patient/online appointment");
+                      }}
+                    >
+                      Online Appointment
+                    </p>
                   </div>
                 )}
               </li>
-              <li
-                className="cursor-pointer"
-                onClick={SearchNavigate}
-              >
+              <li className="cursor-pointer" onClick={SearchNavigate}>
                 PATIENT
               </li>
-              <li className="cursor-pointer">PHARMACY</li>
+              <li
+                className="cursor-pointer"
+                target="_blank"
+                onClick={PharmacyNavigate}
+              >
+                PHARMACY
+              </li>
               <li
                 className="cursor-pointer"
                 onClick={() => {
@@ -118,11 +146,12 @@ const LoggedInHome = ({ children }) => {
               color="white"
             />
           </div>
-          <div 
+          <div
             onClick={() => {
               navigate("/patient/search");
             }}
-            className="bg-blue-600 p-2 rounded-full cursor-pointer hover:bg-blue-700 transition duration-200">
+            className="bg-blue-600 p-2 rounded-full cursor-pointer hover:bg-blue-700 transition duration-200"
+          >
             <Icon
               onClick={() => {
                 navigate("/patient/appointment");
@@ -158,9 +187,7 @@ const LoggedInHome = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="flex-grow">
-        {children}
-      </div>
+      <div className="flex-grow">{children}</div>
       <div className="down w-full text-white p-4 bg-slate-800 flex b-0 l-0 r-0">
         <div className="w-10/12">
           <p>2024 © Doctris. Design & Develop with 😂 by Karan.</p>
@@ -175,7 +202,6 @@ const LoggedInHome = ({ children }) => {
         </div>
       </div>
     </div>
-
   );
 };
 

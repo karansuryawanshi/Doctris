@@ -190,7 +190,7 @@ const ProfileRight = () => {
               label={"Blood Group"}
               type={"text"}
               value={bloodGroup}
-              setValue={setBloodGroup} />
+              setValue={setBloodGroup} /> 
           </div>
           <div className='flex items-center justify-center py-8'>
             <button className='border-2 border-blue-600 hover:bg-blue-700 duration-300 px-4 py-2 rounded-xl bg-blue-600 text-white'
