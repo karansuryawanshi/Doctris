@@ -51,6 +51,10 @@ const Patient = new mongoose.Schema({
     require: true,
     private: true,
   },
+  prescription: {
+    type: String,
+    require: false,
+  },
   comingAppointment: [
     {
       type: mongoose.Schema.ObjectId,

@@ -63,7 +63,10 @@ function PatientMain() {
                 path="/patient/pharmacy_store"
                 element={<PharmacyStore />}
               />
-              <Route path="/patient/priscription" element={<Prescription />} />
+              <Route
+                path="/patient/priscription/:id"
+                element={<Prescription />}
+              />
             </Routes>
           </Layout>
         </SocketProvider>

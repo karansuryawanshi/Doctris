@@ -28,17 +28,18 @@ const LoggedInHome = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await makeAuthenticatedGETRequest(
-        "/auth/get/patient/me"
+        "/doctorauth/get/doctor/me"
       );
+      // console.log(response.data[0].doctorPhoto);
       setUserId(response.data[0]._id);
-      setProfileImage(response.data[0].patientPhoto);
+      setProfileImage(response.data[0].doctorPhoto);
     };
     fetchData();
   }, []);
 
   const navigate = useNavigate();
 
-  const profileNavigate = "/patient/profile/" + userId;
+  const profileNavigate = "/doctor/profile/" + userId;
 
   const deleteToken = () => {
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -61,12 +62,12 @@ const LoggedInHome = ({ children }) => {
             />
           </div>
           <ul className="flex text-sm text-zinc-700 space-x-8 font-semibold">
-            <li className="cursor-pointer" onClick={() => navigate("/patient")}>
+            <li className="cursor-pointer" onClick={() => navigate("/doctor")}>
               HOME
             </li>
             <li
               className="cursor-pointer"
-              onClick={() => navigate("/patient/appointment")}
+              onClick={() => navigate("/doctor/appointment")}
               onMouseEnter={() => setIsDropdownOpen(true)}
               onMouseLeave={() => setIsDropdownOpen(false)}
             >
@@ -78,13 +79,13 @@ const LoggedInHome = ({ children }) => {
                 >
                   <p
                     className="bg-gray-100 p-1 rounded-t-xl hover:text-black"
-                    onClick={() => navigate("/patient/offline appointment")}
+                    onClick={() => navigate("/doctor/offline appointment")}
                   >
                     Offline Appointment
                   </p>
                   <p
                     className="bg-gray-100 p-1 rounded-b-xl hover:text-black"
-                    onClick={() => navigate("/patient/online appointment")}
+                    onClick={() => navigate("/doctor/online appointment")}
                   >
                     Online Appointment
                   </p>
@@ -93,19 +94,19 @@ const LoggedInHome = ({ children }) => {
             </li>
             <li
               className="cursor-pointer"
-              onClick={() => navigate("/patient/search")}
+              onClick={() => navigate("/Doctor/search")}
             >
               PATIENT
             </li>
             <li
               className="cursor-pointer"
-              onClick={() => navigate("/patient/pharmacy_store")}
+              onClick={() => navigate("/Doctor/pharmacy_store")}
             >
               PHARMACY
             </li>
             <li
               className="cursor-pointer"
-              onClick={() => navigate("/patient/specialist")}
+              onClick={() => navigate("/doctor/specialist")}
             >
               SPECIALIST
             </li>
@@ -121,7 +122,7 @@ const LoggedInHome = ({ children }) => {
             />
           </div>
           <div
-            onClick={() => navigate("/patient/search")}
+            onClick={() => navigate("/doctor/search")}
             className="bg-blue-600 p-2 rounded-full cursor-pointer hover:bg-blue-700 transition duration-200"
           >
             <Icon
@@ -134,7 +135,7 @@ const LoggedInHome = ({ children }) => {
             <img
               className="rounded-full w-10 h-10"
               src={profileImage}
-              onClick={() => navigate("/patient/dashboard")}
+              onClick={() => navigate("/doctor/dashboard")}
               alt=""
             />
             <ul className="w-16 h-16 space-y-2 bg-white rounded-lg shadow-md opacity-0 hover:opacity-100 transition-all duration-200 ease-in-out">
