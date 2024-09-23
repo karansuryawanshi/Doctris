@@ -11,29 +11,25 @@ const Prescription = () => {
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
+  const { id } = useParams();
 
   const [prescription, setPrescription] = useState("");
   const [fileName, setFileName] = useState("");
-  const [responseMessage, setResponseMessage] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [rejectAppointment, setRejectAppointment] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
 
-    // try {
     const body = { prescription };
     const response = await makeAuthenticatedPUTRequest(
-      `/auth/uploadprescription/66ee9f5e2d07c2b5a8973f35`,
+      `/appointment/uploadprescription/${id}`,
       body
     );
     console.log("prescription response ", response);
   };
 
   const uploadImageWidget = () => {
-    // console.log(props);
     let myUploadWidget = openUploadWidget(
       {
         cloudName: "dcjuzfafi",
@@ -57,25 +53,75 @@ const Prescription = () => {
     );
     myUploadWidget.open();
   };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   return (
     <AllComponent>
-      <div className="flex items-center justify-center mt-10">
-        {/* <ProfileImage
-          setUrl={setPatientPhoto}
-          value={patientPhoto}
-          setValue={setPatientPhoto}
-        ></ProfileImage> */}
+      <div className="flex flex-col items-center justify-center mt-10">
         <p
-          className="cursor cursor-pointer border-2 px-4 py-2 rounded-xl bg-blue-500 border-blue-500 text-white"
-          onClick={uploadImageWidget}
+          className="flex"
           value={prescription}
           onChange={(e) => setPrescription(e.target.value)}
         >
-          {fileName}
-          Upload Prescription{" "}
-          <Icon className="text-lg" icon={"majesticons:attachment-line"}></Icon>
+          {fileName ? (
+            <div className="flex flex-col">
+              <p
+                className="cursor cursor-pointer border-2 px-4 py-2 rounded-xl bg-blue-500 border-blue-500 text-white"
+                onClick={uploadImageWidget}
+              >
+                {fileName.slice(0, 22)}...
+              </p>
+              <div>
+                <img
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openModal();
+                  }}
+                  src={prescription}
+                  alt="Prescription"
+                  className="w-40 cursor-zoom-in mt-4 rounded-lg"
+                />
+                {isOpen && (
+                  <div
+                    className="fixed inset-0 cursor-zoom-out z-50 flex items-center justify-center bg-black bg-opacity-90 rounded-xl"
+                    onClick={closeModal}
+                  >
+                    <div className="relative">
+                      <img
+                        src={prescription}
+                        alt="Prescription"
+                        className="max-w-full max-h-screen rounded-xl"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <p
+              className="bg-blue-500 px-4 py-2 rounded-lg text-white"
+              onClick={uploadImageWidget}
+            >
+              Upload Prescription
+              <Icon
+                className="text-lg"
+                icon={"majesticons:attachment-line"}
+              ></Icon>
+            </p>
+          )}
         </p>
-        <button onClick={handleSubmit}>Submit</button>
+        <button
+          className="border-2 px-6 py-2 mt-4 rounded-xl border-orange-500 text-white font-semibold bg-orange-500"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
       </div>
     </AllComponent>
   );

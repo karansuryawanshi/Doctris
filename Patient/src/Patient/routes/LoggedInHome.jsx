@@ -30,7 +30,7 @@ const LoggedInHome = ({ children }) => {
       );
       setUserId(response.data[0]._id);
       setProfileImage(response.data[0].patientPhoto);
-      //   console.log("********response header *************",response)
+      // console.log("********response header *************", response);
     };
     fetchData();
   }, []);

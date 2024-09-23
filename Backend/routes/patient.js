@@ -96,21 +96,20 @@ router.post("/login", async (req, res) => {
   return res.status(200).json(userToReturn);
 });
 
+// upload Prescription
 router.put(
   "/uploadprescription/:id",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     try {
-      const userId = req.params.id; // Get the ID from the request URL
-      const { prescription } = req.body; // Extract the prescription from the request body
+      const userId = req.params.id;
+      const { prescription } = req.body;
 
-      // Find the patient by the provided userId
       let patientData = await Patient.findById(userId);
       if (!patientData) {
         return res.status(404).send("Patient not found");
       }
 
-      // Update the prescription for the specific patient
       const updatedData = {
         prescription,
       };
@@ -118,7 +117,7 @@ router.put(
       const updatedPatient = await Patient.findByIdAndUpdate(
         userId,
         { $set: updatedData },
-        { new: true } // Return the updated document
+        { new: true }
       );
 
       return res.status(200).json(updatedPatient);

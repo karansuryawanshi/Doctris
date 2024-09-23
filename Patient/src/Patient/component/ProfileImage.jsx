@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 import { openUploadWidget } from "../utils/CloudinaryService";
 import { cloudinary_upload_preset } from "../../config";
 
-const ProfileImage = ({setDoctorPhoto, url}) => {
-
+const ProfileImage = ({ setPatientPhoto, url }) => {
+  // console.log(setDoctorPhoto);
   const uploadImageWidget = () => {
     // console.log(props);
     let myUploadWidget = openUploadWidget(
@@ -12,15 +12,15 @@ const ProfileImage = ({setDoctorPhoto, url}) => {
         uploadPreset: cloudinary_upload_preset,
         // tags: ["myname"],
         // maxImageWidth: 600,
-        sources: ["local"]
+        sources: ["local"],
       },
       function (error, result) {
         if (!error && result.event === "success") {
-          console.log(result.info.original_filename)
-          setDoctorPhoto(result.info.secure_url)
-        }else{
-          if(error){
-            console.log(error)
+          console.log(result.info.original_filename);
+          setPatientPhoto(result.info.secure_url);
+        } else {
+          if (error) {
+            console.log(error);
           }
         }
       }
@@ -30,11 +30,16 @@ const ProfileImage = ({setDoctorPhoto, url}) => {
 
   return (
     <div>
-        <div className='flex items-center justify-center p-10'>
-            <button className='px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 duration-300'onClick={uploadImageWidget}>Upload</button>
-        </div>
+      <div className="flex items-center justify-center p-10">
+        <button
+          className="px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 duration-300"
+          onClick={uploadImageWidget}
+        >
+          Upload
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProfileImage
+export default ProfileImage;

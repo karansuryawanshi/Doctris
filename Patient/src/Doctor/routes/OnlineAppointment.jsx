@@ -122,7 +122,7 @@ const OnlineAppointment = () => {
                       <button
                         className="bg-blue-600 duration-300 hover:bg-blue-700 w-72 py-2 text-white font-semibold text-lg rounded-lg"
                         onClick={() => {
-                          navigate(`/doctor/prescription/${item.patient._id}`);
+                          navigate(`/doctor/prescription/${item._id}`);
                         }}
                       >
                         Upload Prescription

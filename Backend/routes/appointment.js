@@ -170,4 +170,35 @@ router.get(
   }
 );
 
+router.put(
+  "/uploadprescription/:id",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    try {
+      const appointmentId = req.params.id;
+      const { prescription } = req.body;
+
+      let appointment = await Appointment.findById(appointmentId);
+      if (!appointment) {
+        return res.status(404).send("appointment not found");
+      }
+
+      const updatedData = {
+        prescription,
+      };
+
+      const updatedPatient = await Appointment.findByIdAndUpdate(
+        appointmentId,
+        { $set: updatedData },
+        { new: true }
+      );
+
+      return res.status(200).json(updatedPatient);
+    } catch (error) {
+      console.error("Error updating prescription:", error);
+      return res.status(500).send("Server error");
+    }
+  }
+);
+
 module.exports = router;

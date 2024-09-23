@@ -38,7 +38,7 @@ const DoctorMain = () => {
             />
             <Route path="/doctor/chat lobby" element={<Lobby />} />
             <Route path="/doctor/room/:roomid" element={<Room />} />
-            <Route path="/doctor/prescription" element={<Prescription />} />
+            <Route path="/doctor/prescription/:id" element={<Prescription />} />
             <Route path="*" element={<LoggedinHome />} />
           </Routes>
         </SocketProvider>

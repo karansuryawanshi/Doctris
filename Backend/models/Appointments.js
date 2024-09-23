@@ -36,6 +36,10 @@ const Appointment = new mongoose.Schema({
   comment: {
     type: String,
   },
+  prescription: {
+    type: String,
+    require: false,
+  },
   patient: {
     type: mongoose.Schema.ObjectId,
     ref: "Patient",

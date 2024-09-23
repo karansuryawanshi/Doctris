@@ -160,4 +160,16 @@ router.get(
   }
 );
 
+router.get(
+  "/get/doctor/:id",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const id = req.params.id;
+    const doctor = await Doctor.findById(id);
+    console.log("Doctor Is ", doctor);
+
+    res.status(200).json({ data: doctor });
+  }
+);
+
 module.exports = router;
