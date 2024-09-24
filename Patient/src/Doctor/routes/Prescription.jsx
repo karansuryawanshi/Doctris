@@ -6,6 +6,8 @@ import { openUploadWidget } from "../utils/CloudinaryService";
 import { cloudinary_upload_preset } from "../../config";
 import { useParams } from "react-router-dom";
 import { makeAuthenticatedPUTRequest } from "../utils/server";
+import { ToastContainer, Zoom, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Prescription = () => {
   const ratingChanged = (newRating) => {
@@ -15,8 +17,8 @@ const Prescription = () => {
 
   const [prescription, setPrescription] = useState("");
   const [fileName, setFileName] = useState("");
-  const [rejectAppointment, setRejectAppointment] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [answer, setAnswer] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +29,19 @@ const Prescription = () => {
       body
     );
     console.log("prescription response ", response);
+    if (response) {
+      toast.success("Prescription Submitted", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+      });
+    }
   };
 
   const uploadImageWidget = () => {
@@ -104,16 +119,18 @@ const Prescription = () => {
               </div>
             </div>
           ) : (
-            <p
-              className="bg-blue-500 px-4 py-2 rounded-lg text-white"
-              onClick={uploadImageWidget}
-            >
-              Upload Prescription
-              <Icon
-                className="text-lg"
-                icon={"majesticons:attachment-line"}
-              ></Icon>
-            </p>
+            <div>
+              <p
+                className="bg-blue-500 px-4 py-2 rounded-lg text-white cursor-pointer"
+                onClick={uploadImageWidget}
+              >
+                Upload Prescription
+                <Icon
+                  className="text-lg"
+                  icon={"majesticons:attachment-line"}
+                ></Icon>
+              </p>
+            </div>
           )}
         </p>
         <button

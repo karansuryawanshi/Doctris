@@ -75,7 +75,7 @@ const Specialist = () => {
       <div className="px-16 py-6 grid gap-10 grid-cols-4">
         {data.map((item) => {
           return (
-            <div className="w-80 border-2 flex flex-col items-center justify-center space-x-4 space-y-1 border-gray-400 bg-gray-200 hover:bg-gray-300 hover:shadow-xl duration-300 ease-in-out rounded-xl py-2">
+            <div className="w-80 border-2 flex flex-col items-center justify-center space-x-4 space-y-1 border-blue-400 bg-blue-400 hover:bg-blue-500 hover:shadow-xl duration-300 ease-in-out rounded-xl py-2">
               <p className="rounded-xl">
                 <img
                   src={item.icon}
@@ -83,9 +83,9 @@ const Specialist = () => {
                   className="p-3 w-80 h-56 rounded-xl"
                 />
               </p>
-              <p>{item.description}</p>
+              <p className="text-white">{item.description}</p>
               <p
-                className="bg-blue-200 hover:bg-blue-300 duration-300 p-2 rounded-lg font-semibold cursor-pointer"
+                className="bg-orange-400 hover:bg-orange-500 text-white duration-300 p-2 rounded-lg font-semibold cursor-pointer"
                 onClick={() => {
                   navigate(`/patient/specialist/${item.title}`);
                 }}
