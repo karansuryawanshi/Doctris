@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../assets/logo.png";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import TypewriterComponent from "typewriter-effect";
@@ -80,9 +80,62 @@ const PharmacyStore = () => {
     },
   ];
 
+  const Test = [
+    {
+      image:
+        "https://cms-contents.pharmeasy.in/homepage_top_categories_images/4cb2baf3234-Fullbody.png?dim=256x0",
+    },
+    {
+      image:
+        "https://cms-contents.pharmeasy.in/homepage_top_categories_images/e1a18d8deac-Vitamins.png?dim=256x0",
+    },
+    {
+      image:
+        "https://cms-contents.pharmeasy.in/homepage_top_categories_images/1e927857c26-Diabetes.png?dim=256x0",
+    },
+    {
+      image:
+        "https://cms-contents.pharmeasy.in/homepage_top_categories_images/cd9606a9173-efr.png?dim=256x0",
+    },
+    {
+      image:
+        "https://cms-contents.pharmeasy.in/homepage_top_categories_images/e1c60c444bf-Fever.png?dim=256x0",
+    },
+    {
+      image:
+        "https://cms-contents.pharmeasy.in/homepage_top_categories_images/71fb3c06e71-Thyroid.png?dim=256x0",
+    },
+    {
+      image:
+        "https://cms-contents.pharmeasy.in/homepage_top_categories_images/bca113a1b80-Bone.png?dim=256x0",
+    },
+    {
+      image:
+        "https://cms-contents.pharmeasy.in/homepage_top_categories_images/9696ef00b0a-lifestyle.png?dim=256x0",
+    },
+  ];
+
+  const [scrolled, setScrolled] = useState(false);
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 200) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="">
-      <div className="navbar bg-slate-400 flex px-10 py-4 items-center justify-center">
+      <div
+        className={`navbar bg-slate-500 flex px-10 py-4 items-center justify-center ${
+          scrolled ? "bg-gray-200 text-gray-900 sticky top-0" : ""
+        }`}
+      >
         <div className="w-1/4">
           <img src={Logo} alt="" />
         </div>
@@ -105,7 +158,7 @@ const PharmacyStore = () => {
         </div>
       </div>
       <div>
-        <div className="text-white bg-gradient-to-b from-slate-900 via-slate-700 to-slate-900  space-y-5">
+        <div className="pt-10 text-white bg-gradient-to-b from-slate-900 via-slate-700 to-slate-900  space-y-5">
           <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold text-center">
             <h1>Order and get the </h1>
             <div className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
@@ -135,68 +188,76 @@ const PharmacyStore = () => {
             <p>Lab Tests by Health Concern</p>
           </div>
           <div className="flex items-center justify-center">
-            <div className="w-11/12 rounded-lg">
+            <div className="w-11/12">
               <ul className="flex gap-4">
-                <li className="cursor-pointer">
-                  <img
-                    className="w-40 h-44"
-                    src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/4cb2baf3234-Fullbody.png?dim=256x0"
-                    alt=""
-                  />
-                </li>
-                <li className="cursor-pointer">
-                  <img
-                    className="w-40 h-44"
-                    src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/e1a18d8deac-Vitamins.png?dim=256x0"
-                    alt=""
-                  />
-                </li>
-                <li className="cursor-pointer">
-                  <img
-                    className="w-40 h-44"
-                    src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/1e927857c26-Diabetes.png?dim=256x0"
-                    alt=""
-                  />
-                </li>
-                <li className="cursor-pointer">
-                  <img
-                    className="w-40 h-44"
-                    src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/e1c60c444bf-Fever.png?dim=256x0"
-                    alt=""
-                  />
-                </li>
-                <li className="cursor-pointer">
-                  <img
-                    className="w-40 h-44"
-                    src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/cd9606a9173-efr.png?dim=256x0"
-                    alt=""
-                  />
-                </li>
-                <li className="cursor-pointer">
-                  <img
-                    className="w-40 h-44"
-                    src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/71fb3c06e71-Thyroid.png?dim=256x0"
-                    alt=""
-                  />
-                </li>
-                <li className="cursor-pointer">
-                  <img
-                    className="w-40 h-44"
-                    src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/bca113a1b80-Bone.png?dim=256x0"
-                    alt=""
-                  />
-                </li>
-                <li className="cursor-pointer">
-                  <img
-                    className="w-40 h-44"
-                    src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/9696ef00b0a-lifestyle.png?dim=256x0"
-                    alt=""
-                  />
-                </li>
+                {Test.map((item) => {
+                  return (
+                    <li className="cursor-pointer rounded-xl overflow-hidden hover:scale-110 duration-300">
+                      <img className="w-40 h-44" src={item.image} alt="" />
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
-          <div>Hello</div>
+          <div className="flex items-center justify-center">
+            <div className="bg-white w-11/12 rounded-xl overflow-hidden flex ">
+              <div className="flex items-center justify-center py-6 bg-red-400 w-1/3">
+                <div className="p-4">
+                  <img
+                    src="https://assets.pharmeasy.in/apothecary/images/rx_upload.svg?dim=1440x0"
+                    alt=""
+                  />
+                </div>
+                <div className="text-medium">
+                  <p className="text-lg font-semibold px-4">
+                    Order with Prescription
+                  </p>
+                  <p className="px-4">
+                    Upload prescription and we will deliver your medicines
+                  </p>
+                  <button className="mx-24 mt-4 bg-slate-800 px-6 py-2 rounded-xl hover:bg-slate-700 duration-300">
+                    Submit
+                  </button>
+                </div>
+              </div>
+              <div className="bg-slate-400 w-1/3 ">
+                <p className="px-8 pt-8 text-lg font-semibold text-black">
+                  How does this work?
+                </p>
+                <ul className="px-8 pt-4 font-normal text-gray-900">
+                  <li className="flex gap-4 ">
+                    <span className="bg-slate-800 px-2 py-1 text-white rounded-lg">
+                      1
+                    </span>
+                    <p>Upload a photo of your prescription</p>
+                  </li>
+                  <li className="flex mt-4 gap-4">
+                    <span className="bg-slate-800 px-2 py-1 text-white rounded-lg">
+                      2
+                    </span>
+                    <p>Add delivery address and place the order</p>
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-slate-400 w-1/3 font-normal text-gray-900">
+                <ul className="px-8 pt-4 mt-12">
+                  <li className="flex gap-4">
+                    <span className="bg-slate-800 px-2 py-1 text-white rounded-lg">
+                      1
+                    </span>
+                    <p>Upload a photo of your prescription</p>
+                  </li>
+                  <li className="flex mt-4 gap-4">
+                    <span className="bg-slate-800 px-2 py-1 text-white rounded-lg">
+                      2
+                    </span>
+                    <p>Add delivery address and place the order</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
