@@ -132,8 +132,8 @@ const PharmacyStore = () => {
   return (
     <div className="">
       <div
-        className={`navbar bg-slate-500 flex px-10 py-4 items-center justify-center ${
-          scrolled ? "bg-gray-200 text-gray-900 sticky top-0" : ""
+        className={`navbar bg-slate-500 flex px-10 py-4 items-center justify-center duration-200 ${
+          scrolled ? "bg-gray-200 text-gray-900 sticky top-0 duration-200" : ""
         }`}
       >
         <div className="w-1/4">
@@ -201,7 +201,7 @@ const PharmacyStore = () => {
             </div>
           </div>
           <div className="flex items-center justify-center">
-            <div className="bg-white w-11/12 rounded-xl overflow-hidden flex ">
+            <div className="bg-white w-11/12 rounded-xl flex ">
               <div className="flex items-center justify-center py-6 bg-red-400 w-1/3">
                 <div className="p-4">
                   <img
@@ -253,6 +253,57 @@ const PharmacyStore = () => {
                       2
                     </span>
                     <p>Add delivery address and place the order</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center justify-center">
+            <div className="w-11/12 overflow-visible p-4">
+              <div className="text-2xl font-semibold pb-4">
+                <p>Shop By Category</p>
+              </div>
+              <div className="">
+                <ul className="flex gap-8">
+                  <li className=" flex flex-col text-center border-2 rounded-lg border-slate-600 bg-slate-800 hover:bg-slate-700 duration-300 p-4">
+                    <img
+                      className="w-72 h-48 rounded-xl"
+                      src="https://images.pexels.com/photos/8963414/pexels-photo-8963414.jpeg?auto=compress&cs=tinysrgb&w=600"
+                      alt=""
+                    />
+                    <p className="mt-3">Health Food and Drinks</p>
+                  </li>
+                  <li className=" flex flex-col text-center border-2 rounded-lg border-slate-600 bg-slate-800 hover:bg-slate-700 duration-300 p-4">
+                    <img
+                      className="w-72 h-48 rounded-xl"
+                      src="https://m.media-amazon.com/images/I/61jXQYqiR4L.jpg"
+                      alt=""
+                    />
+                    <p className="mt-3">Sports nutrition</p>
+                  </li>
+                  <li className=" flex flex-col text-center border-2 rounded-lg border-slate-600 bg-slate-800 hover:bg-slate-700 duration-300 p-4">
+                    <img
+                      className="w-72 h-48 rounded-xl"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReNxzeoZZp9iZj68dpxYqwH9yrETj9jL25ug&s"
+                      alt=""
+                    />
+                    <p className="mt-3">Baby Care</p>
+                  </li>
+                  <li className=" flex flex-col text-center border-2 rounded-lg border-slate-600 bg-slate-800 hover:bg-slate-700 duration-300 p-4">
+                    <img
+                      className="w-72 h-48 rounded-xl"
+                      src="https://5.imimg.com/data5/JU/FV/MY-8372919/private-labeling-skin-care-products.jpg"
+                      alt=""
+                    />
+                    <p className="mt-3">Skin Care</p>
+                  </li>
+                  <li className=" flex flex-col text-center border-2 rounded-lg border-slate-600 bg-slate-800 hover:bg-slate-700 duration-300 p-4">
+                    <img
+                      className="w-72 h-48 rounded-xl"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRynJ23kpK6c0YECHEPaCIz5auqA3k3e8yI-Q&s"
+                      alt=""
+                    />
+                    <p className="mt-3">Ayurveda</p>
                   </li>
                 </ul>
               </div>
