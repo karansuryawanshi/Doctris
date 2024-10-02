@@ -307,6 +307,149 @@ const PharmacyStore = () => {
                   </li>
                 </ul>
               </div>
+              <div className="">
+                <div className="text-2xl font-semibold py-4">Hello Buddy</div>
+                <div>
+                  <ul className="flex gap-8">
+                    <li className=" flex w-80 flex-col space-y-4 border-2 rounded-lg hover:shadow-lg hover:shadow-slate-500 duration-300 border-slate-600 bg-amber-100 p-4">
+                      <div className="flex">
+                        <p className="bg-red-400 p-1 rounded-lg font-semibold flex ">
+                          58% OFF
+                        </p>
+                      </div>
+                      <div className="text-gray-800 space-y-2">
+                        <p className="text-lg font-semibold">
+                          Comprehensive Full Body Checkup Test with Vitamin D &
+                          B12
+                        </p>
+                        <p className="text-sm">
+                          Measures Vitamin D & B12 levels and other essential
+                          parameters
+                        </p>
+                      </div>
+                      <div className="flex justify-between">
+                        <div className="text-black space-y-2 mt-4">
+                          <p className="text-xl line-through font-semibold text-gray-500">
+                            ₹ 4500
+                          </p>
+                          <p className="font-semibold text-2xl text-gray-800">
+                            ₹ 4500
+                          </p>
+                        </div>
+                        <div>
+                          <img
+                            className="w-24"
+                            src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/c4162b4ec00938379d15b2719577457e.png?dim=96x0"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </li>
+                    <li className=" flex w-80 flex-col space-y-4 border-2 rounded-lg hover:scale-105 hover:shadow-lg hover:shadow-slate-500 duration-300 border-slate-600 bg-slate-200 p-4">
+                      <div className="flex">
+                        <p className="bg-red-400 p-1 rounded-lg font-semibold flex ">
+                          58% OFF
+                        </p>
+                      </div>
+                      <div className="text-gray-800 space-y-2">
+                        <p className="text-lg font-semibold">
+                          Comprehensive Full Body Checkup Test with Vitamin D &
+                          B12
+                        </p>
+                        <p className="text-sm">
+                          Measures Vitamin D & B12 levels and other essential
+                          parameters
+                        </p>
+                      </div>
+                      <div className="flex justify-between">
+                        <div className="text-black space-y-2 mt-4">
+                          <p className="text-xl line-through font-semibold text-gray-500">
+                            ₹ 4500
+                          </p>
+                          <p className="font-semibold text-2xl text-gray-800">
+                            ₹ 4500
+                          </p>
+                        </div>
+                        <div>
+                          <img
+                            className="w-24"
+                            src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/c4162b4ec00938379d15b2719577457e.png?dim=96x0"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </li>
+                    <li className=" flex w-80 flex-col space-y-4 border-2 rounded-lg hover:shadow-lg hover:shadow-slate-500 duration-300 border-slate-600 bg-amber-100 p-4">
+                      <div className="flex">
+                        <p className="bg-red-400 p-1 rounded-lg font-semibold flex ">
+                          58% OFF
+                        </p>
+                      </div>
+                      <div className="text-gray-800 space-y-2">
+                        <p className="text-lg font-semibold">
+                          Comprehensive Full Body Checkup Test with Vitamin D &
+                          B12
+                        </p>
+                        <p className="text-sm">
+                          Measures Vitamin D & B12 levels and other essential
+                          parameters
+                        </p>
+                      </div>
+                      <div className="flex justify-between">
+                        <div className="text-black space-y-2 mt-4">
+                          <p className="text-xl line-through font-semibold text-gray-500">
+                            ₹ 4500
+                          </p>
+                          <p className="font-semibold text-2xl text-gray-800">
+                            ₹ 4500
+                          </p>
+                        </div>
+                        <div>
+                          <img
+                            className="w-24"
+                            src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/c4162b4ec00938379d15b2719577457e.png?dim=96x0"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </li>
+                    <li className=" flex w-80 flex-col space-y-4 border-2 rounded-lg hover:shadow-lg hover:shadow-slate-500 duration-300 border-slate-600 bg-slate-200 p-4">
+                      <div className="flex">
+                        <p className="bg-red-400 p-1 rounded-lg font-semibold flex ">
+                          58% OFF
+                        </p>
+                      </div>
+                      <div className="text-gray-800 space-y-2">
+                        <p className="text-lg font-semibold">
+                          Comprehensive Full Body Checkup Test with Vitamin D &
+                          B12
+                        </p>
+                        <p className="text-sm">
+                          Measures Vitamin D & B12 levels and other essential
+                          parameters
+                        </p>
+                      </div>
+                      <div className="flex justify-between">
+                        <div className="text-black space-y-2 mt-4">
+                          <p className="text-xl line-through font-semibold text-gray-500">
+                            ₹ 4500
+                          </p>
+                          <p className="font-semibold text-2xl text-gray-800">
+                            ₹ 4500
+                          </p>
+                        </div>
+                        <div>
+                          <img
+                            className="w-24"
+                            src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/c4162b4ec00938379d15b2719577457e.png?dim=96x0"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
