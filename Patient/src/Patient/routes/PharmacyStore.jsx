@@ -80,6 +80,33 @@ const PharmacyStore = () => {
     },
   ];
 
+  const category = [
+    {
+      image:
+        "https://images.pexels.com/photos/8963414/pexels-photo-8963414.jpeg?auto=compress&cs=tinysrgb&w=600",
+      name: "Health Food and Drinks",
+    },
+    {
+      image: "https://m.media-amazon.com/images/I/61jXQYqiR4L.jpg",
+      name: "Sports nutrition",
+    },
+    {
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReNxzeoZZp9iZj68dpxYqwH9yrETj9jL25ug&s",
+      name: "Baby Care",
+    },
+    {
+      image:
+        "https://5.imimg.com/data5/JU/FV/MY-8372919/private-labeling-skin-care-products.jpg",
+      name: "Skin Care",
+    },
+    {
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRynJ23kpK6c0YECHEPaCIz5auqA3k3e8yI-Q&s",
+      name: "Ayurveda",
+    },
+  ];
+
   const Test = [
     {
       image:
@@ -115,6 +142,52 @@ const PharmacyStore = () => {
     },
   ];
 
+  const LabData = [
+    {
+      image:
+        "https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/c4162b4ec00938379d15b2719577457e.png?dim=96x0",
+      Discount: "58%",
+      title: "Comprehensive Full Body Checkup Test with Vitamin D",
+      description:
+        "Measures Vitamin D & B12 levels and other essential parameters",
+      originalAmount: "4599",
+      OfferAmount: "1949",
+      bgcolor: "bg-amber-100",
+    },
+    {
+      image:
+        "https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/37ebeeb109543b779c568444f7ce84be.png?dim=96x0",
+      Discount: "60%",
+      title: "Healthy 2024 Full Body Checkup",
+      description:
+        "Diagnostic tool for screening and monitoring of your health",
+      originalAmount: "3599",
+      OfferAmount: "1449",
+      bgcolor: "bg-slate-200",
+    },
+    {
+      image:
+        "https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/01abb07c5b233f90b2cd0b64a7ebccee.png?dim=96x0",
+      Discount: "43%",
+      title: "Diabetes Care",
+      description:
+        "Specially designed package to cover the preventive care aspects for diabetics",
+      originalAmount: "1399",
+      OfferAmount: "799",
+      bgcolor: "bg-amber-100",
+    },
+    {
+      image:
+        "https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/01abb07c5b233f90b2cd0b64a7ebccee.png?dim=96x0",
+      Discount: "53%",
+      title: "Basic Health Checkup",
+      description: "Assesses health of 47 essential body parameters",
+      originalAmount: "2249",
+      OfferAmount: "1049",
+      bgcolor: "bg-slate-200",
+    },
+  ];
+
   const [scrolled, setScrolled] = useState(false);
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -147,7 +220,6 @@ const PharmacyStore = () => {
           />
         </div>
         <div className="flex text-3xl gap-6 w-1/2 justify-end">
-          {/* <p>Login</p> */}
           <p className="text-lg">+91 9855477854</p>
           <p>
             <Icon icon="iconamoon:discount-light" />
@@ -265,187 +337,133 @@ const PharmacyStore = () => {
               </div>
               <div className="">
                 <ul className="flex gap-8">
-                  <li className=" flex flex-col text-center border-2 rounded-lg border-slate-600 bg-slate-800 hover:bg-slate-700 duration-300 p-4">
-                    <img
-                      className="w-72 h-48 rounded-xl"
-                      src="https://images.pexels.com/photos/8963414/pexels-photo-8963414.jpeg?auto=compress&cs=tinysrgb&w=600"
-                      alt=""
-                    />
-                    <p className="mt-3">Health Food and Drinks</p>
-                  </li>
-                  <li className=" flex flex-col text-center border-2 rounded-lg border-slate-600 bg-slate-800 hover:bg-slate-700 duration-300 p-4">
-                    <img
-                      className="w-72 h-48 rounded-xl"
-                      src="https://m.media-amazon.com/images/I/61jXQYqiR4L.jpg"
-                      alt=""
-                    />
-                    <p className="mt-3">Sports nutrition</p>
-                  </li>
-                  <li className=" flex flex-col text-center border-2 rounded-lg border-slate-600 bg-slate-800 hover:bg-slate-700 duration-300 p-4">
-                    <img
-                      className="w-72 h-48 rounded-xl"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReNxzeoZZp9iZj68dpxYqwH9yrETj9jL25ug&s"
-                      alt=""
-                    />
-                    <p className="mt-3">Baby Care</p>
-                  </li>
-                  <li className=" flex flex-col text-center border-2 rounded-lg border-slate-600 bg-slate-800 hover:bg-slate-700 duration-300 p-4">
-                    <img
-                      className="w-72 h-48 rounded-xl"
-                      src="https://5.imimg.com/data5/JU/FV/MY-8372919/private-labeling-skin-care-products.jpg"
-                      alt=""
-                    />
-                    <p className="mt-3">Skin Care</p>
-                  </li>
-                  <li className=" flex flex-col text-center border-2 rounded-lg border-slate-600 bg-slate-800 hover:bg-slate-700 duration-300 p-4">
-                    <img
-                      className="w-72 h-48 rounded-xl"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRynJ23kpK6c0YECHEPaCIz5auqA3k3e8yI-Q&s"
-                      alt=""
-                    />
-                    <p className="mt-3">Ayurveda</p>
-                  </li>
+                  {category.map((item) => {
+                    return (
+                      <li className=" flex flex-col text-center border-2 rounded-lg border-slate-600 bg-slate-800 hover:bg-slate-700 duration-300 p-4">
+                        <img
+                          className="w-72 h-48 rounded-xl"
+                          src={item.image}
+                          alt=""
+                        />
+                        <p className="mt-3">{item.name}</p>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
-              <div className="">
-                <div className="text-2xl font-semibold py-4">Hello Buddy</div>
+              <div>
+                <div className="text-2xl flex items-center justify-between font-semibold py-4">
+                  <p>Frequently Booked Lab Tests</p>
+                  <p className="text-lg text-slate-200 cursor-pointer hover:border-b-2 duration-300">
+                    View All
+                  </p>
+                </div>
                 <div>
                   <ul className="flex gap-8">
-                    <li className=" flex w-80 flex-col space-y-4 border-2 rounded-lg hover:shadow-lg hover:shadow-slate-500 duration-300 border-slate-600 bg-amber-100 p-4">
-                      <div className="flex">
-                        <p className="bg-red-400 p-1 rounded-lg font-semibold flex ">
-                          58% OFF
-                        </p>
-                      </div>
-                      <div className="text-gray-800 space-y-2">
-                        <p className="text-lg font-semibold">
-                          Comprehensive Full Body Checkup Test with Vitamin D &
-                          B12
-                        </p>
-                        <p className="text-sm">
-                          Measures Vitamin D & B12 levels and other essential
-                          parameters
-                        </p>
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="text-black space-y-2 mt-4">
-                          <p className="text-xl line-through font-semibold text-gray-500">
-                            ₹ 4500
-                          </p>
-                          <p className="font-semibold text-2xl text-gray-800">
-                            ₹ 4500
-                          </p>
-                        </div>
-                        <div>
-                          <img
-                            className="w-24"
-                            src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/c4162b4ec00938379d15b2719577457e.png?dim=96x0"
-                            alt=""
-                          />
-                        </div>
-                      </div>
+                    {LabData.map((item) => {
+                      return (
+                        <li
+                          className={` flex w-80 flex-col space-y-4 border-2 justify-between rounded-lg hover:shadow-lg hover:scale-105 hover:shadow-slate-500 duration-300 border-slate-600 bg-amber-100 p-4 ${item.bgcolor}`}
+                        >
+                          <div className="flex">
+                            <p className="bg-red-400 p-1 rounded-lg font-semibold flex ">
+                              {item.Discount} OFF
+                            </p>
+                          </div>
+                          <div className="text-gray-800 space-y-2">
+                            <p className="text-lg font-semibold">
+                              {item.title}
+                            </p>
+                            <p className="text-sm">{item.description}</p>
+                          </div>
+                          <div className="flex justify-between">
+                            <div className="text-black space-y-2 mt-4">
+                              <p className="text-xl line-through font-semibold text-gray-500">
+                                ₹ {item.originalAmount}
+                              </p>
+                              <p className="font-semibold text-2xl text-gray-800">
+                                ₹ {item.OfferAmount}
+                              </p>
+                            </div>
+                            <div>
+                              <img className="w-24" src={item.image} alt="" />
+                            </div>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div className="">
+                  <p>Shop by concern</p>
+                </div>
+                <div>
+                  <ul className="flex space-x-4">
+                    <li className="flex flex-col items-center justify-center">
+                      <img
+                        className="w-48"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        alt=""
+                      />
+                      <p>Bone Joint Muscle Care</p>
                     </li>
-                    <li className=" flex w-80 flex-col space-y-4 border-2 rounded-lg hover:scale-105 hover:shadow-lg hover:shadow-slate-500 duration-300 border-slate-600 bg-slate-200 p-4">
-                      <div className="flex">
-                        <p className="bg-red-400 p-1 rounded-lg font-semibold flex ">
-                          58% OFF
-                        </p>
-                      </div>
-                      <div className="text-gray-800 space-y-2">
-                        <p className="text-lg font-semibold">
-                          Comprehensive Full Body Checkup Test with Vitamin D &
-                          B12
-                        </p>
-                        <p className="text-sm">
-                          Measures Vitamin D & B12 levels and other essential
-                          parameters
-                        </p>
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="text-black space-y-2 mt-4">
-                          <p className="text-xl line-through font-semibold text-gray-500">
-                            ₹ 4500
-                          </p>
-                          <p className="font-semibold text-2xl text-gray-800">
-                            ₹ 4500
-                          </p>
-                        </div>
-                        <div>
-                          <img
-                            className="w-24"
-                            src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/c4162b4ec00938379d15b2719577457e.png?dim=96x0"
-                            alt=""
-                          />
-                        </div>
-                      </div>
+                    <li className="flex flex-col items-center justify-center">
+                      <img
+                        className="w-48"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        alt=""
+                      />
+                      <p>Bone Joint Muscle Care</p>
                     </li>
-                    <li className=" flex w-80 flex-col space-y-4 border-2 rounded-lg hover:shadow-lg hover:shadow-slate-500 duration-300 border-slate-600 bg-amber-100 p-4">
-                      <div className="flex">
-                        <p className="bg-red-400 p-1 rounded-lg font-semibold flex ">
-                          58% OFF
-                        </p>
-                      </div>
-                      <div className="text-gray-800 space-y-2">
-                        <p className="text-lg font-semibold">
-                          Comprehensive Full Body Checkup Test with Vitamin D &
-                          B12
-                        </p>
-                        <p className="text-sm">
-                          Measures Vitamin D & B12 levels and other essential
-                          parameters
-                        </p>
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="text-black space-y-2 mt-4">
-                          <p className="text-xl line-through font-semibold text-gray-500">
-                            ₹ 4500
-                          </p>
-                          <p className="font-semibold text-2xl text-gray-800">
-                            ₹ 4500
-                          </p>
-                        </div>
-                        <div>
-                          <img
-                            className="w-24"
-                            src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/c4162b4ec00938379d15b2719577457e.png?dim=96x0"
-                            alt=""
-                          />
-                        </div>
-                      </div>
+                    <li className="flex flex-col items-center justify-center">
+                      <img
+                        className="w-48"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        alt=""
+                      />
+                      <p>Bone Joint Muscle Care</p>
                     </li>
-                    <li className=" flex w-80 flex-col space-y-4 border-2 rounded-lg hover:shadow-lg hover:shadow-slate-500 duration-300 border-slate-600 bg-slate-200 p-4">
-                      <div className="flex">
-                        <p className="bg-red-400 p-1 rounded-lg font-semibold flex ">
-                          58% OFF
-                        </p>
-                      </div>
-                      <div className="text-gray-800 space-y-2">
-                        <p className="text-lg font-semibold">
-                          Comprehensive Full Body Checkup Test with Vitamin D &
-                          B12
-                        </p>
-                        <p className="text-sm">
-                          Measures Vitamin D & B12 levels and other essential
-                          parameters
-                        </p>
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="text-black space-y-2 mt-4">
-                          <p className="text-xl line-through font-semibold text-gray-500">
-                            ₹ 4500
-                          </p>
-                          <p className="font-semibold text-2xl text-gray-800">
-                            ₹ 4500
-                          </p>
-                        </div>
-                        <div>
-                          <img
-                            className="w-24"
-                            src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/recommendationWidget/c4162b4ec00938379d15b2719577457e.png?dim=96x0"
-                            alt=""
-                          />
-                        </div>
-                      </div>
+                    <li className="flex flex-col items-center justify-center">
+                      <img
+                        className="w-48"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        alt=""
+                      />
+                      <p>Bone Joint Muscle Care</p>
+                    </li>
+                    <li className="flex flex-col items-center justify-center">
+                      <img
+                        className="w-48"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        alt=""
+                      />
+                      <p>Bone Joint Muscle Care</p>
+                    </li>
+                    <li className="flex flex-col items-center justify-center">
+                      <img
+                        className="w-48"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        alt=""
+                      />
+                      <p>Bone Joint Muscle Care</p>
+                    </li>
+                    <li className="flex flex-col items-center justify-center">
+                      <img
+                        className="w-48"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        alt=""
+                      />
+                      <p>Bone Joint Muscle Care</p>
+                    </li>
+                    <li className="flex flex-col items-center justify-center">
+                      <img
+                        className="w-48"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        alt=""
+                      />
+                      <p>Bone Joint Muscle Care</p>
                     </li>
                   </ul>
                 </div>
