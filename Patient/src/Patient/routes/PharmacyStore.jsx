@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import ReactCardSlider from "react-card-slider-component";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+// import { Box, Collapsible } from "@chakra-ui/react";
 
 const PharmacyStore = () => {
   const responsive = {
@@ -397,7 +398,7 @@ const PharmacyStore = () => {
               </div>
               <div>
                 <div className="">
-                  <p>Shop by concern</p>
+                  <p className="text-2xl font-semibold py-4">Shop by concern</p>
                 </div>
                 <div>
                   <ul className="flex space-x-4">
@@ -412,61 +413,64 @@ const PharmacyStore = () => {
                     <li className="flex flex-col items-center justify-center">
                       <img
                         className="w-48"
-                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/diabetes-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
                         alt=""
                       />
-                      <p>Bone Joint Muscle Care</p>
+                      <p>Diabetes Care</p>
                     </li>
                     <li className="flex flex-col items-center justify-center">
                       <img
                         className="w-48"
-                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/eye-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
                         alt=""
                       />
-                      <p>Bone Joint Muscle Care</p>
+                      <p>Eye Care</p>
                     </li>
                     <li className="flex flex-col items-center justify-center">
                       <img
                         className="w-48"
-                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/fever-cough-cold/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
                         alt=""
                       />
-                      <p>Bone Joint Muscle Care</p>
+                      <p>Fever Cough Cold</p>
                     </li>
                     <li className="flex flex-col items-center justify-center">
                       <img
                         className="w-48"
-                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/hair-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
                         alt=""
                       />
-                      <p>Bone Joint Muscle Care</p>
+                      <p>Hair Care</p>
                     </li>
                     <li className="flex flex-col items-center justify-center">
                       <img
                         className="w-48"
-                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/kidney-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
                         alt=""
                       />
-                      <p>Bone Joint Muscle Care</p>
+                      <p>Kidney Care</p>
                     </li>
                     <li className="flex flex-col items-center justify-center">
                       <img
                         className="w-48"
-                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/liver-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
                         alt=""
                       />
-                      <p>Bone Joint Muscle Care</p>
+                      <p>Liver Pain</p>
                     </li>
                     <li className="flex flex-col items-center justify-center">
                       <img
                         className="w-48"
-                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/bone-joint-muscle-care/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
+                        src="https://ik.imagekit.io/wlfr/wellness/images/concern/pain-relief/thumbnail.png/tr:w-1080,c-at_max,cm-pad_resize,f-auto,q-70"
                         alt=""
                       />
-                      <p>Bone Joint Muscle Care</p>
+                      <p>Pain Relief</p>
                     </li>
                   </ul>
                 </div>
+              </div>
+              <div>
+                <h1>FAQ</h1>
               </div>
             </div>
           </div>
